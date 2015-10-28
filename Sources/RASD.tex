@@ -1,0 +1,344 @@
+%% Based on a TeXnicCenter-Template by Gyorgy SZEIDL.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%------------------------------------------------------------
+%
+\documentclass[a4paper,12pt]{article}%
+%Options -- Point size:  10pt (default), 11pt, 12pt
+%        -- Paper size:  letterpaper (default), a4paper, a5paper, b5paper
+%                        legalpaper, executivepaper
+%        -- Orientation  (portrait is the default)
+%                        landscape
+%        -- Print size:  oneside (default), twoside
+%        -- Quality      final(default), draft
+%        -- Title page   notitlepage, titlepage(default)
+%        -- Columns      onecolumn(default), twocolumn
+%        -- Equation numbering (equation numbers on the right is the default)
+%                        leqno
+%        -- Displayed equations (centered is the default)
+%                        fleqn (equations start at the same distance from the right side)
+%        -- Open bibliography style (closed is the default)
+%                        openbib
+% For instance the command
+%           \documentclass[a4paper,12pt,leqno]{article}
+% ensures that the paper size is a4, the fonts are typeset at the size 12p
+% and the equation numbers are on the left side
+%
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{svg}
+\usepackage{tabularx}
+\usepackage{array}
+%-------------------------------------------
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\geometry{margin=1in}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\newcounter{assumptions_counter}
+\newcounter{goals_counter}
+\newcounter{func_req_counter}
+\newcommand{\usecasetable}[5]{
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|C|}
+\hline
+Actor & #1\\
+\hline
+Goal & #2\\
+\hline
+Event Flow & #3\\
+\hline
+Output Condition & #4\\
+\hline
+Exception & #5\\
+\hline
+\end{tabularx}
+\end{center}
+}
+\begin{document}
+\begin{figure}
+  \centering
+	\def\svgwidth{\columnwidth}
+    \resizebox{0.35\textwidth}{!}{\input{logo_polimi.pdf_tex}}
+\end{figure}
+\title{{\Huge \textbf{R}equirements \textbf{A}nalysis and\\
+\textbf{S}pecification \textbf{D}ocument}\\{\Large Software Engineering 2: ``myTaxiService''}}
+
+\author{Fioratto Raffaele, Longoni Nicol\`{o}
+\\Politecnico di Milano
+\\{\small A.Y. 2015/2016}}
+\date{October 22, 2015}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction}
+
+\subsection{Purpose}
+This document represent the Requirement Analysis and Specification Document
+(RASD). The main goal of this document is to completely describe the system
+in terms of functional and non-functional requirements, analyze the real need
+of the customer to modeling the system, show the constraints and the limit
+of the software and simulate the typical use cases that will occur after the
+development. This document is intended to all developer and programmer who
+have to implement the requirements, to system analyst who want to integrate
+other system with this one, and could be used as a contractual basis between
+the customer and the developer.
+
+\subsection{Actual System}
+The software house wants to offer a new service for optimizing an existing 
+taxi service of a large city. We suppose that until now nothing has been 
+created and we have to create the entire application without using or modify 
+a previous system.
+
+\subsection{Scope}
+The aim of the project is to create a brand new system that optimizes an 
+existing taxi service.
+The system will be capable of automatizing  and/or simplifying certain 
+processes during the request or reservation of a taxi.
+It will also guarantee a fair management of the taxi queues.
+New passengers can sign up for the service inserting some basic information in order to use the service's features as quickly as possible.
+A passenger can request a taxi using a web service or through a mobile
+application after registration. The system will be able to localize precisely the position
+of the passenger and thus determine the taxis that are available near
+him/her. The system will select a taxi and then will forward the request the the driver.
+Upon confirmation, the system will notify the customer about the operation completed successfully and the ETA of the taxi. A passenger can also reserve a taxi by specifying the time and date when he/she will catch the ride.
+The passenger that wants to reserve should do it with at least two hours of premonition, cancellation it is also permitted. The system will actually process the request ten minutes before the time specified during reservation in the same way as described previously.
+
+\subsection{Actors}
+\begin{itemize}
+\item Unregistered Passenger: a visitor, i.e. a person that is not yet registered to the system thus the only page that can view is the registration one.
+\item Registered Passenger: all customers that have a valid username and password and that are able to access all the features available to the customers, they can request or reserve a taxi, they can also cancel these operations with some constraints.
+\item Taxi Driver: a person who is able to drive a taxi, owns a valid 
+professional driving license. The driver informs the system about the availability of the
+taxi that belongs to him/her logging in into a specific mobile application installed in his/her smartphone, and informs the system when the ride ends. 
+\item System Administrator: is the person in charge of update the list of the actual cars and the list of the drivers that are enabled to work.
+\end{itemize}
+\subsection{Goals}
+List of goals for myTaxiService system:
+\begin{itemize}
+\stepcounter{goals_counter}
+\item \nameref{goal\arabic{goals_counter}}
+\stepcounter{goals_counter}
+\item \nameref{goal\arabic{goals_counter}}
+\stepcounter{goals_counter}
+\item \nameref{goal\arabic{goals_counter}}
+\stepcounter{goals_counter}
+\item \nameref{goal\arabic{goals_counter}}
+\stepcounter{goals_counter}
+\item \nameref{goal\arabic{goals_counter}}
+\stepcounter{goals_counter}
+\item \nameref{goal\arabic{goals_counter}}
+\stepcounter{goals_counter}
+\item \nameref{goal\arabic{goals_counter}}
+\stepcounter{goals_counter}
+\item \nameref{goal\arabic{goals_counter}} 
+\stepcounter{goals_counter}
+\item \nameref{goal\arabic{goals_counter}} 
+\end{itemize}
+\subsection{Definitions, Acronyms, Abbreviations}
+\subsubsection{Definitions}
+\subsubsection{Acronyms}
+\begin{itemize}
+\item RASD: Requirements Analysis and Specification Document
+\item DB: DataBase
+\item DBMS: DataBase Management System
+\item API: Application Programming Interface
+\item ETA: Estimated Time of Arrival
+\item OS: Operating System
+\end{itemize}
+\subsubsection{Abbreviations}
+\begin{itemize}
+\item {[}Gn{]}: n-goal %curly braces needed to escape '[' and ']'
+\item {[}Rn{]}: n-functional requirement
+\item {[}Dn{]}: n-domain assumption
+\item {[}Fn{]}: n-figure
+\item {[}An{]}: n-assumption
+\end{itemize}
+\subsection{Identify Stakeholders}
+Our main stakeholders are the members of the government of the city that are interested in optimizing the already present taxi service.
+Another stakeholders can be a company that wants to enhance the service as well, but also the passengers and the taxi drivers which they want a more comfortable, intuitive and user-friendly service.
+\subsection{Reference Documents}
+\begin{itemize}
+\item myTaxiService Specification Document
+\item IEEE Std 830-1998 IEEE Recommended Practice for Software 
+Requirements Specifications.
+\end{itemize}
+\subsection{Document overview}
+The document is essentially divided into four parts:
+\begin{itemize}
+\item Section 1: Introduction, it gives a description of document and some basic information about software.
+\item Section 2: Overall Description, gives general information about the software product with more focus about constraints and assumptions.
+\item Section 3: Specific Requirements, this part list requirements, typical scenarios and use cases. To give an easy way to understand all functionality
+of this software, this section is filled with UML diagrams.
+\item  Section 4: Appendix, this part contains some information about the attached files and some described screenshot of software used to generate
+it.
+\end{itemize}
+\newpage
+\section{Overall Description}
+\subsection{Product perspective}
+The final product will consist of a web service and a mobile application for the customer and the taxi driver.
+The overall system will also have an internal interface for the system administrator. The system should also interact with existing external services, and will also provide additional APIs that allows the development of additional features in the future. 
+\subsection{User characteristics}
+train the system administrator (i.e. take an existing employee and train it to manage the system)
+\subsection{Constraints}
+\subsubsection{Regulatory policies}
+For the myTaxiService we have identified the following regulatory policies:
+\begin{itemize}
+\item Cookies: since it is mandatory to log in into the web service to interact with the system, it is necessary to use cookies in order to keep track of the session of each user, thus the system must comply with the actual Cookie Law.
+\item Privacy: the system needs to manage some sensible data of the customers and the taxi drivers, for instance the name, the surname, an e-mail etc. Another crucial information is the actual location detected by the GPS of both. Thus during the registration the customers must accept the Privacy Law (see login mockup), regarding the taxi driver, before being registered to the system by the administrator, the driver should sign some sort of document accepting the processing of its personal data.
+\item Drivers during their work are subject to the Traffic code.
+\item The workday of a driver is subjected to the laws about Job safety, so the system must allow the driver to take some breaks during the day in order to prevent some illnesses or damage to people or things because of tiredness or stress.
+\end{itemize}
+\subsubsection{Hardware policies}
+For the myTaxiService we have identified the following regulatory policies:
+\begin{itemize}
+\item Smartphone: they have limited power and battery so care must be taken when developing the applications and also the web service (for instance, implementing a responsive design).
+\end{itemize}
+\subsubsection{Interfaces to other applications}
+\begin{itemize}
+\item Google Maps: they will be used to provide an estimation about the time of arrival of the taxi to the passenger.
+\item External Database containing information about the drivers' license and the data about the cars, the system will interrogate this database to check the correctness of the information supplied by the taxi driver during the registration in the system.
+\end{itemize} 
+\subsubsection{Parallel operation}
+myTaxiService must support parallel operations from different users when working
+with database and with all operation done by the user after connection.
+\subsubsection{Documents related}
+\subsection{Assumptions and Dependencies}
+\subsubsection{Assumptions}
+\begin{itemize}
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]}
+Only registered users can use the service, because additional information such as name, surname, an e-mail to confirm and recap the reservation are needed, thus avoid repeating the user to re-enter this information every time.
+Another reason is to prevent the passenger to do another request to the system while there’s another one being processed.
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The position of the passenger is exactly known using the GPS available in the smartphone or by using a geolocalization API from the browser. 
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The position of the taxi is exactly known using the GPS available in the smartphone of the driver
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The city is divided into zones of 2 $km^2$ each and for each zone a taxi queue is allocated.
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The driver can take at most 2 breaks during his workday, during the break the taxi that belongs to him is not available.
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} A taxi driver must own a valid professional driving license and a taxi with all the documents in order
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Each taxi driver's license has a unique code that identifies it
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Each taxi cab has a unique code that identifies it
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} external database with information about taxi drivers and their car 
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The existing taxi service is available 24 hours per day, 365 days per year.
+\stepcounter{assumptions_counter}
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} An ETA of at most $10 \pm 5$ mins is considered adequate (move to domain assumptions?)
+\end{itemize}
+\subsection{Future possible implementation}
+\begin{itemize}
+\item Allow the customers to pay using an electronic payment system. During registration the passenger will provide additional information about the his/her credit card or PayPal e-mail, the system will charge a ride automatically.
+\item Extend the interface usable by customers to provide the ability to evaluate the service in general as a sort of feedback to improve the overall system.
+\item Expand the system to allow the possibility to share a taxi with other customers using the existing API that will be implemented.
+\end{itemize}
+\newpage
+\section{Specific Requirements}
+\subsection{External Interface Requirements}
+\subsection{Functional Requirements}
+\setcounter{goals_counter}{1}
+\stepcounter{func_req_counter}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow unregistered passengers to sign up for the service}
+\stepcounter{goals_counter}
+\begin{itemize}
+\item {[}R\arabic{func_req_counter}{]} The system must request an e-mail or a telephone number during the registration
+\stepcounter{func_req_counter}
+\item {[}R\arabic{func_req_counter}{]} The system must reject an e-mail or a telephone number already used by another registered passenger
+\stepcounter{func_req_counter}
+\item {[}R\arabic{func_req_counter}{]} After the completion of the registration process, the system must send a confirmation to the newly registered passenger
+\stepcounter{func_req_counter}
+\item {[}R\arabic{func_req_counter}{]} The system shall check if the e-mail of the telephone number is well formed
+\stepcounter{func_req_counter}
+\item {[}R\arabic{func_req_counter}{]} The system will consider the passenger officially registered if and only if the passenger opens an activation link in the confirmation e-mail, or inserts the code received through an SMS in the mobile application or in the web service.
+\end{itemize}
+\setcounter{func_req_counter}{1}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow registered passengers to request a taxi}
+\begin{itemize}
+\item {[}R\arabic{func_req_counter}{]} The system must disallow unregistered passengers to perform such operation
+\stepcounter{func_req_counter}
+\item {[}R\arabic{func_req_counter}{]} The system shall locate the passenger using the GPS in the smartphone or through the browser.
+\stepcounter{func_req_counter}
+\item {[}R\arabic{func_req_counter}{]} After selecting the most appropriate taxi (explained in the goal \hyperref[goal4]{[G4]}), the system must inform the driver that a request is incoming.
+\stepcounter{func_req_counter}
+\item {[}R\arabic{func_req_counter}{]} Upon confirmation by the driver about the request of availability, the system shall inform the passenger about the positive outcome and provide additional information, such as ETA
+\stepcounter{func_req_counter}
+\item {[}R\arabic{func_req_counter}{]} In the event of unavailability of the driver contacted, the system shall pick another taxi from the most appropriate queue and repeat what described in requirement [R3]
+\stepcounter{func_req_counter}
+\item {[}R\arabic{func_req_counter}{]} The system should also provide a functionality that allow the passenger to cancel the request if, for instance, the passenger doesn't consider the ETA provided adequate, the system will accept this intention if and only if it is not in contrast with assumption \hyperref[a10]{[A10]}
+\end{itemize}
+\stepcounter{goals_counter}
+\setcounter{func_req_counter}{1}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow registered passengers to reserve a taxi}
+\begin{itemize}
+\item {[}R\arabic{func_req_counter}{]} The system must disallow unregistered passengers to perform such operation
+\stepcounter{func_req_counter}
+\end{itemize}
+\stepcounter{goals_counter}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow registered passengers to cancel a reservation}
+\stepcounter{goals_counter}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Guarantee a fair management of the taxi queues}
+\stepcounter{goals_counter}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow taxi drivers to manage their workday}
+\stepcounter{goals_counter}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow the system administrator to update the information about drivers and taxis}
+\stepcounter{goals_counter}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Enforce the validity of a taxi driver's license}
+\stepcounter{goals_counter}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Enforce the validity of all the documents belonging to a taxi}
+\subsection{The World and the machine}
+\subsection{Scenarios}
+\subsubsection{Scenario 1}
+Ilaria is late for work and unfortunately there is no available public transportation to get quickly at the office. She launches the myTaxiService mobile application from her smartphone and she logs in.
+She wants to request a taxi so she taps the button ``Request a Taxi".
+The smartphone is able to locate quickly Ilaria and, though the Internet, the application sends to the system her coordinates and the Ilaria's intention to request a taxi. The system looks up the taxi queue near Ilaria's position and sends a notification to the driver associated with the first available taxi in that queue that a request is incoming.
+The mobile application of Daniele, the taxi driver, receive the notification but unfortunately due to heavy traffic in that specific street he doesn't confirm his availability to carry out the request, and he sends a message by tapping the button ``Not Available" to the system.
+The system acknowledges this and moves the taxi from the top of the queue to the end, and selects the second taxi (which now is the first one) from the same queue.
+This time Marco confirms his availability tapping the button ``Available" in the application. The system receive the message and thus allocates the previously selected taxi for Ilaria's request, while sending a confirmation message to her providing additional information such as the taxi code and its ETA and she waits for the taxi to come to her position.
+Meanwhile Marco has received Ilaria's position from the system and it is displayed in his smartphone, thus he moves from that location.
+When Marco arrives he picks up Ilaria, she provides the destination to Marco and the ride starts.
+When the destination is reached, Marco taps the button ``Destination reached" and sends the corresponding message to the system. Ilaria pays the amount due and she leaves the taxi and reaches the office. Meanwhile the system asks for the exact location of Marco's taxi by sending a message. The application answers by sending back another message with the coordinates detected by the GPS, eventually the system adds the taxi to the appropriate queue according to the location received.
+\subsubsection{Scenario 2}
+Davide has just arrived on the city, a friend suggested him about the myTaxiService, so he installs the application is his smartphone and tries to register.
+He provides to the application an e-mail, his name, his surname and the date of birth, he accepts the privacy and cookie policy and taps the button ``Register". While checking if the e-mail is adequate i.e. it is well formed and not already used, the system discover that the e-mail was already used and so Davide receives a notification in the application about the problem and inserts another e-mail.
+This time the e-mail is accepted and the system stores his information in the database, while sending a confirmation e-mail to address provided previously, containing a temporary password.
+To conclude the registration process Davide must log in at least one time, using the e-mail provided during the registration and the password generated by the system.
+As soon as he logs in, the system considers Davide a valid registered passenger and he can now use the other system's functionalities, and also change his password with another one.  
+\subsubsection{Scenario 3}
+Bob has booked a flight so he decided to reserve a taxi driver that will take him to the airport.
+From his home, he browses to the myTaxiService website, he logs in and presses the button ``Reserve a Taxi", a new page loads up with a map and a textual box.
+The website asks him the permission to determine his position using the browser, but he decline because he wants to set a starting position that is different than the current one.
+He inserts the address in the textual box and presses ``Enter" on the keyboard. The map will update moving the region centering the specific position inserted previously, placing also a marker to emphasize the position detected by the system.
+Then Bob inserts the time and the date of the reservation of when the taxi shall arrive to the desired location and presses "Confirm".
+The system stores this data into the database since all the information provided are adequate, Bob receive an e-mail about the operation being successfully completed.
+When the date is approaching, specifically 10 minutes before the time and date specified the system process the reservation managing it in the same way as a request already described in Scenario 1.  
+
+\pagebreak
+\subsection{UML models}
+\subsubsection{Use case} 
+\paragraph{Unregistered Passenger signs up into myTaxiService}
+% custom command \usecasetable
+\pagebreak
+\subsection{Non Functional Requirements}
+\subsubsection{Performance Requirements}
+The overall performance of the system must be acceptable so that a good level of usability is achieved.
+The response time with the respect to the system must be nearly zero. The response time of the mobile application is tricky to evaluate since there's a lot of different devices with different power processing, but  in general the application should perform well on the majority of the devices available as of today in the market. Some very low level or entry level devices might show some delays in rendering the application on the screen. Nevertheless the major bound is the customer and driver's internet connection. 
+\subsubsection{Design Constraints}
+\subsubsection{Software System Attributes}
+\paragraph{Availability} The overall system must be available anytime according to \hyperref[a10]{[A10]}. To obtain this a dedicated server must be used. In order to achieve even more reliability, some fault tolerant mechanisms must be implemented, also to reduce the risks of high load that could eventually result in a denial of service, the server must be replicated so that the work can be done in parallel by multiple instances of the same application. 
+\paragraph{Maintainability} The application will provide specific APIs that will be documented. The whole application will be documented as well.
+\paragraph{Portability} The mobile application will be developed on all the major mobile OS available in the market, also the web application is inherently portable since in general at least a browser exists for any widespread OS. The web application will be designed with a responsive layout so that it is also accessible from mobile devices.
+\subsubsection{Security}
+\paragraph{External Interface Side}
+\paragraph{Application Side}
+\paragraph{Server Side}
+\end{document}
