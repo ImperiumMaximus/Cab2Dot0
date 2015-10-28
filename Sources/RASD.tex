@@ -79,44 +79,43 @@ Exception & #5\\
 \section{Introduction}
 
 \subsection{Purpose}
-This document represent the Requirement Analysis and Specification Document
-(RASD). The main goal of this document is to completely describe the system
-in terms of functional and non-functional requirements, analyze the real need
-of the customer to modeling the system, show the constraints and the limit
-of the software and simulate the typical use cases that will occur after the
-development. This document is intended to all developer and programmer who
-have to implement the requirements, to system analyst who want to integrate
-other system with this one, and could be used as a contractual basis between
+This document represents the Requirement Analysis and Specification Document
+(RASD). The main goal of this document is to describe completely the system
+in terms of functional and non-functional requirements, analyzing real needs
+of customers to model the system, showing constraints and limits
+of the software and simulating typical use cases that will occur after the
+development. This document is addressed to all developers and programmers who
+have to implement the requirements, to system analysts who want to integrate
+other systems with this one, and could be used as a contractual basis between
 the customer and the developer.
 
 \subsection{Actual System}
-The software house wants to offer a new service for optimizing an existing 
-taxi service of a large city. We suppose that until now nothing has been 
-created and we have to create the entire application without using or modify 
+The software house wants to offer a new service to optimaze an existing 
+taxi service of a large city. We suppose that until now, nothing has been 
+created and we have to create the entire application without using or modifying 
 a previous system.
 
 \subsection{Scope}
-The aim of the project is to create a brand new system that optimizes an 
+The aim of the project is to create a new brand system that optimizes an 
 existing taxi service.
 The system will be capable of automatizing  and/or simplifying certain 
-processes during the request or reservation of a taxi.
-It will also guarantee a fair management of the taxi queues.
-New passengers can sign up for the service inserting some basic information in order to use the service's features as quickly as possible.
-A passenger can request a taxi using a web service or through a mobile
+processes during requests or reservations of taxis.
+It will also guarantee a fair management of taxi queues.
+New passengers can sign up for service inserting some basic information in order to use service's features as soon as possible.
+A passenger can request a taxi using web service or through mobile
 application after registration. The system will be able to localize precisely the position
-of the passenger and thus determine the taxis that are available near
-him/her. The system will select a taxi and then will forward the request the the driver.
-Upon confirmation, the system will notify the customer about the operation completed successfully and the ETA of the taxi. A passenger can also reserve a taxi by specifying the time and date when he/she will catch the ride.
-The passenger that wants to reserve should do it with at least two hours of premonition, cancellation it is also permitted. The system will actually process the request ten minutes before the time specified during reservation in the same way as described previously.
+of the passenger, determining the taxis that are available near
+him/her. The system will select a taxi and then will forward the request to its driver.
+Upon confirmation, the system will notify the customer about the successful completation of the operation and the ETA of the taxi. A passenger can also reserve a taxi by specifying the time and date when he/she will take it.
+Passengers who want to reserve a taxi should do it with at least two hours in advance, cancellation is also permitted. The system will actually process the request ten minutes before the time specified during the reservation in the same way as described previously.
 
 \subsection{Actors}
 \begin{itemize}
-\item Unregistered Passenger: a visitor, i.e. a person that is not yet registered to the system thus the only page that can view is the registration one.
-\item Registered Passenger: all customers that have a valid username and password and that are able to access all the features available to the customers, they can request or reserve a taxi, they can also cancel these operations with some constraints.
+\item Unregistered Passenger: a person that is not registered to the system, i.e. a visitor. He/she can only visit the registration page.
+\item Registered Passenger: all customers that have a valid username and password and that are able to access all available features to customers, they can request or reserve a taxi, they can also cancel these operations with some constraints later explained.
 \item Taxi Driver: a person who is able to drive a taxi, owns a valid 
-professional driving license. The driver informs the system about the availability of the
-taxi that belongs to him/her logging in into a specific mobile application installed in his/her smartphone, and informs the system when the ride ends. 
-\item System Administrator: is the person in charge of update the list of the actual cars and the list of the drivers that are enabled to work.
+professional driving license. The driver informs the system about the availability of his/her taxi, logging in a specific mobile application installed in his/her smartphone, and do the same when the ride ends. 
+\item System Administrator: the person in charge of updating the list of the actual cars and the list of qualified drivers.
 \end{itemize}
 \subsection{Goals}
 List of goals for myTaxiService system:
@@ -160,8 +159,8 @@ List of goals for myTaxiService system:
 \item {[}An{]}: n-assumption
 \end{itemize}
 \subsection{Identify Stakeholders}
-Our main stakeholders are the members of the government of the city that are interested in optimizing the already present taxi service.
-Another stakeholders can be a company that wants to enhance the service as well, but also the passengers and the taxi drivers which they want a more comfortable, intuitive and user-friendly service.
+Our main stakeholders are government members of the city that are interested in optimizing the existing taxi service.
+Other stakeholders can be companies that want to enhance the service as well, but also the passengers and taxi drivers who want a more comfortable, intuitive and user-friendly service.
 \subsection{Reference Documents}
 \begin{itemize}
 \item myTaxiService Specification Document
@@ -171,49 +170,49 @@ Requirements Specifications.
 \subsection{Document overview}
 The document is essentially divided into four parts:
 \begin{itemize}
-\item Section 1: Introduction, it gives a description of document and some basic information about software.
-\item Section 2: Overall Description, gives general information about the software product with more focus about constraints and assumptions.
-\item Section 3: Specific Requirements, this part list requirements, typical scenarios and use cases. To give an easy way to understand all functionality
-of this software, this section is filled with UML diagrams.
-\item  Section 4: Appendix, this part contains some information about the attached files and some described screenshot of software used to generate
+\item Section 1: Introduction, it gives a description of this document and some basic information about software utilized.
+\item Section 2: Overall Description, gives general information about the software product, focused on constraints and assumptions.
+\item Section 3: Specific Requirements, this part lists requirements, typical scenarios and use cases. To give an easy way to understand all functionality
+of this software. This section is filled with UML diagrams.
+\item  Section 4: Appendix, this part contains some information about the attached files and some described screenshots of software used to generate
 it.
 \end{itemize}
 \newpage
 \section{Overall Description}
 \subsection{Product perspective}
-The final product will consist of a web service and a mobile application for the customer and the taxi driver.
+The final product will consist of a web service and a mobile application for customers and taxi drivers.
 The overall system will also have an internal interface for the system administrator. The system should also interact with existing external services, and will also provide additional APIs that allows the development of additional features in the future. 
 \subsection{User characteristics}
-train the system administrator (i.e. take an existing employee and train it to manage the system)
+Trained system administrator (i.e. take an existing employee and train it to manage the system).
 \subsection{Constraints}
 \subsubsection{Regulatory policies}
 For the myTaxiService we have identified the following regulatory policies:
 \begin{itemize}
-\item Cookies: since it is mandatory to log in into the web service to interact with the system, it is necessary to use cookies in order to keep track of the session of each user, thus the system must comply with the actual Cookie Law.
-\item Privacy: the system needs to manage some sensible data of the customers and the taxi drivers, for instance the name, the surname, an e-mail etc. Another crucial information is the actual location detected by the GPS of both. Thus during the registration the customers must accept the Privacy Law (see login mockup), regarding the taxi driver, before being registered to the system by the administrator, the driver should sign some sort of document accepting the processing of its personal data.
+\item Cookies: since it is mandatory to log in the web service to interact with the system, it is necessary to use cookies in order to keep track of each user's session, thus the system must comply with the current Cookie Law.
+\item Privacy: the system needs to manage some sensible data of customers and taxi drivers, for instance the name, the surname, an e-mail etc. Another crucial information is the current location detected by GPS of both. During the registration, customers must accept the Privacy Law (see login mockup), regarding taxi drivers, before being registered to the system by the administrator, drivers have to sign a document, accepting the processing of its personal data.
 \item Drivers during their work are subject to the Traffic code.
-\item The workday of a driver is subjected to the laws about Job safety, so the system must allow the driver to take some breaks during the day in order to prevent some illnesses or damage to people or things because of tiredness or stress.
+\item The workday of a driver is subjected to the laws about Job safety, so the system must allow the driver to take some breaks during the day in order to prevent both illnesses, damage to people, tiredness problems and stress.
 \end{itemize}
 \subsubsection{Hardware policies}
 For the myTaxiService we have identified the following regulatory policies:
 \begin{itemize}
-\item Smartphone: they have limited power and battery so care must be taken when developing the applications and also the web service (for instance, implementing a responsive design).
+\item Smartphone: because of their limited power and battery, we must take care of application consumption and also web services (for instance, implementing a responsive design).
 \end{itemize}
 \subsubsection{Interfaces to other applications}
 \begin{itemize}
-\item Google Maps: they will be used to provide an estimation about the time of arrival of the taxi to the passenger.
-\item External Database containing information about the drivers' license and the data about the cars, the system will interrogate this database to check the correctness of the information supplied by the taxi driver during the registration in the system.
+\item Google Maps: it will be used to provide passengers an estimation of taxis arrival time.
+\item External Database: it contains information about the drivers' license and data about cabs, the system will interrogate this database to check the correctness of the information supplied by taxi drivers during the registration in the system.
 \end{itemize} 
 \subsubsection{Parallel operation}
-myTaxiService must support parallel operations from different users when working
-with database and with all operation done by the user after connection.
+myTaxiService must support parallel operations from different users when it works
+with database and with all operations done by users after connections.
 \subsubsection{Documents related}
 \subsection{Assumptions and Dependencies}
 \subsubsection{Assumptions}
 \begin{itemize}
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]}
-Only registered users can use the service, because additional information such as name, surname, an e-mail to confirm and recap the reservation are needed, thus avoid repeating the user to re-enter this information every time.
+Only registered users can use the service, because additional information such as name, surname and e-mail to confirm and to recap the reservation are needed, to avoid repeating the user to re-enter this information every time.
 Another reason is to prevent the passenger to do another request to the system while there’s another one being processed.
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The position of the passenger is exactly known using the GPS available in the smartphone or by using a geolocalization API from the browser. 
