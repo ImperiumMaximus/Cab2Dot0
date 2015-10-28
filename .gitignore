@@ -1,0 +1,10 @@
+Sources/*.aux
+Sources/*.bbl
+Sources/*.blg
+Sources/*.log
+Sources/*.out
+Sources/*.pdf
+Sources/*.synctex.gz
+Sources/*.tcp
+Sources/*.toc
+Sources/*.tps
