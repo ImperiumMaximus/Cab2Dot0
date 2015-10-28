@@ -1,4 +1,4 @@
-# Cab2dot0 (myTaxuService)
+# Cab2dot0 (myTaxiService)
 Project for the Software Engineering 2 course, Master Degree in Computer Science and Engineering of Politecnico di Milano, A.Y 2015/2016 
 
 ## Project Members
