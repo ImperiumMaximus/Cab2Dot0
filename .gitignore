@@ -3,7 +3,7 @@ Sources/*.bbl
 Sources/*.blg
 Sources/*.log
 Sources/*.out
-Sources/*.pdf
+Sources/RASD.pdf
 Sources/*.synctex.gz
 Sources/*.tcp
 Sources/*.toc
