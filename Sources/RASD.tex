@@ -171,7 +171,7 @@ Requirements Specifications.
 The document is essentially divided into four parts:
 \begin{itemize}
 \item Section 1: Introduction, it gives a description of this document and some basic information about software utilized.
-\item Section 2: Overall Description, gives general information about the software product, focused on constraints and assumptions.
+\item Section 2: Overall Description, gives general information about the software to project, focused on constraints and assumptions.
 \item Section 3: Specific Requirements, this part lists requirements, typical scenarios and use cases. To give an easy way to understand all functionality
 of this software. This section is filled with UML diagrams.
 \item  Section 4: Appendix, this part contains some information about the attached files and some described screenshots of software used to generate
@@ -212,18 +212,18 @@ with database and with all operations done by users after connections.
 \begin{itemize}
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]}
-Only registered users can use the service, because additional information such as name, surname and e-mail to confirm and to recap the reservation are needed, to avoid repeating the user to re-enter this information every time.
-Another reason is to prevent the passenger to do another request to the system while there’s another one being processed.
+Only registered users can use the service, because additional information such as name, surname and e-mail to confirm and to recap the reservation are needed, to avoid repetition, the user has to re-enter this information every time.
+Another reason is to prevent passengers to make requests to the system while another one is in processing.
 \stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The position of the passenger is exactly known using the GPS available in the smartphone or by using a geolocalization API from the browser. 
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Passeger position is exactly known thanks to the usage of GPS available in smartphones or by using a geolocalization API from browser. 
 \stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The position of the taxi is exactly known using the GPS available in the smartphone of the driver
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The position of the taxi is exactly known by using the GPS available in the driver's smartphones
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The city is divided into zones of 2 $km^2$ each and for each zone a taxi queue is allocated.
 \stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The driver can take at most 2 breaks during his workday, during the break the taxi that belongs to him is not available.
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The driver can take at most 2 breaks during his/her workday, during breaks the taxi belonging to him/her is not available.
 \stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} A taxi driver must own a valid professional driving license and a taxi with all the documents in order
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} A taxi driver must own a valid professional driving license and a cab with all documents in order
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Each taxi driver's license has a unique code that identifies it
 \stepcounter{assumptions_counter}
@@ -237,9 +237,9 @@ Another reason is to prevent the passenger to do another request to the system w
 \end{itemize}
 \subsection{Future possible implementation}
 \begin{itemize}
-\item Allow the customers to pay using an electronic payment system. During registration the passenger will provide additional information about the his/her credit card or PayPal e-mail, the system will charge a ride automatically.
-\item Extend the interface usable by customers to provide the ability to evaluate the service in general as a sort of feedback to improve the overall system.
-\item Expand the system to allow the possibility to share a taxi with other customers using the existing API that will be implemented.
+\item Allow customers to pay using an electronic payment system. During registration the passenger will provide additional information about his/her credit card or PayPal e-mail, the system will charge a ride automatically.
+\item Extend the interface usable by customers to provide the ability to evaluate the service in general as a feedback to improve the overall system.
+\item Expand the system to allow the possibility to share a taxi with other customers using the existing API.
 \end{itemize}
 \newpage
 \section{Specific Requirements}
@@ -250,28 +250,28 @@ Another reason is to prevent the passenger to do another request to the system w
 \subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow unregistered passengers to sign up for the service}
 \stepcounter{goals_counter}
 \begin{itemize}
-\item {[}R\arabic{func_req_counter}{]} The system must request an e-mail or a telephone number during the registration
+\item {[}R\arabic{func_req_counter}{]} The system requests an e-mail or a telephone number during the registration
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system must reject an e-mail or a telephone number already used by another registered passenger
+\item {[}R\arabic{func_req_counter}{]} The system rejects an e-mail or a telephone number already used by another registered passenger
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} After the completion of the registration process, the system must send a confirmation to the newly registered passenger
+\item {[}R\arabic{func_req_counter}{]} After the completion of registration process, the system must send a confirmation to newly registered passengers
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system shall check if the e-mail of the telephone number is well formed
+\item {[}R\arabic{func_req_counter}{]} The system checks if e-mails or telephone numbers are well formed
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system will consider the passenger officially registered if and only if the passenger opens an activation link in the confirmation e-mail, or inserts the code received through an SMS in the mobile application or in the web service.
+\item {[}R\arabic{func_req_counter}{]} The system considers passengers officially registered if and only if passengers open an activation link in confirmation e-mail, or insert a code received through a SMS in mobile application or in web service.
 \end{itemize}
 \setcounter{func_req_counter}{1}
 \subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow registered passengers to request a taxi}
 \begin{itemize}
 \item {[}R\arabic{func_req_counter}{]} The system must disallow unregistered passengers to perform such operation
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system shall locate the passenger using the GPS in the smartphone or through the browser.
+\item {[}R\arabic{func_req_counter}{]} The system has to locate passengers using GPS in his/her smartphone or through browser.
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} After selecting the most appropriate taxi (explained in the goal \hyperref[goal4]{[G4]}), the system must inform the driver that a request is incoming.
+\item {[}R\arabic{func_req_counter}{]} After selecting the most appropriate taxi (explained in goal \hyperref[goal4]{[G4]}), the system must inform drivers that a request is incoming.
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} Upon confirmation by the driver about the request of availability, the system shall inform the passenger about the positive outcome and provide additional information, such as ETA
+\item {[}R\arabic{func_req_counter}{]} Upon confirmation by the driver about the request of availability, the system has to inform the passenger about a positive outcome,if it occurs, and provide additional information, such as ETA
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} In the event of unavailability of the driver contacted, the system shall pick another taxi from the most appropriate queue and repeat what described in requirement [R3]
+\item {[}R\arabic{func_req_counter}{]} In case of unavailability of a contacted driver, the system has to pick another taxi from the most appropriate queue and to repeat what described in requirement [R3]
 \stepcounter{func_req_counter}
 \item {[}R\arabic{func_req_counter}{]} The system should also provide a functionality that allow the passenger to cancel the request if, for instance, the passenger doesn't consider the ETA provided adequate, the system will accept this intention if and only if it is not in contrast with assumption \hyperref[a10]{[A10]}
 \end{itemize}
@@ -293,33 +293,33 @@ Another reason is to prevent the passenger to do another request to the system w
 \stepcounter{goals_counter}
 \subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Enforce the validity of a taxi driver's license}
 \stepcounter{goals_counter}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Enforce the validity of all the documents belonging to a taxi}
+\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Enforce the validity of all  documents belonging to a taxi}
 \subsection{The World and the machine}
 \subsection{Scenarios}
 \subsubsection{Scenario 1}
-Ilaria is late for work and unfortunately there is no available public transportation to get quickly at the office. She launches the myTaxiService mobile application from her smartphone and she logs in.
+Ilaria is late for work and unfortunately there is no available public transportation to get quickly to the office. She launches myTaxiService mobile application from her smartphone and she logs in.
 She wants to request a taxi so she taps the button ``Request a Taxi".
-The smartphone is able to locate quickly Ilaria and, though the Internet, the application sends to the system her coordinates and the Ilaria's intention to request a taxi. The system looks up the taxi queue near Ilaria's position and sends a notification to the driver associated with the first available taxi in that queue that a request is incoming.
-The mobile application of Daniele, the taxi driver, receive the notification but unfortunately due to heavy traffic in that specific street he doesn't confirm his availability to carry out the request, and he sends a message by tapping the button ``Not Available" to the system.
-The system acknowledges this and moves the taxi from the top of the queue to the end, and selects the second taxi (which now is the first one) from the same queue.
-This time Marco confirms his availability tapping the button ``Available" in the application. The system receive the message and thus allocates the previously selected taxi for Ilaria's request, while sending a confirmation message to her providing additional information such as the taxi code and its ETA and she waits for the taxi to come to her position.
-Meanwhile Marco has received Ilaria's position from the system and it is displayed in his smartphone, thus he moves from that location.
+Her smartphone is able to locate her quickly and, though the Internet, the application sends to the system her coordinates and Ilaria's intention to request a taxi. The system looks for taxi queues near Ilaria's position and sends a notification to first driver associated with an available taxi in that queue.
+The mobile application of Daniele, the taxi driver, receives a notification but unfortunately due to a heavy traffic in that specific street he can't confirm his availability to carry out the request, and he sends a negative reply to the system by tapping the button ``Not Available".
+The system acknowledges this rejection and moves the taxi driver from the top of his queue to the end, and selects the second taxi driver (which now is the first one) from the same queue.
+This time Marco confirms his availability tapping the button ``Available" in the application. The system receive the message and thus allocates selected taxi to Ilaria's request, while a confirmation message is sent to her providing additional information such as the taxi code and its ETA. Now she waits for the taxi to come to her position.
+Meanwhile Marco has received Ilaria's position from the system and it is displayed in his smartphone, for this reason he moves from that location.
 When Marco arrives he picks up Ilaria, she provides the destination to Marco and the ride starts.
-When the destination is reached, Marco taps the button ``Destination reached" and sends the corresponding message to the system. Ilaria pays the amount due and she leaves the taxi and reaches the office. Meanwhile the system asks for the exact location of Marco's taxi by sending a message. The application answers by sending back another message with the coordinates detected by the GPS, eventually the system adds the taxi to the appropriate queue according to the location received.
+When the destination is reached, Marco taps the button ``Destination reached" and sends the corresponding message to the system. Ilaria pays the amount dued and she leaves the taxi and reaches the office. When the system receives a ``Destination reached" input from a taxi driver, the system calculates his/her new position, eventually the system adds the taxi to the appropriate queue according to the location received.
 \subsubsection{Scenario 2}
-Davide has just arrived on the city, a friend suggested him about the myTaxiService, so he installs the application is his smartphone and tries to register.
-He provides to the application an e-mail, his name, his surname and the date of birth, he accepts the privacy and cookie policy and taps the button ``Register". While checking if the e-mail is adequate i.e. it is well formed and not already used, the system discover that the e-mail was already used and so Davide receives a notification in the application about the problem and inserts another e-mail.
-This time the e-mail is accepted and the system stores his information in the database, while sending a confirmation e-mail to address provided previously, containing a temporary password.
+Davide has just arrived to the city, a friend suggested him to install myTaxiService application, so he does it and tries to register.
+He provides to the application his e-mail, his name, his surname and his date of birth, he accepts the privacy and cookie policy and taps the button ``Register". After he sent his registration request, the system discovers that the e-mail was already used and so Davide receives a notification on the application about the problem and inserts another e-mail.
+This time the e-mail he insered is accepted and the system stores his personal details in the database, while the system sends a confirmation e-mail to previously provided e-mail, containing a temporary password.
 To conclude the registration process Davide must log in at least one time, using the e-mail provided during the registration and the password generated by the system.
-As soon as he logs in, the system considers Davide a valid registered passenger and he can now use the other system's functionalities, and also change his password with another one.  
+As soon as he logs in, the system considers Davide a valid registered passenger and he can now use other system's functionalities, and also change his password with another one.  
 \subsubsection{Scenario 3}
 Bob has booked a flight so he decided to reserve a taxi driver that will take him to the airport.
-From his home, he browses to the myTaxiService website, he logs in and presses the button ``Reserve a Taxi", a new page loads up with a map and a textual box.
-The website asks him the permission to determine his position using the browser, but he decline because he wants to set a starting position that is different than the current one.
+From his home, he browses myTaxiService website, he logs in and presses the button ``Reserve a Taxi", a new page loads up with a map and a textual box.
+The website asks him the permission to determine his position by the browser, but he declines because he wants to set a starting position that is different than the current one.
 He inserts the address in the textual box and presses ``Enter" on the keyboard. The map will update moving the region centering the specific position inserted previously, placing also a marker to emphasize the position detected by the system.
-Then Bob inserts the time and the date of the reservation of when the taxi shall arrive to the desired location and presses "Confirm".
-The system stores this data into the database since all the information provided are adequate, Bob receive an e-mail about the operation being successfully completed.
-When the date is approaching, specifically 10 minutes before the time and date specified the system process the reservation managing it in the same way as a request already described in Scenario 1.  
+Then Bob inserts time and date he needs to reserve and presses "Confirm".
+The system stores this data in the database since all the information provided are adequate. Bob receives an e-mail about either a succesful or a negative outcome of the operation.
+When the date approaches, specifically 10 minutes before the time and date specified, the system processes the reservation, managing it in the same way as requests already described in Scenario 1.  
 
 \pagebreak
 \subsection{UML models}
@@ -330,12 +330,12 @@ When the date is approaching, specifically 10 minutes before the time and date s
 \subsection{Non Functional Requirements}
 \subsubsection{Performance Requirements}
 The overall performance of the system must be acceptable so that a good level of usability is achieved.
-The response time with the respect to the system must be nearly zero. The response time of the mobile application is tricky to evaluate since there's a lot of different devices with different power processing, but  in general the application should perform well on the majority of the devices available as of today in the market. Some very low level or entry level devices might show some delays in rendering the application on the screen. Nevertheless the major bound is the customer and driver's internet connection. 
+The response time with the respect to the system must be near to zero. The response time of mobile application is tricky to evaluate since there are lots of different devices with different power processing, but  in general the application should perform well on the majority of the devices available in today market. Some very low level or entry level devices might show some delays rendering the application on the screen. Nevertheless the major bound is customers and drivers internet connection. 
 \subsubsection{Design Constraints}
 \subsubsection{Software System Attributes}
-\paragraph{Availability} The overall system must be available anytime according to \hyperref[a10]{[A10]}. To obtain this a dedicated server must be used. In order to achieve even more reliability, some fault tolerant mechanisms must be implemented, also to reduce the risks of high load that could eventually result in a denial of service, the server must be replicated so that the work can be done in parallel by multiple instances of the same application. 
-\paragraph{Maintainability} The application will provide specific APIs that will be documented. The whole application will be documented as well.
-\paragraph{Portability} The mobile application will be developed on all the major mobile OS available in the market, also the web application is inherently portable since in general at least a browser exists for any widespread OS. The web application will be designed with a responsive layout so that it is also accessible from mobile devices.
+\paragraph{Availability} The overall system must be available anytime according to \hyperref[a10]{[A10]}. Dedicated servers must be used to reach this goal. In order to achieve even more reliability, some fault tolerant mechanisms must be implemented, also to reduce risks of high loads that could eventually result in denials of service. Servers must be replicated to work in parallel by multiple instances of the same application. 
+\paragraph{Maintainability} The application provides specific APIs that will be documented, as the whole application.
+\paragraph{Portability} The mobile application will be developed on all the major mobile OS available in the market, also web application is portable since nowadays the majority of widespread OS has a browser. The web application will be designed with a responsive layout to be also accessible from mobile devices.
 \subsubsection{Security}
 \paragraph{External Interface Side}
 \paragraph{Application Side}
