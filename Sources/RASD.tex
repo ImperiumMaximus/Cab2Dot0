@@ -59,6 +59,16 @@ Exception & #5\\
 \end{tabularx}
 \end{center}
 }
+\newcommand{\defsw}[4] {
+\begin{itemize}
+\item #1:
+\begin{itemize}
+\item Name: #2
+\item Version: #3
+\item Source: #4
+\end{itemize}
+\end{itemize}
+}
 \begin{document}
 \begin{figure}
   \centering
@@ -90,7 +100,7 @@ other systems with this one, and could be used as a contractual basis between
 the customer and the developer.
 
 \subsection{Actual System}
-The software house wants to offer a new service to optimaze an existing 
+The software house wants to offer a new service to optimize an existing 
 taxi service of a large city. We suppose that until now, nothing has been 
 created and we have to create the entire application without using or modifying 
 a previous system.
@@ -106,7 +116,7 @@ A passenger can request a taxi using web service or through mobile
 application after registration. The system will be able to localize precisely the position
 of the passenger, determining the taxis that are available near
 him/her. The system will select a taxi and then will forward the request to its driver.
-Upon confirmation, the system will notify the customer about the successful completation of the operation and the ETA of the taxi. A passenger can also reserve a taxi by specifying the time and date when he/she will take it.
+Upon confirmation, the system will notify the customer about the successful completion of the operation and the ETA of the taxi. A passenger can also reserve a taxi by specifying the time and date when he/she will take it.
 Passengers who want to reserve a taxi should do it with at least two hours in advance, cancellation is also permitted. The system will actually process the request ten minutes before the time specified during the reservation in the same way as described previously.
 
 \subsection{Actors}
@@ -141,6 +151,9 @@ List of goals for myTaxiService system:
 \end{itemize}
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Definitions}
+\begin{itemize}
+\item 
+\end{itemize}
 \subsubsection{Acronyms}
 \begin{itemize}
 \item RASD: Requirements Analysis and Specification Document
@@ -149,6 +162,10 @@ List of goals for myTaxiService system:
 \item API: Application Programming Interface
 \item ETA: Estimated Time of Arrival
 \item OS: Operating System
+\item FIFO: First-In First-Out
+\item JVM: Java Virtual Machine
+\item RPC: Remote Procedure Calls
+\item JSON: JavaScript Object Notation
 \end{itemize}
 \subsubsection{Abbreviations}
 \begin{itemize}
@@ -183,7 +200,8 @@ it.
 The final product will consist of a web service and a mobile application for customers and taxi drivers.
 The overall system will also have an internal interface for the system administrator. The system should also interact with existing external services, and will also provide additional APIs that allows the development of additional features in the future. 
 \subsection{User characteristics}
-Trained system administrator (i.e. take an existing employee and train it to manage the system).
+The final customer that want to use this application is a person who wants to move around the city using taxis in a more easy and fast way than an ordinary taxi service can assure. This user must have any kind of digital equipment that is able to access the Web by means of a modern browser. The user can also use the mobile application to have a more enhanced user experience using the service.
+From the system administrator perspective, he expects a very intuitive interface that enables a fast way to manage the back-end information we expect that an existing employee will be trained to do such job.
 \subsection{Constraints}
 \subsubsection{Regulatory policies}
 For the myTaxiService we have identified the following regulatory policies:
@@ -229,11 +247,9 @@ Another reason is to prevent passengers to make requests to the system while ano
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Each taxi cab has a unique code that identifies it
 \stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} external database with information about taxi drivers and their car 
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} It exists an external database with all the correct and up to date information about the taxi drivers and their cars (valid driving license, car is allow to circulate in the streets, etc.)
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The existing taxi service is available 24 hours per day, 365 days per year.
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} An ETA of at most $10 \pm 5$ mins is considered adequate (move to domain assumptions?)
 \end{itemize}
 \subsection{Future possible implementation}
 \begin{itemize}
@@ -244,6 +260,40 @@ Another reason is to prevent passengers to make requests to the system while ano
 \newpage
 \section{Specific Requirements}
 \subsection{External Interface Requirements}
+\subsubsection{User Interfaces}
+\subsubsection{API Interfaces}
+The application on the server side will provide some APIs that are used by the mobile application to interact with the system itself. These APIs are essentially RPCs with the data encapsulated using JSON exposed using some endpoints (i.e. specific URLs). The mobile application will connect to the central application by means of this endpoints and will perform the necessary operations.
+\subsubsection{Hardware Interfaces}
+The system doesn't support any Hardware Interfaces.
+\subsubsection{Software Interfaces}
+\defsw{DBMS}{MariaDB}{10.0}{https://mariadb.org/}
+\defsw{JVM}{Oracle JEE}{8}{http://www.oracle.com/technetwork/java/javaee/overview/index.html}
+\defsw{Application Server}{Glassfish}{4.1.1}{https://glassfish.java.net/}
+\defsw{OS}{Any operating system that can run host a DBMS application and the JVM}{N/A}{N/A}
+\defsw{Mobile OSes}{Android}{$\geq$ 4.0}{https://www.android.com/}
+\defsw{Mobile OSes}{iOS}{$\geq$ 7.0}{http://www.apple.com/ios/}
+\defsw{Mobile OSes}{Windows Phone}{$\geq$ 8.0}{https://www.microsoft.com/en-us/windows/phones}
+\subsubsection{Communication Interfaces}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Protocol & Application & Port \\
+\hline \hline
+TCP & HTTPS & 443 \\
+\hline
+TCP & HTTP & 80 \\
+\hline
+TCP & DBMS & 3306 (default) \\
+\hline
+\end{tabular}
+\end{center}
+\subsubsection{Memory}
+The minimum memory requirements are:
+\begin{itemize}
+\item Primary memory: 2GB+
+\item Secondary memory: 20GB+
+\end{itemize}
+For the mobile application at least 512MB of primary memory is required in order to have a satisfactory user experience.
 \subsection{Functional Requirements}
 \setcounter{goals_counter}{1}
 \stepcounter{func_req_counter}
@@ -273,7 +323,8 @@ Another reason is to prevent passengers to make requests to the system while ano
 \stepcounter{func_req_counter}
 \item {[}R\arabic{func_req_counter}{]} In case of unavailability of a contacted driver, the system has to pick another taxi from the most appropriate queue and to repeat what described in requirement [R3]
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system should also provide a functionality that allow the passenger to cancel the request if, for instance, the passenger doesn't consider the ETA provided adequate, the system will accept this intention if and only if it is not in contrast with assumption \hyperref[a10]{[A10]}
+\item {[}R\arabic{func_req_counter}{]} The system must proceed to the cancellation of the request if and only if the user requested to do and the condition in [D1] has not already met.
+\item {[}D1{]} The maximum number of requests of cancellations is three.
 \end{itemize}
 \stepcounter{goals_counter}
 \setcounter{func_req_counter}{1}
@@ -305,11 +356,11 @@ The system acknowledges this rejection and moves the taxi driver from the top of
 This time Marco confirms his availability tapping the button ``Available" in the application. The system receive the message and thus allocates selected taxi to Ilaria's request, while a confirmation message is sent to her providing additional information such as the taxi code and its ETA. Now she waits for the taxi to come to her position.
 Meanwhile Marco has received Ilaria's position from the system and it is displayed in his smartphone, for this reason he moves from that location.
 When Marco arrives he picks up Ilaria, she provides the destination to Marco and the ride starts.
-When the destination is reached, Marco taps the button ``Destination reached" and sends the corresponding message to the system. Ilaria pays the amount dued and she leaves the taxi and reaches the office. When the system receives a ``Destination reached" input from a taxi driver, the system calculates his/her new position, eventually the system adds the taxi to the appropriate queue according to the location received.
+When the destination is reached, Marco taps the button ``Destination reached" and sends the corresponding message to the system. Ilaria pays the amount due and she leaves the taxi and reaches the office. When the system receives a ``Destination reached" input from a taxi driver, the system calculates his/her new position, eventually the system adds the taxi to the appropriate queue according to the location received.
 \subsubsection{Scenario 2}
 Davide has just arrived to the city, a friend suggested him to install myTaxiService application, so he does it and tries to register.
 He provides to the application his e-mail, his name, his surname and his date of birth, he accepts the privacy and cookie policy and taps the button ``Register". After he sent his registration request, the system discovers that the e-mail was already used and so Davide receives a notification on the application about the problem and inserts another e-mail.
-This time the e-mail he insered is accepted and the system stores his personal details in the database, while the system sends a confirmation e-mail to previously provided e-mail, containing a temporary password.
+This time the e-mail he inserted is accepted and the system stores his personal details in the database, while the system sends a confirmation e-mail to previously provided e-mail, containing a temporary password.
 To conclude the registration process Davide must log in at least one time, using the e-mail provided during the registration and the password generated by the system.
 As soon as he logs in, the system considers Davide a valid registered passenger and he can now use other system's functionalities, and also change his password with another one.  
 \subsubsection{Scenario 3}
@@ -335,7 +386,7 @@ The response time with the respect to the system must be near to zero. The respo
 \subsubsection{Software System Attributes}
 \paragraph{Availability} The overall system must be available anytime according to \hyperref[a10]{[A10]}. Dedicated servers must be used to reach this goal. In order to achieve even more reliability, some fault tolerant mechanisms must be implemented, also to reduce risks of high loads that could eventually result in denials of service. Servers must be replicated to work in parallel by multiple instances of the same application. 
 \paragraph{Maintainability} The application provides specific APIs that will be documented, as the whole application.
-\paragraph{Portability} The mobile application will be developed on all the major mobile OS available in the market, also web application is portable since nowadays the majority of widespread OS has a browser. The web application will be designed with a responsive layout to be also accessible from mobile devices.
+\paragraph{Portability} The mobile application will be developed on all the major mobile OSes available in the market, also web application is portable since nowadays the majority of widespread OSes have a browser. The web application will be designed with a responsive layout to be also accessible from mobile devices as well. The business logic in the servers will be implemented using the Java language.
 \subsubsection{Security}
 \paragraph{External Interface Side}
 \paragraph{Application Side}
