@@ -370,7 +370,13 @@ The website asks him the permission to determine his position by the browser, bu
 He inserts the address in the textual box and presses ``Enter" on the keyboard. The map will update moving the region centering the specific position inserted previously, placing also a marker to emphasize the position detected by the system.
 Then Bob inserts time and date he needs to reserve and presses "Confirm".
 The system stores this data in the database since all the information provided are adequate. Bob receives an e-mail about either a succesful or a negative outcome of the operation.
-When the date approaches, specifically 10 minutes before the time and date specified, the system processes the reservation, managing it in the same way as requests already described in Scenario 1.  
+When the date approaches, specifically 10 minutes before the time and date specified, the system processes the reservation, managing it in the same way as requests already described in Scenario 1. 
+\subsubsection{Scenario 4} 
+Jack is a taxi driver, after he completed the registration to myTaxiService application, he can start to use it. According to taxi driver job laws, the system enables the application to receive requests during working time as described previously. The system has break times registered in its records for each taxi driver. When Jack's break time occurs, he can only terminate his last work, after that he can't accept other works until the break ends. At the end of his working time, the application is disabled by the system until the next working day. Jack can insert unavailabilities if unexpected events occur, letting him not to work for the day or hours necessary to solve his problem. 
+\subsubsection{Scenario 5}
+Frank has just requested a taxi to take him home, without thinking he tries to reserve another taxi, but the system recognises that he has already made a reservation, so it sends a message to Frank saying his last request has been rejected because of the impossibility to make a double reservation and the second request is eliminated.
+\subsubsection{Scenario 6}  
+Tom wants to eliminate his myTaxiService account, so he enters his account's settings and presses the button ``Eliminate account", after he confirmed his desire not to use more the application, the system removes Tom's personal details and his previous reservations from databases.
 
 \pagebreak
 \subsection{UML models}
