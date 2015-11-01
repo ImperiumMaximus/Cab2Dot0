@@ -233,7 +233,7 @@ with database and with all operations done by users after connections.
 Only registered users can use the service, because additional information such as name, surname and e-mail to confirm and to recap the reservation are needed, to avoid repetition, the user has to re-enter this information every time.
 Another reason is to prevent passengers to make requests to the system while another one is in processing.
 \stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Passeger position is exactly known thanks to the usage of GPS available in smartphones or by using a geolocalization API from browser. 
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Passenger position is exactly known thanks to the usage of GPS available in smartphones or by using a geolocalization API from browser. 
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The position of the taxi is exactly known by using the GPS available in the driver's smartphones
 \stepcounter{assumptions_counter}
@@ -345,7 +345,7 @@ For the mobile application at least 512MB of primary memory is required in order
 \subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Enforce the validity of a taxi driver's license}
 \stepcounter{goals_counter}
 \subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Enforce the validity of all  documents belonging to a taxi}
-\subsection{The World and the machine}
+\subsection{The World and the Machine}
 \subsection{Scenarios}
 \subsubsection{Scenario 1}
 Ilaria is late for work and unfortunately there is no available public transportation to get quickly to the office. She launches myTaxiService mobile application from her smartphone and she logs in.
@@ -353,7 +353,7 @@ She wants to request a taxi so she taps the button ``Request a Taxi".
 Her smartphone is able to locate her quickly and, though the Internet, the application sends to the system her coordinates and Ilaria's intention to request a taxi. The system looks for taxi queues near Ilaria's position and sends a notification to first driver associated with an available taxi in that queue.
 The mobile application of Daniele, the taxi driver, receives a notification but unfortunately due to a heavy traffic in that specific street he can't confirm his availability to carry out the request, and he sends a negative reply to the system by tapping the button ``Not Available".
 The system acknowledges this rejection and moves the taxi driver from the top of his queue to the end, and selects the second taxi driver (which now is the first one) from the same queue.
-This time Marco confirms his availability tapping the button ``Available" in the application. The system receive the message and thus allocates selected taxi to Ilaria's request, while a confirmation message is sent to her providing additional information such as the taxi code and its ETA. Now she waits for the taxi to come to her position.
+This time Marco confirms his availability tapping the button ``Available" in the application. The system receives the message and thus allocates selected taxi to Ilaria's request, while a confirmation message is sent to her providing additional information such as the taxi code and its ETA. Now she waits for the taxi to come to her position.
 Meanwhile Marco has received Ilaria's position from the system and it is displayed in his smartphone, for this reason he moves from that location.
 When Marco arrives he picks up Ilaria, she provides the destination to Marco and the ride starts.
 When the destination is reached, Marco taps the button ``Destination reached" and sends the corresponding message to the system. Ilaria pays the amount due and she leaves the taxi and reaches the office. When the system receives a ``Destination reached" input from a taxi driver, the system calculates his/her new position, eventually the system adds the taxi to the appropriate queue according to the location received.
@@ -368,7 +368,7 @@ Bob has booked a flight so he decided to reserve a taxi driver that will take hi
 From his home, he browses myTaxiService website, he logs in and presses the button ``Reserve a Taxi", a new page loads up with a map and a textual box.
 The website asks him the permission to determine his position by the browser, but he declines because he wants to set a starting position that is different than the current one.
 He inserts the address in the textual box and presses ``Enter" on the keyboard. The map will update moving the region centering the specific position inserted previously, placing also a marker to emphasize the position detected by the system.
-Then Bob inserts time and date he needs to reserve and presses "Confirm".
+Then Bob inserts time and date he needs to reserve and presses ``Confirm".
 The system stores this data in the database since all the information provided are adequate. Bob receives an e-mail about either a succesful or a negative outcome of the operation.
 When the date approaches, specifically 10 minutes before the time and date specified, the system processes the reservation, managing it in the same way as requests already described in Scenario 1. 
 \subsubsection{Scenario 4} 
@@ -381,8 +381,18 @@ Tom wants to eliminate his myTaxiService account, so he enters his account's set
 \pagebreak
 \subsection{UML models}
 \subsubsection{Use case} 
-\paragraph{Unregistered Passenger signs up into myTaxiService}
+\paragraph{Unregistered User signs up for myTaxiService}
 % custom command \usecasetable
+\usecasetable {Unregistered User} {Registration of an unknown user as a passenger or a taxi driver} {The unregistered User clicks on the registration button. Then he/she fills the registration form in to become either a registered taxi driver or a passenger registred. At the end, after he/she received a confirmation e-mail, he/she has to press a link to complete the registration} {In databases a new registered user is created with the information used during his/her registration} {Impossibility to create a new user due to an existing registered user with the same e-mail of the new one or if the new user fills the form in with wrong data. Taxi drivers, who want to sign up, could also meet with a denial of the registration if they use a taxi driver license number already present in databases during registration}
+\paragraph{Registered User signs in}
+\usecasetable {Registered User}{A registered wants to sign in}{The registered user presses the login button, after that he/she inserts his/her e-mail used during his/her registration and his/her password (chosen during registration or modified)}{The logged user can now use all myTaxiService functions}{Mistaken information, inserted in e-mail and/or password fields, denies the user to log in. The login is also denied if the user inserts an e-mail not contained in databases}
+\paragraph{Passenger makes a reservation}
+\usecasetable {Passenger logged}{To find a taxi near his/her position and to reserve it}{The passenger clicks on the button ``Request a taxi" and his/her position is located}{A request is sent to a queue of taxi reservations}{Impossibility to send the request because of the impossibilty to locate the passenger through GPS}
+\paragraph{Taxi driver decision about a request}
+\usecasetable {Taxi driver logged}{Accept or refuse a request}{If the taxi driver wants to accept the request, he/she presses the ``Available" button, otherwise he/she clicks on the ``Not Available" button in case of refusal}{If the request is accepted by the taxi driver, a confirmation message is sent to the passenger who made the request. Otherwise if the request is refused, it is sent to another taxi driver}{None}
+\paragraph{Request management}
+\usecasetable {The System}{To find a taxi driver who can accept a request received}{After the system has received a request, it searches the queue the nearest to the passenger who made the request, sending the request to the first of the queue, passing to the following if the previous refuses. If nobody in the queue can accept the request, it is sent to another queue near to the passenger}{The request is sent to a taxi driver who accepts the request}{Impossibilty to find a taxi driver who can accept the request in every queue}
+
 \pagebreak
 \subsection{Non Functional Requirements}
 \subsubsection{Performance Requirements}
