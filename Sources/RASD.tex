@@ -116,7 +116,7 @@ A passenger can request a taxi using web service or through mobile
 application after registration. The system will be able to localize precisely the position
 of the passenger, determining the taxis that are available near
 him/her. The system will select a taxi and then will forward the request to its driver.
-Upon confirmation, the system will notify the customer about the successful completion of the operation and the ETA of the taxi. A passenger can also reserve a taxi by specifying the time and date when he/she will take it.
+Upon confirmation, the system will notify the customer about the successful completion of the operation and the ETA of the taxi. A passenger can also reserve a taxi by specifying the time and the date.
 Passengers who want to reserve a taxi should do it with at least two hours in advance, cancellation is also permitted. The system will actually process the request ten minutes before the time specified during the reservation in the same way as described previously.
 
 \subsection{Actors}
@@ -200,8 +200,8 @@ it.
 The final product will consist of a web service and a mobile application for customers and taxi drivers.
 The overall system will also have an internal interface for the system administrator. The system should also interact with existing external services, and will also provide additional APIs that allows the development of additional features in the future. 
 \subsection{User characteristics}
-The final customer that want to use this application is a person who wants to move around the city using taxis in a more easy and fast way than an ordinary taxi service can assure. This user must have any kind of digital equipment that is able to access the Web by means of a modern browser. The user can also use the mobile application to have a more enhanced user experience using the service.
-From the system administrator perspective, he expects a very intuitive interface that enables a fast way to manage the back-end information we expect that an existing employee will be trained to do such job.
+The final customer that wants to use this application is a person who wants to move around the city using taxis in a easier and faster way than an ordinary taxi service can assure. This user must have some kind of digital equipment that let him access the Web by means of a modern browser. The user can also use the mobile application to have a more enhanced user experience using this service.
+From the system administrator perspective, he expects a very intuitive interface that enables a fast way to manage the back-end information. We expect that an already hired employee will be trained to do such job.
 \subsection{Constraints}
 \subsubsection{Regulatory policies}
 For the myTaxiService we have identified the following regulatory policies:
@@ -247,7 +247,7 @@ Another reason is to prevent passengers to make requests to the system while ano
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Each taxi cab has a unique code that identifies it
 \stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} It exists an external database with all the correct and up to date information about the taxi drivers and their cars (valid driving license, car is allow to circulate in the streets, etc.)
+\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} An external database with all the correct and up to date information about the taxi drivers and their cars (valid driving license, cars allowed to circulate in streets, etc.)
 \stepcounter{assumptions_counter}
 \item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The existing taxi service is available 24 hours per day, 365 days per year.
 \end{itemize}
@@ -308,7 +308,7 @@ For the mobile application at least 512MB of primary memory is required in order
 \stepcounter{func_req_counter}
 \item {[}R\arabic{func_req_counter}{]} The system checks if e-mails or telephone numbers are well formed
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system considers passengers officially registered if and only if passengers open an activation link in confirmation e-mail, or insert a code received through a SMS in mobile application or in web service.
+\item {[}R\arabic{func_req_counter}{]} The system considers passengers officially registered if and only if passengers either open an activation link in a confirmation e-mail, or insert a code received through a SMS in mobile application or in web service.
 \end{itemize}
 \setcounter{func_req_counter}{1}
 \subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow registered passengers to request a taxi}
@@ -323,8 +323,8 @@ For the mobile application at least 512MB of primary memory is required in order
 \stepcounter{func_req_counter}
 \item {[}R\arabic{func_req_counter}{]} In case of unavailability of a contacted driver, the system has to pick another taxi from the most appropriate queue and to repeat what described in requirement [R3]
 \stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system must proceed to the cancellation of the request if and only if the user requested to do and the condition in [D1] has not already met.
-\item {[}D1{]} The maximum number of requests of cancellations is three.
+\item {[}R\arabic{func_req_counter}{]} The system must proceed to the cancellation of the request if and only if the user requested to do it and the condition in [D1] has not met yet.
+\item {[}D1{]} The maximum number of cancellation requests is three.
 \end{itemize}
 \stepcounter{goals_counter}
 \setcounter{func_req_counter}{1}
@@ -383,7 +383,7 @@ Tom wants to eliminate his myTaxiService account, so he enters his account's set
 \subsubsection{Use case} 
 \paragraph{Unregistered User signs up for myTaxiService}
 % custom command \usecasetable
-\usecasetable {Unregistered User} {Registration of an unknown user as a passenger or a taxi driver} {The unregistered User clicks on the registration button. Then he/she fills the registration form in to become either a registered taxi driver or a passenger registred. At the end, after he/she received a confirmation e-mail, he/she has to press a link to complete the registration} {In databases a new registered user is created with the information used during his/her registration} {Impossibility to create a new user due to an existing registered user with the same e-mail of the new one or if the new user fills the form in with wrong data. Taxi drivers, who want to sign up, could also meet with a denial of the registration if they use a taxi driver license number already present in databases during registration}
+\usecasetable {Unregistered User} {Registration of an unknown user as a passenger or a taxi driver} {The unregistered User clicks on the registration button. Then he/she fills the registration form in to become either a registered taxi driver or a passenger registred. At the end, after he/she received a confirmation e-mail, he/she has to press a link to complete the registration. Otherwise he/she can insert a code received through SMS in the mobile application or in the web service} {In databases a new registered user is created with the information used during his/her registration} {Impossibility to create a new user due to an existing registered user with the same e-mail of the new one or if the new user fills the form in with wrong data. Taxi drivers, who want to sign up, could also meet with a denial of the registration if they use a taxi driver license number already present in databases during registration}
 \paragraph{Registered User signs in}
 \usecasetable {Registered User}{A registered wants to sign in}{The registered user presses the login button, after that he/she inserts his/her e-mail used during his/her registration and his/her password (chosen during registration or modified)}{The logged user can now use all myTaxiService functions}{Mistaken information, inserted in e-mail and/or password fields, denies the user to log in. The login is also denied if the user inserts an e-mail not contained in databases}
 \paragraph{Passenger makes a reservation}
@@ -392,6 +392,10 @@ Tom wants to eliminate his myTaxiService account, so he enters his account's set
 \usecasetable {Taxi driver logged}{Accept or refuse a request}{If the taxi driver wants to accept the request, he/she presses the ``Available" button, otherwise he/she clicks on the ``Not Available" button in case of refusal}{If the request is accepted by the taxi driver, a confirmation message is sent to the passenger who made the request. Otherwise if the request is refused, it is sent to another taxi driver}{None}
 \paragraph{Request management}
 \usecasetable {The System}{To find a taxi driver who can accept a request received}{After the system has received a request, it searches the queue the nearest to the passenger who made the request, sending the request to the first of the queue, passing to the following if the previous refuses. If nobody in the queue can accept the request, it is sent to another queue near to the passenger}{The request is sent to a taxi driver who accepts the request}{Impossibilty to find a taxi driver who can accept the request in every queue}
+\paragraph{Reallocation of a taxi driver in a new queue}
+\usecasetable {The System}{A taxi driver is reallocated after he accomplishes a passenger's request}{After that the taxi driver presses the button ``Destination reached", the system tracks his/her new position and eventually changes the queue he belongs to}{The taxi driver is allocated in a new queue}{None}
+\paragraph{Reservation of a taxi in a different time and hour}
+\usecasetable {Logged Passenger}{To reserve a taxi not immediately, but in a different time and hour}{Logged passenger presses the button ``Reserve a taxi", then he fills the form in with the address to reach, the hour and the date in which the passenger needs the taxi and clicks on the ``Enter" button}{A reservation at a determinate time and hour is registered by the system}{Logged passenger tries to register another reservation on the same day, at the same hour. A error message is sent to the passenger fobidding him/her to make the last reservation}
 
 \pagebreak
 \subsection{Non Functional Requirements}
