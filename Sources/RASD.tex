@@ -34,14 +34,15 @@
 \usepackage{tabularx}
 \usepackage{array}
 %-------------------------------------------
-
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{s}{X}
+\makeatletter\let\MPtrue\@minipagetrue\makeatother
+\newcolumntype{C}{>{\hsize=1.5\hsize}X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
 \geometry{margin=1in}
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
 \newcommand{\usecasetable}[6]{
 \begin{center}
+\def\arraystretch{1.5}
 \begin{tabularx}{\textwidth}{|s|C|}
 \hline
 Actor & #1\\
@@ -136,14 +137,13 @@ List of goals for myTaxiService system:
 \item \nameref{goal4}
 \item \nameref{goal5}
 \item \nameref{goal6}
-\item \nameref{goal7}
-\item \nameref{goal8} 
-\item \nameref{goal9} 
 \end{itemize}
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Definitions}
 \begin{itemize}
-\item 
+\item system
+\item service
+\item meeting point
 \end{itemize}
 \subsubsection{Acronyms}
 \begin{itemize}
@@ -230,6 +230,7 @@ Another reason is to prevent passengers to make requests to the system while ano
 \label{a8} \item {[}A8{]} Each taxi cab has a unique code that identifies it
 \label{a9} \item {[}A9{]} An external database with all the correct and up to date information about the taxi drivers and their cars (valid driving license, cars allowed to circulate in streets, etc.)
 \label{a10} \item {[}A10{]} The existing taxi service is available 24 hours per day, 365 days per year.
+\label{a11} \item {[}A11{]} A taxi has a capacity of at most 3 passengers. 
 \end{itemize}
 \subsection{Future possible implementation}
 \begin{itemize}
@@ -294,24 +295,44 @@ For the mobile application at least 512MB of primary memory is required in order
 \item {[}R5{]} In case of unavailability of a contacted driver, the system has to pick another taxi from the most appropriate queue and to repeat what described in requirement [R3]
 \item {[}R6{]} The system must proceed to the cancellation of the request if and only if the user requested to do it and the condition in [D1] has not met yet.
 \item {[}D1{]} The maximum number of cancellation requests is three.
+\item {[}D2{]} A passenger can request at most 3 taxis thus the amount of people involved in a single request is at most 9 \hyperref[a11]{{[}A11{]}}.
 \end{itemize}
 \subsubsection{{[}G3{]} Allow registered passengers to reserve a taxi}
 \label{goal3}
 \begin{itemize}
-\item {[}R1{]} The system must disallow visitors to perform such operation
+\item {[}R1{]} The system must disallow visitors to perform such operation.
+\item {[}R2{]} The system must check if time and the date specified is at least past two hours with the respect of present time.
+\item {[}R3{]} The system must disallow the reservation of a taxi with an invalid meeting point.
+\item {[}R4{]} The system must disallow the reservation of a taxi with a meeting point outside the area served by the service.
+\item {[}R5{]} The system shall allocate a timer that will timeouts ten minutes before the time and date specified, triggering the event of allocating a taxi for this reservation.
 \end{itemize}
-\subsubsection{{[}G4{]} Allow registered passengers to cancel a reservation}
+\subsubsection{{[}G4{]} Guarantee a fair management of the taxi queues}
+\begin{itemize}
+\item {[}R1{]} The system must select the first free taxi in the queue corresponding to the zone in which the meeting point is.
+\item {[}R2{]} The system shall manage the queue using a predefined policy.
+\item {[}R3{]} If there are no available taxis in the queue the system scans the queues of the adjacent zones.
+\item {[}R4{]} The system must remove the taxi from the queue if and only if the Passenger has confirmed the intention of taking the selected taxi.
+\item {[}R5{]} The queues contains only free taxis.
+\item {[}R6{]} The system must not select taxis that belong to drivers spending their breaks.
+\item {[}D1{]} The policy for managing the queue is FIFO.
+\end{itemize}
 \label{goal4}
-\subsubsection{{[}G5{]} Guarantee a fair management of the taxi queues}
+\subsubsection{{[}G5{]} Allow taxi drivers to manage their workday}
+\begin{itemize}
+\item {[}R1{]} The system must disallow non-taxi drivers to perform such operations.
+\item {[}R2{]} The system must not allow to start a workday twice or more in the same day.
+\item {[}R3{]} The system must not allow to end a workday before a workday is started.
+\item {[}R4{]} The system must enforce the driver to take some breaks during the day.
+\item {[}D1{]} The workday cannot last more than 8 hours.
+\end{itemize}
 \label{goal5}
-\subsubsection{{[}G6{]} Allow taxi drivers to manage their workday}
+\subsubsection{{[}G6{]} Allow the system administrator to update the information about drivers and taxis}
+\begin{itemize}
+\item {[}R1{]} The system must disallow non-system administrator to perform such operations.
+\item {[}R2{]} The system must disallow the insertion of inconsistent data (for example drivers with invalid license or without a car).
+\item {[}R3{]} The system must disallow the insertion of already present data.
+\end{itemize}
 \label{goal6}
-\subsubsection{{[}G7{]} Allow the system administrator to update the information about drivers and taxis}
-\label{goal7}
-\subsubsection{{[}G8{]} Enforce the validity of a taxi driver's license}
-\label{goal8}
-\subsubsection{{[}G9{]} Enforce the validity of all  documents belonging to a taxi}
-\label{goal9}
 \subsection{The World and the Machine}
 \subsection{Scenarios}
 \subsubsection{Scenario 1}
@@ -341,16 +362,16 @@ When the date approaches, specifically 10 minutes before the time and date speci
 \subsubsection{Scenario 4} 
 Jack is a taxi driver, after he completed the registration to myTaxiService application, he can start to use it. According to taxi driver job laws, the system enables the application to receive requests during working time as described previously. The system has break times registered in its records for each taxi driver. When Jack's break time occurs, he can only terminate his last work, after that he can't accept other works until the break ends. At the end of his working time, the application is disabled by the system until the next working day. Jack can insert unavailabilities if unexpected events occur, letting him not to work for the day or hours necessary to solve his problem. 
 \subsubsection{Scenario 5}
-Frank has just requested a taxi to take him home, without thinking he tries to reserve another taxi, but the system recognises that he has already made a reservation, so it sends a message to Frank saying his last request has been rejected because of the impossibility to make a double reservation and the second request is eliminated.
+Frank has just requested a taxi to take him home, without thinking he tries to reserve another taxi, but the system recognises that he has already made a reservation, so it sends a message to Frank saying his last request has been rejected because of the impossibility to make a double reservation and the second request is ignored.
 \subsubsection{Scenario 6}  
 Tom wants to eliminate his myTaxiService account, so he enters his account's settings and presses the button ``Eliminate account", after he confirmed his desire not to use more the application, the system removes Tom's personal details and his previous reservations from databases.
 
 \pagebreak
 \subsection{UML models}
-\subsubsection{Use case} 
+\subsubsection{Use cases} 
 \paragraph{Visitors signs up for myTaxiService}
-% custom command \usecasetable
 \usecasetable {Visitor} {\nameref{goal1}} {None} {
+\begin{minipage}[b]{11cm}
 \begin{enumerate}
 \item Visitor clicks on the registration button.
 \item Visitor fills the registration form in with the mandatory fields.
@@ -361,37 +382,145 @@ Tom wants to eliminate his myTaxiService account, so he enters his account's set
 \item or by inserting the confirmation code received by SMS.
 \end{itemize}
 \item The system will save all the information on the DB.
-\end{enumerate}} 
+\end{enumerate}
+\end{minipage}} 
 {
 Visitor completes the registration and becomes a Registered Passenger.
 Now the Registered Passenger can log on and start using myTaxiService.
 } 
 {
+\begin{minipage}[b]{11cm}
 \begin{enumerate}
 \item Visitor is already a Registered Passenger.
 \item One of the mandatory fields contain invalid data
 \item Email or phone number are already used by another Registered Passenger.
-\end{enumerate}}
+\end{enumerate}
+\end{minipage}
+}\break
 \paragraph{Visitor signs in}
-\usecasetable {Visitor, Registered Passenger}{A Visitor wants to sign in} {Visitor is already a Registered Passenger} {
+\usecasetable {Visitor, Registered Passenger}{A Visitor wants to sign in} {Visitor is already a Registered Passenger} {\begin{minipage}[b]{11cm}
 \begin{enumerate}
 \item myTaxiService shows the login page
 \item Visitor inserts his/her credentials chosen during registration and presses the ``Login'' button.
 \item myTaxiService validates the data. 
-\end{enumerate}}{Visitor is promoted to Registered Passenger, now he/she can use all the myTaxiService functions.}{Incorrect e-mail, phone number or password inserted. myTaxiService will notify the visitor about this.}
+\end{enumerate}
+\end{minipage}
+}{Visitor is promoted to Registered Passenger, now he/she can use all the myTaxiService functions.}{Incorrect e-mail, phone number or password inserted. myTaxiService will notify the visitor about this.}
+\break
 \paragraph{Registered Passenger makes a request}
-\usecasetable{Registered Passenger}{\nameref{goal2}}{Registered Passenger is logged into the  myTaxiService.}{}{}{}
-\paragraph{Passenger makes a reservation}
-\usecasetable {Passenger logged}{To find a taxi near his/her position and to reserve it} {None}{The passenger clicks on the button ``Request a taxi" and his/her position is located}{A request is sent to a queue of taxi reservations}{Impossibility to send the request because of the impossibilty to locate the passenger through GPS}
-\paragraph{Taxi driver decision about a request}
-\usecasetable {Taxi driver logged}{Accept or refuse a request}{None}{If the taxi driver wants to accept the request, he/she presses the ``Available" button, otherwise he/she clicks on the ``Not Available" button in case of refusal}{If the request is accepted by the taxi driver, a confirmation message is sent to the passenger who made the request. Otherwise if the request is refused, it is sent to another taxi driver}{None}
-\paragraph{Request management}
-\usecasetable {The System}{To find a taxi driver who can accept a request received}{None}{After the system has received a request, it searches the queue the nearest to the passenger who made the request, sending the request to the first of the queue, passing to the following if the previous refuses. If nobody in the queue can accept the request, it is sent to another queue near to the passenger}{The request is sent to a taxi driver who accepts the request}{Impossibilty to find a taxi driver who can accept the request in every queue}
-\paragraph{Reallocation of a taxi driver in a new queue}
-\usecasetable {The System}{A taxi driver is reallocated after he accomplishes a passenger's request}{None}{After that the taxi driver presses the button ``Destination reached", the system tracks his/her new position and eventually changes the queue he belongs to}{The taxi driver is allocated in a new queue}{None}
-\paragraph{Reservation of a taxi in a different time and hour}
-\usecasetable {Logged Passenger}{To reserve a taxi not immediately, but in a different time and hour}{None}{Logged passenger presses the button ``Reserve a taxi", then he fills the form in with the address to reach, the hour and the date in which the passenger needs the taxi and clicks on the ``Enter" button}{A reservation at a determinate time and hour is registered by the system}{Logged passenger tries to register another reservation on the same day, at the same hour. A error message is sent to the passenger fobidding him/her to make the last reservation}
+\usecasetable{Registered Passenger}{\nameref{goal2}}{Registered Passenger is authenticated into the  myTaxiService.}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item Passenger choose to request a taxi.
+\item Passenger's location is determined by the GPS.
+\item Passenger specifies the amount of people involved in the request.
+\item Passenger presses the button ``Confirm''
+\end{enumerate}
+\end{minipage}
+}
+{The Registered Passenger has successfully sent the request.}
+{
 
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item The application fails to locate the passenger.
+\item The location detected is not served by the service.
+\item The amount of people exceeds the maximum allowed.
+In both cases the system notifies the Passenger with a message on the screen.
+\end{enumerate}
+\end{minipage}
+}
+\break
+\paragraph{Passenger makes a reservation}
+\usecasetable {Registered Passenger}{\nameref{goal3}}{Registered Passenger is authenticated into the  myTaxiService.} 
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item Passenger clicks on the button ``Reserve a taxi".
+\item Passenger specifies all the mandatory fields.
+\item Passenger presses the button ``Confirm''.
+\end{enumerate}
+\end{minipage}
+}
+{The Registered Passenger has successfully submitted the reservation. The information are stored in a DB, the system schedules a timer that will timeout 10 minutes before the time and date specified by the Passenger.}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item The meeting point is not found on the map
+\item The meeting point is not server by the system.
+\item The time and date specified is too close to the present time.
+\end{enumerate}
+\end{minipage}
+}
+\break
+\paragraph{Request forwarded to a taxi}
+\usecasetable{Taxi driver, Registered Passenger}{\nameref{goal2}, \nameref{goal3}}{The passenger has just sent a request, or the time remaining to a scheduled reservation is equal to ten minutes}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item The system looks for the queue in the zone of the meeting point and selects the first available taxi. 
+\item The system sends a notification to the driver of the selected taxi, the driver has 30 seconds to answer:
+\begin{itemize}
+\item The taxi driver presses the button ``Confirm'', a notification to the Passenger is sent indicating the ID of the taxi and the ETA to the meeting point, now the Passenger can:
+\begin{itemize}
+\item Accepts the request by pressing the button ``Confirm'', the taxi is removed from the queue and the system informs the user about the succeed of the operation.
+\item Cancel the request by pressing the button ``Decline'', at this point the Event flow jumps to 1.\end{itemize}
+\item The taxi driver presses the button ``Decline'', the matching taxi is moved to the bottom of the queue, the Event flow jumps to 1.
+\end{itemize}
+\end{enumerate}
+\end{minipage}
+}
+{The request is fulfilled by the selected driver and he/she begins to move to the meeting location.}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item There are no available taxis in the zone of the meeting point nor in the adjacent zones.
+\item The Passenger cancels the request for three times (see [D2] of \hyperref[goal2]{{[}G2{]}}).
+\end{enumerate}
+\end{minipage}
+}
+\break
+\paragraph{Driver communicates availability}
+\usecasetable{Taxi driver}{\nameref{goal5}}{The driver is logged into the system}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item Taxi driver presses the button ``Available''.
+\item The system determine the position of the driver and insert his/her taxi to the appropriate queue.
+\item The system sends confirmation to the waiting driver.
+\end{enumerate}
+\end{minipage}
+}
+{The driver is now available and his/her taxi is in a queue.}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item The driver is already available.
+\item The position of the driver is invalid.
+\item The position of the driver is outside the area served by the service.
+\end{enumerate}
+\end{minipage}
+}
+\break
+\paragraph{Driver login}
+\usecasetable{Taxi driver}{\nameref{goal5}}{The driver is registered in the system}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item The driver launches the application on the smartphone
+\item The driver insert his/her credentials.
+\end{enumerate}
+\end{minipage}
+}
+{The driver is now capable of accepting incoming requests and has access to the dedicated features}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item Invalid credentials
+\end{enumerate}
+\end{minipage}
+}
 \subsubsection{Use case diagram}
 \begin{figure}
 \includegraphics[scale=0.5]{"Use Case".png}
