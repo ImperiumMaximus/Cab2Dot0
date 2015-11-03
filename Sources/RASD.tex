@@ -36,25 +36,25 @@
 %-------------------------------------------
 
 \newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{s}{X}
 \geometry{margin=1in}
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
-\newcounter{assumptions_counter}
-\newcounter{goals_counter}
-\newcounter{func_req_counter}
-\newcommand{\usecasetable}[5]{
+\newcommand{\usecasetable}[6]{
 \begin{center}
-\begin{tabularx}{\textwidth}{|X|C|}
+\begin{tabularx}{\textwidth}{|s|C|}
 \hline
 Actor & #1\\
 \hline
 Goal & #2\\
 \hline
-Event Flow & #3\\
+Input Condition & #3 \\
 \hline
-Output Condition & #4\\
+Event Flow & #4\\
 \hline
-Exception & #5\\
+Output Condition & #5\\
+\hline
+Exception & #6\\
 \hline
 \end{tabularx}
 \end{center}
@@ -121,7 +121,7 @@ Passengers who want to reserve a taxi should do it with at least two hours in ad
 
 \subsection{Actors}
 \begin{itemize}
-\item Unregistered Passenger: a person that is not registered to the system, i.e. a visitor. He/she can only visit the registration page.
+\item Visitor: a person that is not registered to the system or that is not already logged in. He/she can only sign in or visit the registration page.
 \item Registered Passenger: all customers that have a valid username and password and that are able to access all available features to customers, they can request or reserve a taxi, they can also cancel these operations with some constraints later explained.
 \item Taxi Driver: a person who is able to drive a taxi, owns a valid 
 professional driving license. The driver informs the system about the availability of his/her taxi, logging in a specific mobile application installed in his/her smartphone, and do the same when the ride ends. 
@@ -130,24 +130,15 @@ professional driving license. The driver informs the system about the availabili
 \subsection{Goals}
 List of goals for myTaxiService system:
 \begin{itemize}
-\stepcounter{goals_counter}
-\item \nameref{goal\arabic{goals_counter}}
-\stepcounter{goals_counter}
-\item \nameref{goal\arabic{goals_counter}}
-\stepcounter{goals_counter}
-\item \nameref{goal\arabic{goals_counter}}
-\stepcounter{goals_counter}
-\item \nameref{goal\arabic{goals_counter}}
-\stepcounter{goals_counter}
-\item \nameref{goal\arabic{goals_counter}}
-\stepcounter{goals_counter}
-\item \nameref{goal\arabic{goals_counter}}
-\stepcounter{goals_counter}
-\item \nameref{goal\arabic{goals_counter}}
-\stepcounter{goals_counter}
-\item \nameref{goal\arabic{goals_counter}} 
-\stepcounter{goals_counter}
-\item \nameref{goal\arabic{goals_counter}} 
+\item \nameref{goal1}
+\item \nameref{goal2}
+\item \nameref{goal3}
+\item \nameref{goal4}
+\item \nameref{goal5}
+\item \nameref{goal6}
+\item \nameref{goal7}
+\item \nameref{goal8} 
+\item \nameref{goal9} 
 \end{itemize}
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Definitions}
@@ -228,28 +219,17 @@ with database and with all operations done by users after connections.
 \subsection{Assumptions and Dependencies}
 \subsubsection{Assumptions}
 \begin{itemize}
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]}
-Only registered users can use the service, because additional information such as name, surname and e-mail to confirm and to recap the reservation are needed, to avoid repetition, the user has to re-enter this information every time.
+\label{a1} \item {[}A1{]} Only registered users can use the service, because additional information such as name, surname and e-mail to confirm and to recap the reservation are needed, to avoid repetition, the user has to re-enter this information every time.
 Another reason is to prevent passengers to make requests to the system while another one is in processing.
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Passenger position is exactly known thanks to the usage of GPS available in smartphones or by using a geolocalization API from browser. 
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The position of the taxi is exactly known by using the GPS available in the driver's smartphones
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The city is divided into zones of 2 $km^2$ each and for each zone a taxi queue is allocated.
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The driver can take at most 2 breaks during his/her workday, during breaks the taxi belonging to him/her is not available.
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} A taxi driver must own a valid professional driving license and a cab with all documents in order
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Each taxi driver's license has a unique code that identifies it
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} Each taxi cab has a unique code that identifies it
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} An external database with all the correct and up to date information about the taxi drivers and their cars (valid driving license, cars allowed to circulate in streets, etc.)
-\stepcounter{assumptions_counter}
-\item \label{a\arabic{assumptions_counter}}{[}A\arabic{assumptions_counter}{]} The existing taxi service is available 24 hours per day, 365 days per year.
+\label{a2} \item {[}A2{]} Passenger position is exactly known thanks to the usage of GPS available in smartphones or by using a geolocalization API from browser. 
+\label{a3} \item {[}A3{]} The position of the taxi is exactly known by using the GPS available in the driver's smartphones
+\label{a4} \item {[}A4{]} The city is divided into zones of 2 $km^2$ each and for each zone a taxi queue is allocated.
+\label{a5} \item {[}A5{]} The driver can take at most 2 breaks during his/her workday, during breaks the taxi belonging to him/her is not available.
+\label{a6} \item {[}A6{]} A taxi driver must own a valid professional driving license and a cab with all documents in order
+\label{a7} \item {[}A7{]} Each taxi driver's license has a unique code that identifies it
+\label{a8} \item {[}A8{]} Each taxi cab has a unique code that identifies it
+\label{a9} \item {[}A9{]} An external database with all the correct and up to date information about the taxi drivers and their cars (valid driving license, cars allowed to circulate in streets, etc.)
+\label{a10} \item {[}A10{]} The existing taxi service is available 24 hours per day, 365 days per year.
 \end{itemize}
 \subsection{Future possible implementation}
 \begin{itemize}
@@ -295,56 +275,43 @@ The minimum memory requirements are:
 \end{itemize}
 For the mobile application at least 512MB of primary memory is required in order to have a satisfactory user experience.
 \subsection{Functional Requirements}
-\setcounter{goals_counter}{1}
-\stepcounter{func_req_counter}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow unregistered passengers to sign up for the service}
-\stepcounter{goals_counter}
+\subsubsection{{[}G1{]} Allow visitors to sign up for the service}
+\label{goal1}
 \begin{itemize}
-\item {[}R\arabic{func_req_counter}{]} The system requests an e-mail or a telephone number during the registration
-\stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system rejects an e-mail or a telephone number already used by another registered passenger
-\stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} After the completion of registration process, the system must send a confirmation to newly registered passengers
-\stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system checks if e-mails or telephone numbers are well formed
-\stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system considers passengers officially registered if and only if passengers either open an activation link in a confirmation e-mail, or insert a code received through a SMS in mobile application or in web service.
+\item {[}R1{]} The system requests an e-mail or a telephone number during the registration
+\item {[}R2{]} The system rejects an e-mail or a telephone number already used by another registered passenger
+\item {[}R3{]} After the completion of registration process, the system must send a confirmation to newly registered passengers
+\item {[}R4{]} The system checks if e-mails or telephone numbers are well formed
+\item {[}R5{]} The system considers passengers officially registered if and only if passengers either open an activation link in a confirmation e-mail, or insert a code received through a SMS in mobile application or in web service.
 \end{itemize}
-\setcounter{func_req_counter}{1}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow registered passengers to request a taxi}
+\subsubsection{{[}G2{]} Allow registered passengers to request a taxi}
+\label{goal2}
 \begin{itemize}
-\item {[}R\arabic{func_req_counter}{]} The system must disallow unregistered passengers to perform such operation
-\stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system has to locate passengers using GPS in his/her smartphone or through browser.
-\stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} After selecting the most appropriate taxi (explained in goal \hyperref[goal4]{[G4]}), the system must inform drivers that a request is incoming.
-\stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} Upon confirmation by the driver about the request of availability, the system has to inform the passenger about a positive outcome,if it occurs, and provide additional information, such as ETA
-\stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} In case of unavailability of a contacted driver, the system has to pick another taxi from the most appropriate queue and to repeat what described in requirement [R3]
-\stepcounter{func_req_counter}
-\item {[}R\arabic{func_req_counter}{]} The system must proceed to the cancellation of the request if and only if the user requested to do it and the condition in [D1] has not met yet.
+\item {[}R1{]} The system must disallow visitors to perform such operation
+\item {[}R2{]} The system has to locate passengers using GPS in his/her smartphone or through browser.
+\item {[}R3{]} After selecting the most appropriate taxi (explained in goal \hyperref[goal4]{[G4]}), the system must inform drivers that a request is incoming.
+\item {[}R4{]} Upon confirmation by the driver about the request of availability, the system has to inform the passenger about a positive outcome,if it occurs, and provide additional information, such as ETA
+\item {[}R5{]} In case of unavailability of a contacted driver, the system has to pick another taxi from the most appropriate queue and to repeat what described in requirement [R3]
+\item {[}R6{]} The system must proceed to the cancellation of the request if and only if the user requested to do it and the condition in [D1] has not met yet.
 \item {[}D1{]} The maximum number of cancellation requests is three.
 \end{itemize}
-\stepcounter{goals_counter}
-\setcounter{func_req_counter}{1}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow registered passengers to reserve a taxi}
+\subsubsection{{[}G3{]} Allow registered passengers to reserve a taxi}
+\label{goal3}
 \begin{itemize}
-\item {[}R\arabic{func_req_counter}{]} The system must disallow unregistered passengers to perform such operation
-\stepcounter{func_req_counter}
+\item {[}R1{]} The system must disallow visitors to perform such operation
 \end{itemize}
-\stepcounter{goals_counter}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow registered passengers to cancel a reservation}
-\stepcounter{goals_counter}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Guarantee a fair management of the taxi queues}
-\stepcounter{goals_counter}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow taxi drivers to manage their workday}
-\stepcounter{goals_counter}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Allow the system administrator to update the information about drivers and taxis}
-\stepcounter{goals_counter}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Enforce the validity of a taxi driver's license}
-\stepcounter{goals_counter}
-\subsubsection{\label{goal\arabic{goals_counter}}{[}G\arabic{goals_counter}{]} Enforce the validity of all  documents belonging to a taxi}
+\subsubsection{{[}G4{]} Allow registered passengers to cancel a reservation}
+\label{goal4}
+\subsubsection{{[}G5{]} Guarantee a fair management of the taxi queues}
+\label{goal5}
+\subsubsection{{[}G6{]} Allow taxi drivers to manage their workday}
+\label{goal6}
+\subsubsection{{[}G7{]} Allow the system administrator to update the information about drivers and taxis}
+\label{goal7}
+\subsubsection{{[}G8{]} Enforce the validity of a taxi driver's license}
+\label{goal8}
+\subsubsection{{[}G9{]} Enforce the validity of all  documents belonging to a taxi}
+\label{goal9}
 \subsection{The World and the Machine}
 \subsection{Scenarios}
 \subsubsection{Scenario 1}
@@ -381,21 +348,49 @@ Tom wants to eliminate his myTaxiService account, so he enters his account's set
 \pagebreak
 \subsection{UML models}
 \subsubsection{Use case} 
-\paragraph{Unregistered User signs up for myTaxiService}
+\paragraph{Visitors signs up for myTaxiService}
 % custom command \usecasetable
-\usecasetable {Unregistered User} {Registration of an unknown user as a passenger or a taxi driver} {The unregistered User clicks on the registration button. Then he/she fills the registration form in to become either a registered taxi driver or a passenger registred. At the end, after he/she received a confirmation e-mail, he/she has to press a link to complete the registration. Otherwise he/she can insert a code received through SMS in the mobile application or in the web service} {In databases a new registered user is created with the information used during his/her registration} {Impossibility to create a new user due to an existing registered user with the same e-mail of the new one or if the new user fills the form in with wrong data. Taxi drivers, who want to sign up, could also meet with a denial of the registration if they use a taxi driver license number already present in databases during registration}
-\paragraph{Registered User signs in}
-\usecasetable {Registered User}{A registered wants to sign in}{The registered user presses the login button, after that he/she inserts his/her e-mail used during his/her registration and his/her password (chosen during registration or modified)}{The logged user can now use all myTaxiService functions}{Mistaken information, inserted in e-mail and/or password fields, denies the user to log in. The login is also denied if the user inserts an e-mail not contained in databases}
+\usecasetable {Visitor} {\nameref{goal1}} {None} {
+\begin{enumerate}
+\item Visitor clicks on the registration button.
+\item Visitor fills the registration form in with the mandatory fields.
+\item Visitor User clicks on the ``Confirm'' button to become a registered passenger. 
+\item Visitor User activates the account either
+\begin{itemize}
+\item by opening the link received in the confirmation e-mail
+\item or by inserting the confirmation code received by SMS.
+\end{itemize}
+\item The system will save all the information on the DB.
+\end{enumerate}} 
+{
+Visitor completes the registration and becomes a Registered Passenger.
+Now the Registered Passenger can log on and start using myTaxiService.
+} 
+{
+\begin{enumerate}
+\item Visitor is already a Registered Passenger.
+\item One of the mandatory fields contain invalid data
+\item Email or phone number are already used by another Registered Passenger.
+\end{enumerate}}
+\paragraph{Visitor signs in}
+\usecasetable {Visitor, Registered Passenger}{A Visitor wants to sign in} {Visitor is already a Registered Passenger} {
+\begin{enumerate}
+\item myTaxiService shows the login page
+\item Visitor inserts his/her credentials chosen during registration and presses the ``Login'' button.
+\item myTaxiService validates the data. 
+\end{enumerate}}{Visitor is promoted to Registered Passenger, now he/she can use all the myTaxiService functions.}{Incorrect e-mail, phone number or password inserted. myTaxiService will notify the visitor about this.}
+\paragraph{Registered Passenger makes a request}
+\usecasetable{Registered Passenger}{\nameref{goal2}}{Registered Passenger is logged into the  myTaxiService.}{}{}{}
 \paragraph{Passenger makes a reservation}
-\usecasetable {Passenger logged}{To find a taxi near his/her position and to reserve it}{The passenger clicks on the button ``Request a taxi" and his/her position is located}{A request is sent to a queue of taxi reservations}{Impossibility to send the request because of the impossibilty to locate the passenger through GPS}
+\usecasetable {Passenger logged}{To find a taxi near his/her position and to reserve it} {None}{The passenger clicks on the button ``Request a taxi" and his/her position is located}{A request is sent to a queue of taxi reservations}{Impossibility to send the request because of the impossibilty to locate the passenger through GPS}
 \paragraph{Taxi driver decision about a request}
-\usecasetable {Taxi driver logged}{Accept or refuse a request}{If the taxi driver wants to accept the request, he/she presses the ``Available" button, otherwise he/she clicks on the ``Not Available" button in case of refusal}{If the request is accepted by the taxi driver, a confirmation message is sent to the passenger who made the request. Otherwise if the request is refused, it is sent to another taxi driver}{None}
+\usecasetable {Taxi driver logged}{Accept or refuse a request}{None}{If the taxi driver wants to accept the request, he/she presses the ``Available" button, otherwise he/she clicks on the ``Not Available" button in case of refusal}{If the request is accepted by the taxi driver, a confirmation message is sent to the passenger who made the request. Otherwise if the request is refused, it is sent to another taxi driver}{None}
 \paragraph{Request management}
-\usecasetable {The System}{To find a taxi driver who can accept a request received}{After the system has received a request, it searches the queue the nearest to the passenger who made the request, sending the request to the first of the queue, passing to the following if the previous refuses. If nobody in the queue can accept the request, it is sent to another queue near to the passenger}{The request is sent to a taxi driver who accepts the request}{Impossibilty to find a taxi driver who can accept the request in every queue}
+\usecasetable {The System}{To find a taxi driver who can accept a request received}{None}{After the system has received a request, it searches the queue the nearest to the passenger who made the request, sending the request to the first of the queue, passing to the following if the previous refuses. If nobody in the queue can accept the request, it is sent to another queue near to the passenger}{The request is sent to a taxi driver who accepts the request}{Impossibilty to find a taxi driver who can accept the request in every queue}
 \paragraph{Reallocation of a taxi driver in a new queue}
-\usecasetable {The System}{A taxi driver is reallocated after he accomplishes a passenger's request}{After that the taxi driver presses the button ``Destination reached", the system tracks his/her new position and eventually changes the queue he belongs to}{The taxi driver is allocated in a new queue}{None}
+\usecasetable {The System}{A taxi driver is reallocated after he accomplishes a passenger's request}{None}{After that the taxi driver presses the button ``Destination reached", the system tracks his/her new position and eventually changes the queue he belongs to}{The taxi driver is allocated in a new queue}{None}
 \paragraph{Reservation of a taxi in a different time and hour}
-\usecasetable {Logged Passenger}{To reserve a taxi not immediately, but in a different time and hour}{Logged passenger presses the button ``Reserve a taxi", then he fills the form in with the address to reach, the hour and the date in which the passenger needs the taxi and clicks on the ``Enter" button}{A reservation at a determinate time and hour is registered by the system}{Logged passenger tries to register another reservation on the same day, at the same hour. A error message is sent to the passenger fobidding him/her to make the last reservation}
+\usecasetable {Logged Passenger}{To reserve a taxi not immediately, but in a different time and hour}{None}{Logged passenger presses the button ``Reserve a taxi", then he fills the form in with the address to reach, the hour and the date in which the passenger needs the taxi and clicks on the ``Enter" button}{A reservation at a determinate time and hour is registered by the system}{Logged passenger tries to register another reservation on the same day, at the same hour. A error message is sent to the passenger fobidding him/her to make the last reservation}
 
 \subsubsection{Use case diagram}
 \begin{figure}
