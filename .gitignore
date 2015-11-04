@@ -8,3 +8,4 @@ Sources/*.synctex.gz
 Sources/*.tcp
 Sources/*.toc
 Sources/*.tps
+*/*.db
