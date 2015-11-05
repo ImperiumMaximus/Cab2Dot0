@@ -437,7 +437,7 @@ From his home, he browses myTaxiService website, he logs in and presses the butt
 The website asks him the permission to determine his position by the browser, but he declines because he wants to set a starting position that is different than the current one.
 He inserts the address in the textual box and presses ``Enter" on the keyboard. The map will update moving the region centering the specific position inserted previously, placing also a marker to emphasize the position detected by the system.
 Then Bob inserts time and date he needs to reserve and presses ``Confirm".
-The system stores this data in the database since all the information provided are adequate. Bob receives an e-mail about either a succesful or a negative outcome of the operation.
+The system stores this data in the database since all the information provided are adequate. Bob receives an e-mail about either a successful or a negative outcome of the operation.
 When the date approaches, specifically 10 minutes before the time and date specified, the system processes the reservation, managing it in the same way as requests already described in Scenario 1. 
 \subsubsection{Scenario 4} 
 Jack is a taxi driver, after he completed the registration to myTaxiService application, he can start to use it. According to taxi driver job laws, the system enables the application to receive requests during working time as described previously. The system has break times registered in its records for each taxi driver. When Jack's break time occurs, he can only terminate his last work, after that he can't accept other works until the break ends. At the end of his working time, the application is disabled by the system until the next working day. Jack can insert unavailabilities if unexpected events occur, letting him not to work for the day or hours necessary to solve his problem. 
@@ -445,13 +445,14 @@ Jack is a taxi driver, after he completed the registration to myTaxiService appl
 Frank has just requested a taxi to take him home, without thinking he tries to reserve another taxi, but the system recognises that he has already made a reservation, so it sends a message to Frank saying his last request has been rejected because of the impossibility to make a double reservation and the second request is ignored.
 \subsubsection{Scenario 6}  
 Tom wants to eliminate his myTaxiService account, so he enters his account's settings and presses the button ``Eliminate account", after he confirmed his desire not to use more the application, the system removes Tom's personal details and his previous reservations from databases.
-
+\subsubsection{Scenario 7}
+Alice is a taxi driver and she has just been hired by the company. She has already provided her information about her driving license ID and her taxi car ID. Bill, the system administrator logs into the system and insert the data supplied by Alice into the DB. Upon the click of the ``Confirm'' button, the system connects to the external database and checks if the data is present and valid. As expected all the information are good and the system writes the data into its DB and displays a confirmation message to Bill, now Alice is able to login into the system and start to do her job.
 \pagebreak
 \subsection{UML models}
-\subsubsection{Use cases} 
+\subsubsection{Use cases}
 \begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{"Use Case".png}
+\includegraphics[scale=0.3]{use_cases.png}
+\caption{Diagram for the myTaxiService application}
 \end{figure}
 \break
 \paragraph{Visitors signs up for myTaxiService}
@@ -638,6 +639,49 @@ In both cases the system notifies the Passenger with a message on the screen.
 \end{minipage}
 }
 \break
+\paragraph{Admin login}
+\usecasetable{System Administrator}{\nameref{goal5}}{The system administrator is registered in the system}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item The system administrator open the administration page
+\item The system administrator insert his/her credentials.
+\end{enumerate}
+\end{minipage}
+}
+{The system administrator is now capable of manage the taxi driver and their car information.}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item Invalid credentials
+\end{enumerate}
+\end{minipage}
+}
+\break
+\paragraph{Driver registration}
+\usecasetable{Taxi Driver, System Administrator}{\nameref{goal5}}{The system administrator is registered in the system, the taxi driver has been hired by the company.}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item The system administrator logs in the system.
+\item The system administrator press button ``Insert new Driver''
+\item The system administrator insert the taxi driver license ID and car ID.
+\item The system check the validity of the data, it can happen:
+\item The system connect to the external database and checks the consistency of the data
+\item The system stores the data in the DB.
+\end{enumerate}
+\end{minipage}
+}
+{The taxi driver is now able to log into the system and thus he/she can start to use it.}
+{
+\begin{minipage}[b]{11cm}
+\begin{enumerate}
+\item Invalid credentials of the system administrator
+\item Invalid data provided by the taxi driver
+\item Connection error to the external database
+\end{enumerate}
+\end{minipage}
+}
 \begin{landscape}
 \subsubsection{Class Diagram}
 \begin{figure}[H]
@@ -662,6 +706,12 @@ The response time with the respect to the system must be near to zero. The respo
 \paragraph{Maintainability} The application provides specific APIs that will be documented, as the whole application.
 \paragraph{Portability} The mobile application will be developed on all the major mobile OSes available in the market, also web application is portable since nowadays the majority of widespread OSes have a browser. The web application will be designed with a responsive layout to be also accessible from mobile devices as well. The business logic in the servers will be implemented using the Java language.
 \subsubsection{Security}
+\paragraph{External Interface Side}
+
+\paragraph{Application Side}
+
+\paragraph{Server side}
+
 Information inserted by both taxi drivers and passengers are protected by HTTPS protocol during transfers. There is a recovery in case of lost password, the system sends a link that resets it, giving the user a temporary one.
 \newline
 Servers contain data about taxi drivers and passengers personal details, besides reservations. To protect this information, the administrator has to encrypt information. Furthermore servers have to be protected from physical damages and thefts.
