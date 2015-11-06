@@ -1,6 +1,7 @@
 open util/boolean
 open util/integer 
 
+// *** SIGNATURES ***
 sig Str{}
 sig SInt{v: one Int}
 {
@@ -24,10 +25,10 @@ sig Request{
 	meetingPoint: one Location,
 	people: one Int,
 	passenger: one Passenger,
-	active: one Bool,			// da mettere
-	driver: some TaxiDriver,	// da cambiare
-	executedAt: one SInt,		// da mettere
-	finishedAt: lone SInt		// da mettere
+	active: one Bool,			
+	driver: some TaxiDriver,
+	executedAt: one SInt,
+	finishedAt: one SInt
 } 
 {
 	people>0
@@ -40,10 +41,10 @@ sig Reservation {
 	meetingPoint: one Location,
 	people: one Int,
 	passenger: one Passenger,
-	active: one Bool,			// da mettere
-	driver: some TaxiDriver,	// da cambiare
-	executedAt: one SInt,		// da mettere
-	finishedAt: lone SInt,		// da mettere
+	active: one Bool,
+	driver: some TaxiDriver,
+	executedAt: one SInt,
+	finishedAt: lone SInt,
 	requestTime: one SInt,
 }
 {
@@ -78,6 +79,9 @@ sig System {
 	drivers: set TaxiDriver			
 }
 
+// *** FACTS ***
+
+// only one System containing all the data
 fact oneSystem {
 	#System=1
 	all r: Request | r in System.requests
@@ -134,42 +138,32 @@ fact noSameDriversTwoOverlappingRequests {
 			iff r2.finishedAt.v =< r1.executedAt.v or r2.executedAt.v >= r1.finishedAt.v
 }
 
-/* forse è duplicato di quello sotto 
-fact  {
-	all r: Request | (one d: TaxiDriver | r in d.requests iff d in r.driver)
-	all r: Reservation | (one d: TaxiDriver | r in d.reservations iff d in r.driver)
-}
-*/
-
 fact driverRequestAndDriverReservationRelation {
-	all d: TaxiDriver | (one r: Request | r in d.requests iff d in r.driver)
-	all d: TaxiDriver | (one r: Reservation | r in d.reservations iff d in r.driver)
+	all d: TaxiDriver | (all r: Request | r in d.requests implies d in r.driver)
+	all d: TaxiDriver | (all r: Reservation | r in d.reservations implies d in r.driver)
 }
 
 fact driversUnavailableDuringActiveRequestsOrReservations {
-	all r: Request, d: TaxiDriver | (r.active=True and d in r.driver implies d.availability=False)
-	all r: Reservation, d: TaxiDriver | (r.active=True and d in r.driver implies d.availability=False)
-}
-
-fact driversAssignedToRequestsOrReservationsAreWorking {
-	all r: Request, d: TaxiDriver | (r.active=True and d in r.driver implies d.working=True)
-	all r: Reservation, d: TaxiDriver | (r.active=True and d in r.driver implies d.working=True)
+	all r: Request | (all d: TaxiDriver | r.active=True and d in r.driver implies (d.availability=False and d.working=True))
+	all r: Reservation | (all d: TaxiDriver | r.active=True and d in r.driver implies (d.availability=False and d.working=True))
 }
 
 fact availableDriverMeansAlreadyFinishedAllHisRides {
-	all d: TaxiDriver, r: Request | d.availability=True and r in d.requests implies r.active=False
-	all d: TaxiDriver, r: Reservation | d.availability=True and r in d.reservations implies r.active=False
+	all d: TaxiDriver | (all r: Request | d.availability=True and r in d.requests implies r.active=False)
+	all d: TaxiDriver | (all r: Reservation | d.availability=True and r in d.reservations implies r.active=False)
 }
 
-fact /* questo sputtana tutto */ {
-	all disj r1, r2: Request | (r1.active=True and r2.active=True implies (r1.driver & r2.driver)=none)
-	all disj r1, r2: Reservation | (r1.active=True and r2.active=True implies (r1.driver & r2.driver)=none)
-	all r1: Reservation, r2: Request | (r1.active=True and r2.active=True implies (r1.driver & r2.driver)=none)
+fact noSameDriverInDifferentActiveRequests {
+	some disj r1, r2: Request | (r1.active=True and r2.active=True) implies ((r1.driver & r2.driver)=none)
+	some disj r1, r2: Reservation | (r1.active=True and r2.active=True) implies ((r1.driver & r2.driver)=none)
+	some r1: Request, r2: Reservation | (r1.active=True and r2.active=True) implies ((r1.driver & r2.driver)=none)
 	
 }
 
+// *** ASSERTIONS ***
+
 assert noReservationsTooSoon {
-	no r: Reservation | (r.requestTime.v > r.executedAt.v - 2)
+	no r: Reservation | (r.requestTime.v > minus[r.executedAt.v,2])
 }
 
 check noReservationsTooSoon
@@ -200,6 +194,8 @@ assert checkDriverNotWorking {
 
 check checkDriverNotWorking
 
+// *** PREDICATES ***
+
 pred addRequest[s, s': System, r:Request] {
 	s'.requests = s.requests + r
 }
@@ -212,10 +208,14 @@ pred addReservation[s, s': System, r:Reservation, time: Int] {
 pred show {
 	#Reservation>1
 	#Request>1
+	#{x: Reservation | x.active=False}>1
 	#{x: Reservation | x.active=True}>1
 	#{x: Request | x.active=True}>1
+	#{x: Request | x.active=False}>1
 }
+
+// *** RUN COMMANDS ***
 
 run addRequest
 run addReservation
-run show
+run show for 4

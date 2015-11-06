@@ -708,18 +708,34 @@ The response time with the respect to the system must be near to zero. The respo
 \paragraph{Portability} The mobile application will be developed on all the major mobile OSes available in the market, also web application is portable since nowadays the majority of widespread OSes has a browser. The web application will be designed with a responsive layout to be also accessible from mobile devices as well. The business logic in the servers will be implemented using the Java language.
 \subsubsection{Security}
 \paragraph{External Interface Side}
-Every user's profile is protected by an authenication system, in fact users have to insert registration e-mail or their mobile phone number and profile password. To protect this classified information the system uses a hash cryptographic function. Every 6 month the system requires users to change their password, demanding to respect password's constraints, such as password length, minimum presence of numbers and characters, special and not.
+Every user's profile is protected by an authentication system, in fact users have to insert registration e-mail or their mobile phone number and profile password. To protect this classified information the system uses a hash cryptographic function. Every 6 month the system requires users to change their password, demanding to respect password's constraints, such as password length, minimum presence of numbers and characters, special and not.
 \paragraph{Application Side}
 Data traded between client and server are protected by HTTPS protocol. To enhance security, TLS protocol is used to protect socket connections. All this methods prevent attacks like man in the middle or phishing.
 \paragraph{Server side}
-Firewalls and DMZ zones protect server layers by external attacks, to make these last ones more difficult, business logic and data are separated. Phisically servers are secured by UPSes (uninterruptible power supply), to prevent problems causes by electrical interruptions. Furthermore servers are placed in locations without damp and not exposed to the sun.
+Firewalls and DMZ zones protect server layers by external attacks, to make these last ones more difficult, business logic and data are separated. Physically servers are secured by UPSes (uninterruptible power supply), to prevent problems causes by electrical interruptions. Furthermore servers are placed in locations without damp and not exposed to the sun.
 \newpage
 \section{Alloy}
 \subsection{Model source file}
 \lstinputlisting[language=alloy]{model.als}
+\break
 \subsubsection{Result}
-
+Here are the the results from Alloy Analyzer that proves the consistency of the model.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{alloy_result.png}
+\caption{Results}
+\end{figure}
+\break
+\begin{landscape}
 \subsection{Generated world}
+The following figure shows the generated world for the predicate show
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.3]{alloy_world.png}
+\caption{Results}
+\end{figure}
+\end{landscape}
+\break
 \newpage
 \section*{Tools Used}
 \begin{itemize}
