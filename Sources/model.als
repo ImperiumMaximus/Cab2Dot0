@@ -19,8 +19,7 @@ sig Passenger {
 	requests: some Request,
 }
 
-
-sig Request {
+sig Request{
 	ID: one Integer,
 	meetingPoint: one Location,
 	people: one Int,
@@ -36,7 +35,7 @@ sig Request {
 }
 
 
-sig Reservation { // da cambiare
+sig Reservation {
 	ID: one Integer,
 	meetingPoint: one Location,
 	people: one Int,
@@ -59,7 +58,8 @@ sig TaxiDriver {
 	driverID: one Str,
 	availability: one Bool,
 	working: one Bool,
-	rides: set Request,
+	requests: set Request,
+	reservations: set Reservation
 }
 {
 	(availability=True implies working=True) and (working=False implies availability=False)
@@ -130,31 +130,41 @@ fact noSameDriversTwoOverlappingRequests {
 			iff r2.finishedAt.v =< r1.executedAt.v or r2.executedAt.v >= r1.finishedAt.v
 	all disj r1, r2: Reservation | (r1.driver & r2.driver)!=none 
 			iff r2.finishedAt.v =< r1.executedAt.v or r2.executedAt.v >= r1.finishedAt.v
-	all disj r1: Request, r2: Reservation | (r1.driver & r2.driver)!=none 
+	all r1: Request, r2: Reservation | (r1.driver & r2.driver)!=none 
 			iff r2.finishedAt.v =< r1.executedAt.v or r2.executedAt.v >= r1.finishedAt.v
 }
 
-fact {
-	all d: TaxiDriver | (one r: Request | r in d.rides iff d in r.driver)
+/* forse è duplicato di quello sotto 
+fact  {
+	all r: Request | (one d: TaxiDriver | r in d.requests iff d in r.driver)
+	all r: Reservation | (one d: TaxiDriver | r in d.reservations iff d in r.driver)
+}
+*/
+
+fact driverRequestAndDriverReservationRelation {
+	all d: TaxiDriver | (one r: Request | r in d.requests iff d in r.driver)
+	all d: TaxiDriver | (one r: Reservation | r in d.reservations iff d in r.driver)
 }
 
-fact {
-	//all r: Request | (r.active=True iff all d: TaxiDriver | d in r.driver and d.availability=False)	
-	//all d: TaxiDriver | d.availability=False implies some r: Request | (r in d.rides and r.active=True)
+fact driversUnavailableDuringActiveRequestsOrReservations {
 	all r: Request, d: TaxiDriver | (r.active=True and d in r.driver implies d.availability=False)
 	all r: Reservation, d: TaxiDriver | (r.active=True and d in r.driver implies d.availability=False)
 }
 
-fact {
+fact driversAssignedToRequestsOrReservationsAreWorking {
 	all r: Request, d: TaxiDriver | (r.active=True and d in r.driver implies d.working=True)
 	all r: Reservation, d: TaxiDriver | (r.active=True and d in r.driver implies d.working=True)
 }
 
-fact {
-	all d: TaxiDriver, r: Request | d.availability=True and r in d.rides implies r.active=False
+fact availableDriverMeansAlreadyFinishedAllHisRides {
+	all d: TaxiDriver, r: Request | d.availability=True and r in d.requests implies r.active=False
+	all d: TaxiDriver, r: Reservation | d.availability=True and r in d.reservations implies r.active=False
 }
 
-fact {
+fact /* questo sputtana tutto */ {
+	all disj r1, r2: Request | (r1.active=True and r2.active=True implies (r1.driver & r2.driver)=none)
+	all disj r1, r2: Reservation | (r1.active=True and r2.active=True implies (r1.driver & r2.driver)=none)
+	all r1: Reservation, r2: Request | (r1.active=True and r2.active=True implies (r1.driver & r2.driver)=none)
 	
 }
 
@@ -176,25 +186,36 @@ assert checkAddedReservation {
 
 check checkAddedReservation
 
-assert test {
+assert checkDriverAvailability {
 	no r: Request | all d: TaxiDriver | (r.active=True and d.availability=True)
+	no r: Reservation | all d: TaxiDriver | (r.active=True and d.availability=True)
 }
 
-check test
+check checkDriverAvailability
 
-pred addRequest[s, s': System, r:Request]{
+assert checkDriverNotWorking {
+	no r: Request | (some d: TaxiDriver | d in r.driver and r.active=True and d.working=False)
+	no r: Reservation | (some d: TaxiDriver | d in r.driver and r.active=True and d.working=False)
+}
+
+check checkDriverNotWorking
+
+pred addRequest[s, s': System, r:Request] {
 	s'.requests = s.requests + r
 }
 
-pred addReservation[s, s': System, r:Reservation, time: Int]{
+pred addReservation[s, s': System, r:Reservation, time: Int] {
 	r.requestTime.v = time and
 	s'.reservations = s.reservations + r
 }
 
 pred show {
+	#Reservation>1
+	#Request>1
+	#{x: Reservation | x.active=True}>1
 	#{x: Request | x.active=True}>1
 }
 
 run addRequest
 run addReservation
-run show for 3
+run show
