@@ -18,6 +18,7 @@ sig Passenger {
 	email: one Str,
 	phone: one Str,
 	requests: some Request,
+	reservations: some Reservation
 }
 
 sig Request{
