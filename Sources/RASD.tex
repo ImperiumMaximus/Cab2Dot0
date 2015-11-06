@@ -3,7 +3,7 @@
 
 %------------------------------------------------------------
 %
-\documentclass[a4paper,12pt]{article}%
+\documentclass[a4paper,12pt,dvipsnames]{article}%
 %Options -- Point size:  10pt (default), 11pt, 12pt
 %        -- Paper size:  letterpaper (default), a4paper, a5paper, b5paper
 %                        legalpaper, executivepaper
@@ -35,6 +35,8 @@
 \usepackage{array}
 \usepackage{float}
 \usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{alloy-style}
 %-------------------------------------------
 \makeatletter\let\MPtrue\@minipagetrue\makeatother
 \newcolumntype{C}{>{\hsize=1.5\hsize}X}
@@ -713,6 +715,11 @@ Data traded between client and server are protected by HTTPS protocol. To enhanc
 Firewalls and DMZ zones protect server layers by external attacks, to make these last ones more difficult, business logic and data are separated. Phisically servers are secured by UPSes (uninterruptible power supply), to prevent problems causes by electrical interruptions. Furthermore servers are placed in locations without damp and not exposed to the sun.
 \newpage
 \section{Alloy}
+\subsection{Model source file}
+\lstinputlisting[language=alloy]{model.als}
+\subsubsection{Result}
+
+\subsection{Generated world}
 \newpage
 \section*{Tools Used}
 \begin{itemize}
