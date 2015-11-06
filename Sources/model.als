@@ -28,7 +28,7 @@ sig Request {
 	active: one Bool,			// da mettere
 	driver: some TaxiDriver,	// da cambiare
 	executedAt: one SInt,		// da mettere
-	finishedAt: one SInt		// da mettere
+	finishedAt: lone SInt		// da mettere
 } 
 {
 	people>0
@@ -36,11 +36,21 @@ sig Request {
 }
 
 
-sig Reservation extends Request { // da cambiare
+sig Reservation { // da cambiare
+	ID: one Integer,
+	meetingPoint: one Location,
+	people: one Int,
+	passenger: one Passenger,
+	active: one Bool,			// da mettere
+	driver: some TaxiDriver,	// da cambiare
+	executedAt: one SInt,		// da mettere
+	finishedAt: lone SInt,		// da mettere
 	requestTime: one SInt,
 }
 {
 	requestTime.v<=minus[executedAt.v,2]
+	people>0
+	#driver = div[people,3]
 }
 
 sig TaxiDriver {
@@ -62,6 +72,7 @@ sig Queue {
 } 
 
 sig System {
+	reservations: set Reservation,
 	requests: set Request,
 	queues: set Queue,
 	drivers: set TaxiDriver			
@@ -97,55 +108,79 @@ fact uniqueQueues {
 }
 
 fact uniqueTaxiDriver {
-	no disj t1, t2: TaxiDriver | (t1.taxiID=t2.taxiID) or (t1.driverID=t2.driverID)
+	no disj t1, t2: TaxiDriver | (t1.taxiID=t2.taxiID) and (t1.driverID=t2.driverID)
 }
 
 
 fact driverOnlyInOneQueue {
-	all d: TaxiDriver | (d in Queue.drivers and all q1, q2: Queue | (d in q1.drivers and d in q2.drivers) implies q1=q2)
+	all disj q1, q2: Queue | (q1.drivers & q2.drivers) = none
 }
 
 fact noRequestsFinishedBeforeBeingExecuted {
 	all r: Request | (r.finishedAt.v > r.executedAt.v)
+	all r: Reservation | (r.finishedAt.v > r.executedAt.v)
 }
 
-
 fact driverAvailableInOneQueue{
-	all q : Queue | TaxiDriver in q.drivers implies TaxiDriver.availability=True
-	
+	all q: Queue | (all t: TaxiDriver | t in q.drivers iff t.availability=True)
 }
 
 fact noSameDriversTwoOverlappingRequests {
 	all disj r1, r2: Request | (r1.driver & r2.driver)!=none 
 			iff r2.finishedAt.v =< r1.executedAt.v or r2.executedAt.v >= r1.finishedAt.v
+	all disj r1, r2: Reservation | (r1.driver & r2.driver)!=none 
+			iff r2.finishedAt.v =< r1.executedAt.v or r2.executedAt.v >= r1.finishedAt.v
+	all disj r1: Request, r2: Reservation | (r1.driver & r2.driver)!=none 
+			iff r2.finishedAt.v =< r1.executedAt.v or r2.executedAt.v >= r1.finishedAt.v
 }
 
 fact {
-	all d: TaxiDriver | (some r: Request | r in d.rides iff d in r.driver)
+	all d: TaxiDriver | (one r: Request | r in d.rides iff d in r.driver)
 }
 
 fact {
-	all r: Request | (r.active=True iff all d: TaxiDriver | d in r.driver and d.availability=False)
+	//all r: Request | (r.active=True iff all d: TaxiDriver | d in r.driver and d.availability=False)	
+	//all d: TaxiDriver | d.availability=False implies some r: Request | (r in d.rides and r.active=True)
+	all r: Request, d: TaxiDriver | (r.active=True and d in r.driver implies d.availability=False)
+	all r: Reservation, d: TaxiDriver | (r.active=True and d in r.driver implies d.availability=False)
+}
+
+fact {
+	all r: Request, d: TaxiDriver | (r.active=True and d in r.driver implies d.working=True)
+	all r: Reservation, d: TaxiDriver | (r.active=True and d in r.driver implies d.working=True)
+}
+
+fact {
+	all d: TaxiDriver, r: Request | d.availability=True and r in d.rides implies r.active=False
+}
+
+fact {
 	
 }
 
 assert noReservationsTooSoon {
-	no r: Reservation |  (r.requestTime.v > r.executedAt.v - 2)
+	no r: Reservation | (r.requestTime.v > r.executedAt.v - 2)
 }
 
 check noReservationsTooSoon
 
-assert checkAddedRequest{
+assert checkAddedRequest {
 	all s, s': System, r: Request | addRequest[s, s', r] implies (r in s'.requests)
 }
 
 check checkAddedRequest
 
-assert checkAddedReservation{
-	all s, s': System, r: Reservation | addReservation[s, s', r, 1] implies (r in s'.requests)
+assert checkAddedReservation {
+	all s, s': System, r: Reservation | addReservation[s, s', r, 1] implies (r in s'.reservations)
 }
 
 check checkAddedReservation
+
+assert test {
+	no r: Request | all d: TaxiDriver | (r.active=True and d.availability=True)
+}
+
+check test
 
 pred addRequest[s, s': System, r:Request]{
 	s'.requests = s.requests + r
@@ -153,7 +188,7 @@ pred addRequest[s, s': System, r:Request]{
 
 pred addReservation[s, s': System, r:Reservation, time: Int]{
 	r.requestTime.v = time and
-	s'.requests = s.requests + r
+	s'.reservations = s.reservations + r
 }
 
 pred show {
@@ -162,4 +197,4 @@ pred show {
 
 run addRequest
 run addReservation
-run show for 5
+run show for 3
