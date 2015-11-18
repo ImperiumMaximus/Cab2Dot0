@@ -4,6 +4,7 @@ Sources/*/*.blg
 Sources/*/*.log
 Sources/*/*.out
 Sources/*/RASD.pdf
+Sources/*/DD.pdf
 Sources/*/*.synctex.gz
 Sources/*/*.tcp
 Sources/*/*.toc
