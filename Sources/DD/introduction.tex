@@ -1,7 +1,19 @@
 \section{Introduction}
 \subsection{Purpose}
-This document represents the Design Document (DD). It describes completely the system in terms of components, analyzing their internal and external interaction (with the actors). It starts from the description of the system given in the Requirements Analysis and Specification Document. In this document the system is treated as a white box, i.e. the document ``opens" it and then dissects it starting from an high level overview to a more detailed representation. This document is addressed to all developers and programmers who have to implement the actual software.
+This artefact represents the Design Document (DD). It describes completely the system in terms of components, analyzing their internal and external interaction (with the actors). It starts from the description of the system given in the Requirements Analysis and Specification Document. In this document the system is treated as a white box, i.e. the document ``opens" it and then dissects it starting from an high level overview to a more detailed representation. This document is addressed to all developers and programmers who have to implement the actual software.
 \subsection{Scope}
+The aim of the project is to create a new brand system that optimizes an 
+existing taxi service.
+The system will be capable of automatizing  and/or simplifying certain 
+processes during requests or reservations of taxis.
+It will also guarantee a fair management of taxi queues.
+New passengers can sign up for service inserting some basic information in order to use service's features as soon as possible.
+A passenger can request a taxi using web service or through mobile
+application after registration. The system will be able to localize precisely the position
+of the passenger, determining the taxis that are available near
+him/her. The system will select a taxi and then will forward the request to its driver.
+Upon confirmation, the system will notify the customer about the successful completion of the operation and the ETA of the taxi. A passenger can also reserve a taxi by specifying the time and the date.
+Passengers who want to reserve a taxi should do it with at least two hours in advance, cancellation is also permitted. The system will actually process the request ten minutes before the time specified during the reservation in the same way as described previously.
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Definitions}
 \subsubsection{Acronyms}

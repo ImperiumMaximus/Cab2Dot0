@@ -1,0 +1,134 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'ComponentDiagram.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{884.8bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.56509946)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{ComponentDiagram.pdf}}%
+    \put(0.35646474,0.55424955){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{ComponentDiagram.pdf}}%
+    \put(0.19213382,0.36121157){\makebox(0,0)[lb]{\smash{Mobile}}}%
+    \put(0.35307414,0.539783){\makebox(0,0)[b]{\smash{\textbf{GUI}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{ComponentDiagram.pdf}}%
+    \put(0.08160036,0.51898734){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{ComponentDiagram.pdf}}%
+    \put(0.0818264,0.50271248){\makebox(0,0)[b]{\smash{\textbf{Passenger}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{ComponentDiagram.pdf}}%
+    \put(0.08160036,0.38336347){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{ComponentDiagram.pdf}}%
+    \put(0.0818264,0.36708861){\makebox(0,0)[b]{\smash{\textbf{Taxi Driver}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{ComponentDiagram.pdf}}%
+    \put(0.08160036,0.25678119){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{ComponentDiagram.pdf}}%
+    \put(0.0818264,0.24050633){\makebox(0,0)[b]{\smash{\textbf{Sys Admin}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{ComponentDiagram.pdf}}%
+    \put(0.3528481,0.51898734){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{ComponentDiagram.pdf}}%
+    \put(0.35307414,0.50180832){\makebox(0,0)[b]{\smash{\textbf{Passenger UI}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{ComponentDiagram.pdf}}%
+    \put(0.3528481,0.38336347){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{ComponentDiagram.pdf}}%
+    \put(0.35307414,0.36708861){\makebox(0,0)[b]{\smash{\textbf{Taxi Driver UI}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{ComponentDiagram.pdf}}%
+    \put(0.3528481,0.25678119){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{ComponentDiagram.pdf}}%
+    \put(0.35307414,0.24050633){\makebox(0,0)[b]{\smash{\textbf{Sys Admin UI}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{ComponentDiagram.pdf}}%
+    \put(0.19665461,0.52034358){\makebox(0,0)[lb]{\smash{Mobile}}}%
+    \put(0.17857143,0.44439421){\makebox(0,0)[lb]{\smash{Web browser}}}%
+    \put(0.1858047,0.24005425){\makebox(0,0)[lb]{\smash{Web browser}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{ComponentDiagram.pdf}}%
+    \put(0.62861664,0.53254973){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{ComponentDiagram.pdf}}%
+    \put(0.62884268,0.51537071){\makebox(0,0)[b]{\smash{\textbf{Access Control}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{ComponentDiagram.pdf}}%
+    \put(0.71903255,0.24231465){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{ComponentDiagram.pdf}}%
+    \put(0.71925859,0.2278481){\makebox(0,0)[b]{\smash{\textbf{Ride Manager}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{ComponentDiagram.pdf}}%
+    \put(0.71903255,0.07142857){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{ComponentDiagram.pdf}}%
+    \put(0.71699819,0.05696203){\makebox(0,0)[b]{\smash{\textbf{Queue Manager}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{ComponentDiagram.pdf}}%
+    \put(0.91794756,0.53254973){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{ComponentDiagram.pdf}}%
+    \put(0.91726944,0.51672694){\makebox(0,0)[b]{\smash{\textbf{myTaxiService}}}}%
+    \put(0.91726944,0.5022604){\makebox(0,0)[b]{\smash{\textbf{Database}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=24]{ComponentDiagram.pdf}}%
+    \put(0.60352622,0.09629295){\makebox(0,0)[lb]{\smash{Best Taxi}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=25]{ComponentDiagram.pdf}}%
+    \put(0.67766727,0.10081374){\makebox(0,0)[lb]{\smash{Add}}}%
+    \put(0.67766727,0.08815552){\makebox(0,0)[lb]{\smash{Taxi}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=26]{ComponentDiagram.pdf}}%
+    \put(0.76808318,0.10352622){\makebox(0,0)[lb]{\smash{Remove}}}%
+    \put(0.76808318,0.09086799){\makebox(0,0)[lb]{\smash{Taxi}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=27]{ComponentDiagram.pdf}}%
+    \put(0.58544304,0.03571429){\makebox(0,0)[lb]{\smash{Change}}}%
+    \put(0.58544304,0.02305606){\makebox(0,0)[lb]{\smash{Status}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=28]{ComponentDiagram.pdf}}%
+    \put(0.46518987,0.52486438){\makebox(0,0)[lb]{\smash{Sign Up}}}%
+    \put(0.49864376,0.48146474){\makebox(0,0)[lb]{\smash{Login}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=29]{ComponentDiagram.pdf}}%
+    \put(0.60352622,0.44439421){\makebox(0,0)[lb]{\smash{Sign Up}}}%
+    \put(0.60352622,0.43173599){\makebox(0,0)[lb]{\smash{Taxi Driver}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=30]{ComponentDiagram.pdf}}%
+    \put(0.91794756,0.3716094){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=31]{ComponentDiagram.pdf}}%
+    \put(0.9181736,0.35443038){\makebox(0,0)[b]{\smash{\textbf{Maps API}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=32]{ComponentDiagram.pdf}}%
+    \put(0.79339964,0.3783906){\makebox(0,0)[lb]{\smash{ETA}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=33]{ComponentDiagram.pdf}}%
+    \put(0.78887884,0.289783){\makebox(0,0)[lb]{\smash{Shortest}}}%
+    \put(0.78887884,0.27712477){\makebox(0,0)[lb]{\smash{Path}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=34]{ComponentDiagram.pdf}}%
+    \put(0.68670886,0.39918626){\makebox(0,0)[lb]{\smash{Request}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=35]{ComponentDiagram.pdf}}%
+    \put(0.60352622,0.26265823){\makebox(0,0)[lb]{\smash{Reservation}}}%
+    \put(0.76084991,0.51220615){\makebox(0,0)[lb]{\smash{JDBC}}}%
+  \end{picture}%
+\endgroup%
