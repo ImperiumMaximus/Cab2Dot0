@@ -1,4 +1,74 @@
 \section{Algorithm Design}
+\subsection{Find a queue knowing the position}
+\subsection{Queues setup}
 \subsection{Add a taxi to a queue}
-\subsection{Select a taxi to a queue}
-\subsection{Remove and assign a taxi to a request}
+\begin{algorithm}[H]
+	\SetKwData{queue}{q}
+	\SetKwData{driver}{t}
+	\SetKwData{location}{loc}
+	\SetKwFunction{addtaxi}{addTaxiToQueue}
+	\SetKwFunction{findqueue}{findQueue}
+	\SetKwFunction{enqueue}{enqueue}
+	\SetKwProg{myfun}{Function}{}{end}
+	\myfun{\addtaxi{\driver: TaxiDriver, \location: Location}}{
+		\KwData{\driver, a Taxi Driver that is going to be added to the appropriate queue,\newline\location: the Location of the taxi driver being processed}
+		\KwResult{$true$ if the operation successfully completes,\newline$false$ otherwise}
+		\BlankLine
+		\queue $\leftarrow$ \findqueue{l}\;
+		\eIf{\queue $\neq null$}{
+			\queue.\enqueue{t}\;
+			\KwRet{$true$}\;
+		}{
+			\KwRet{$false$}\;
+		}\
+	}
+	\caption{TaxiDriver insertion in a queue knowing his/her position}
+\end{algorithm}
+\subsection{Assign a taxi to an incoming request}
+\begin{algorithm}[H]
+	\SetKwData{queue}{q}
+	\SetKwData{adjqueues}{adjqueues}
+	\SetKwData{request}{r}
+	\SetKwData{driver}{t}
+	\SetKwData{location}{loc}
+	\SetKwData{driverQueue}{queue}
+	\SetKwFunction{assign}{assignTaxiToRequest}
+	\SetKwFunction{findqueue}{findQueue}
+	\SetKwFunction{tail}{tail}
+	\SetKwFunction{dequeue}{dequeue}
+	\SetKwFunction{adjacent}{adjacents}
+	\SetKwFunction{first}{first}
+	\SetKwFunction{next}{next}
+	\SetKwFunction{fwdReq}{forwardRequest}
+	\SetKwFunction{assignToReq}{assignDriver}
+	\SetKwProg{myfun}{Function}{}{end}
+	\myfun{\assign{\location: Location, \request: Request}} {
+		\KwData{\location: the Passenger requested location for the meeting point,\newline\request: the actual request ready to be fulfilled}
+		\KwResult{$true$ if the operation successfully completes,\newline$false$ otherwise}
+		\BlankLine
+		\queue $\leftarrow$ \findqueue{l}\;
+		\eIf{\queue $\neq null$}{
+			\driver $\leftarrow$ \queue.\tail{}\;
+			\If{\driver $= null$}{
+					\adjqueues $\leftarrow$ \queue.\adjacent{}\;
+					\queue $\leftarrow$ \adjqueues.\first{}\;
+					\While{\queue $\neq null\ \land$ \driver $= null$} {
+						\driver $\leftarrow$ \queue.\tail{}\;
+						\queue $\leftarrow$ \adjqueues.\next{}\;
+					}
+					\If{\driver $= null$}{
+						\KwRet{$false$}\;
+					}	
+			}
+			\eIf{\driver.\fwdReq{\location, \request} $= true$}{
+				\driver.\driverQueue.\dequeue{\driver}\;
+				\request.\assignToReq{\driver}\;
+				\KwRet{$true$}\;
+			}{
+				\KwRet{$false$}\;
+		}
+		}{
+			\KwRet{$false$};
+		}\
+	}
+\end{algorithm}
