@@ -35,6 +35,7 @@
 	\SetKwFunction{assign}{assignTaxiToRequest}
 	\SetKwFunction{findqueue}{findQueue}
 	\SetKwFunction{tail}{tail}
+	\SetKwFunction{remove}{remove}
 	\SetKwFunction{dequeue}{dequeue}
 	\SetKwFunction{adjacent}{adjacents}
 	\SetKwFunction{first}{first}
@@ -61,7 +62,8 @@
 					}	
 			}
 			\eIf{\driver.\fwdReq{\location, \request} $= true$}{
-				\driver.\driverQueue.\dequeue{\driver}\;
+				\driver.\driverQueue.\remove{\driver}\;
+				\driver.\driverQueue $\leftarrow null$\;
 				\request.\assignToReq{\driver}\;
 				\KwRet{$true$}\;
 			}{
@@ -71,4 +73,5 @@
 			\KwRet{$false$};
 		}\
 	}
+	\caption{TaxiDriver assignment from an incoming request}
 \end{algorithm}
