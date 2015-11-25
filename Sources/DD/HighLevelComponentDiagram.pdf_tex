@@ -56,12 +56,11 @@
     \put(0,0){\includegraphics[width=\unitlength,page=3]{HighLevelComponentDiagram.pdf}}%
     \put(0.38928915,0.1815562){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{HighLevelComponentDiagram.pdf}}%
-    \put(0.3895293,0.1690682){\makebox(0,0)[b]{\smash{\textbf{GUI}}}}%
+    \put(0.38472622,0.1690682){\makebox(0,0)[b]{\smash{\textbf{GUI Logic}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{HighLevelComponentDiagram.pdf}}%
     \put(0.65345821,0.28722382){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{HighLevelComponentDiagram.pdf}}%
-    \put(0.65369837,0.27233429){\makebox(0,0)[b]{\smash{\textbf{Access}}}}%
-    \put(0.65369837,0.25696446){\makebox(0,0)[b]{\smash{\textbf{Control}}}}%
+    \put(0.65369837,0.26945245){\makebox(0,0)[b]{\smash{\textbf{Access Control}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{HighLevelComponentDiagram.pdf}}%
     \put(0.65345821,0.07588857){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{HighLevelComponentDiagram.pdf}}%
@@ -72,17 +71,14 @@
     \put(0.91306436,0.27233429){\makebox(0,0)[b]{\smash{\textbf{myTaxiService}}}}%
     \put(0.91306436,0.25696446){\makebox(0,0)[b]{\smash{\textbf{Database}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{HighLevelComponentDiagram.pdf}}%
-    \put(0.21853987,0.18876081){\makebox(0,0)[lb]{\smash{Mobile}}}%
-    \put(0.22334294,0.11191162){\makebox(0,0)[lb]{\smash{Web}}}%
+    \put(0.22334294,0.13112392){\makebox(0,0)[lb]{\smash{GUI Logic}}}%
+    \put(0.22334294,0.11767531){\makebox(0,0)[lb]{\smash{Interface}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{HighLevelComponentDiagram.pdf}}%
     \put(0.7660903,0.27041306){\makebox(0,0)[lb]{\smash{JDBC}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=13]{HighLevelComponentDiagram.pdf}}%
-    \put(0.47310279,0.2271854){\makebox(0,0)[lb]{\smash{Login}}}%
+    \put(0.42507205,0.23102786){\makebox(0,0)[lb]{\smash{Access Control}}}%
+    \put(0.42507205,0.21757925){\makebox(0,0)[lb]{\smash{Interface}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=14]{HighLevelComponentDiagram.pdf}}%
-    \put(0.54995197,0.15706052){\makebox(0,0)[lb]{\smash{Sign Up}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=15]{HighLevelComponentDiagram.pdf}}%
-    \put(0.47310279,0.06964457){\makebox(0,0)[lb]{\smash{Request}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=16]{HighLevelComponentDiagram.pdf}}%
-    \put(0.40105668,0.03025937){\makebox(0,0)[lb]{\smash{Reservation}}}%
+    \put(0.40105668,0.03025937){\makebox(0,0)[lb]{\smash{Ride Manager Interface}}}%
   \end{picture}%
 \endgroup%

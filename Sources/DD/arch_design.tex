@@ -10,7 +10,7 @@
 \begin{figure}[H]
 	\centering
 	\resizebox{6in}
-	{!}{\input{ComponentDiagram.pdf_tex}}
+	{!}{\input{ComponentDiagramStripped.pdf_tex}}
 \end{figure}
 \subsection{Deployment View}
 \begin{figure}[H]
@@ -40,18 +40,18 @@ The interface is comprised as a series of methods that the passenger can invoke.
 The \texttt{submit*()} methods are called when the passenger wants to send data to system for instance when he/she has just completed the filling of a form, they validate the input and forward the request of the appropriate component in the system back-end, eventually they show a informative page or screen that notifies the user whether the operation completed or not, and in the latter case why. 
 \subsubsection{Taxi Driver UI Logic Interface}
 This interface provides the entry point to the system for the taxi driver.
-...
+The list of the methods is the following:
 \begin{itemize}
 	\item \texttt{showLogin()}
 	\item \texttt{submitLoginCredentials()}
-	\item \texttt{acceptRequest()}
-	\item \texttt{rejectRequest()}
-	\item \texttt{changeWorkingStatus()}
-	\item \texttt{showNewIncomingRequest()} (explain)
+	\item \texttt{submitResponseForIncomingRequest()}
+	\item \texttt{submitNewWorkingStatus()}
+	\item \texttt{showNewIncomingRequest()}
 \end{itemize}
+The meaning and the functional aspects of these methods are more or less similar of what explained in the previous section, one point to note is that this time this methods are invoked only by the mobile application installed in the taxi driver's smartphone, so there is no web interface available for this specific actor.
 \subsubsection{System Administrator UI Logic Interface}
-This interface provides the entry point to the system for the administrator.
-...
+This interface provides the entry point to the system for the administrator. \newline
+As usual the methods list is the following:
 \begin{itemize}
 	\item \texttt{showLogin()}
 	\item \texttt{showMainMenu()}
@@ -62,11 +62,38 @@ This interface provides the entry point to the system for the administrator.
 	\item \texttt{submitDriverInformations()}
 	\item \texttt{submitDeleteRequest()}
 \end{itemize}
-\subsubsection{Access control interface}
-\subsubsection{Ride manager interface}
-\subsubsection{Queue manager interface}
+One can notice that the name patterns for these methods are the same as in the previous sections.
+\subsubsection{Access control Interface}
+This interface supplies all the methods that enforce authentication and rights management in the system. \newline
+The following is a list of these methods:
+\begin{itemize}
+	\item \texttt{login()}
+	\item \texttt{logout()}
+	\item \texttt{passengerSignUp()}
+	\item \texttt{taxiDriverSignUp()}
+	\item \texttt{modifyPassengerCredentials()}
+\end{itemize}
+\subsubsection{Ride manager Interface}
+This interface contains the methods for creating and managing a single ride instance, either a request or a reservation. \newline
+Methods list:
+\begin{itemize}
+	\item \texttt{createRequest()}
+	\item \texttt{acceptRequest()}
+	\item \texttt{declineRequest()}
+	\item \texttt{createReservation()}
+\end{itemize}
+\subsubsection{Queue manager Interface}
+This interface is comprised with methods that manages the availability of the taxis, functions for adding, or removing the taxis are supplied. \newline
+List of methods:
+\begin{itemize}
+	\item \texttt{addTaxi()}
+	\item \texttt{removeTaxi()}
+	\item \texttt{changeTaxiStatus()}
+\end{itemize}
 \subsubsection{myTaxiService Database interface}
+This interfaces is not directly implemented in the system-to-be, instead an existing third party library is used (JDBC) which already supplies its own set of interfaces so that the system can manipulate the database.
 \subsubsection{Maps Service interface}
+As with the previous section, also this interface is exposed by a third party component so that it exposes a series of methods that are suitable using in the system-to-be.
 \subsection{Selected architectural styles and patterns}
 SOA, Client-Server, three tier, MVC, publisher-subscriber
 \subsection{Other design decisions}
