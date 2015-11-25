@@ -20,6 +20,53 @@
 \end{figure}
 \subsection{Runtime View}
 \subsection{Component Interfaces}
+In this section all the interfaces that connect each component in the component view are explained and analyzed.
+\subsubsection{Passenger UI Logic Interface}
+This interface provides the entry point to the system for the passenger.
+The following is a list of the methods provided by this interface, they are all pretty self-explanatory:
+\begin{itemize}
+	\item \texttt{showHome()}
+	\item \texttt{showLogin()}
+	\item \texttt{showSignUp()}
+	\item \texttt{showRequestPage()}
+	\item \texttt{showReservationPage()}
+	\item \texttt{showRequestInformation()}
+	\item \texttt{submitLoginCredentials()}
+	\item \texttt{submitRegistrationCred()}
+	\item \texttt{submitRequestData()}
+	\item \texttt{submitReservationData()}
+\end{itemize}
+The interface is comprised as a series of methods that the passenger can invoke. Each \texttt{show*()} method maps to a specific web page or screen in the mobile application, the actual invocation takes place when a passenger loads in his/her browser or in the application one of the screens. Each page or screen has some sort of navigation methods so that it can call some of the other \texttt{show*()} methods present in this interface.
+The \texttt{submit*()} methods are called when the passenger wants to send data to system for instance when he/she has just completed the filling of a form, they validate the input and forward the request of the appropriate component in the system back-end, eventually they show a informative page or screen that notifies the user whether the operation completed or not, and in the latter case why. 
+\subsubsection{Taxi Driver UI Logic Interface}
+This interface provides the entry point to the system for the taxi driver.
+...
+\begin{itemize}
+	\item \texttt{showLogin()}
+	\item \texttt{submitLoginCredentials()}
+	\item \texttt{acceptRequest()}
+	\item \texttt{rejectRequest()}
+	\item \texttt{changeWorkingStatus()}
+	\item \texttt{showNewIncomingRequest()} (explain)
+\end{itemize}
+\subsubsection{System Administrator UI Logic Interface}
+This interface provides the entry point to the system for the administrator.
+...
+\begin{itemize}
+	\item \texttt{showLogin()}
+	\item \texttt{showMainMenu()}
+	\item \texttt{showAddNewDriver()}
+	\item \texttt{showRemoveDriver()}
+	\item \texttt{showModifyDriver()}
+	\item \texttt{submitLoginCredentials()}
+	\item \texttt{submitDriverInformations()}
+	\item \texttt{submitDeleteRequest()}
+\end{itemize}
+\subsubsection{Access control interface}
+\subsubsection{Ride manager interface}
+\subsubsection{Queue manager interface}
+\subsubsection{myTaxiService Database interface}
+\subsubsection{Maps Service interface}
 \subsection{Selected architectural styles and patterns}
 SOA, Client-Server, three tier, MVC, publisher-subscriber
 \subsection{Other design decisions}

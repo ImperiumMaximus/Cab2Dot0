@@ -1,6 +1,33 @@
 \section{Algorithm Design}
 \subsection{Find a queue knowing the position}
+\begin{algorithm}[H]
+	\SetKwData{location}{loc}
+	\SetKwData{queue}{q}
+	\SetKwData{map}{Map}
+	\SetKwProg{myfun}{Function}{}{end}
+	\SetKwFunction{findqueue}{findQueue}
+	\SetKwFunction{queues}{queues}
+	\SetKwFunction{contains}{containsLocation}
+	\myfun{\findqueue{\location: Location}} {
+		\KwData{\location, a location on the map that can (possibly) belong to a Queue}
+		\KwResult{an instance of the object Queue if the location is valid, $null$ otherwise}
+		\BlankLine
+		\ForEach{\queue $in$ \map.\queues{}}{
+			\If{\queue.\contains{\location}}{
+				\KwRet{\queue}\;
+			}
+		}
+		\KwRet{$null$}\;
+	}
+\end{algorithm}
 \subsection{Queues setup}
+\begin{algorithm}[H]
+	\SetKwFunction{qSetup}{queuesSetup}
+	\SetKwProg{myfun}{Function}{}{end}
+	\myfun{\qSetup{}} {
+		
+	}
+\end{algorithm}
 \subsection{Add a taxi to a queue}
 \begin{algorithm}[H]
 	\SetKwData{queue}{q}
@@ -14,15 +41,14 @@
 		\KwData{\driver, a Taxi Driver that is going to be added to the appropriate queue,\newline\location: the Location of the taxi driver being processed}
 		\KwResult{$true$ if the operation successfully completes,\newline$false$ otherwise}
 		\BlankLine
-		\queue $\leftarrow$ \findqueue{l}\;
+		\queue $\leftarrow$ \findqueue{\location}\;
 		\eIf{\queue $\neq null$}{
-			\queue.\enqueue{t}\;
+			\queue.\enqueue{\driver}\;
 			\KwRet{$true$}\;
 		}{
 			\KwRet{$false$}\;
 		}\
 	}
-	\caption{TaxiDriver insertion in a queue knowing his/her position}
 \end{algorithm}
 \subsection{Assign a taxi to an incoming request}
 \begin{algorithm}[H]
@@ -73,5 +99,4 @@
 			\KwRet{$false$};
 		}\
 	}
-	\caption{TaxiDriver assignment from an incoming request}
 \end{algorithm}

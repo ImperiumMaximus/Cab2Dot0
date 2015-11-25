@@ -53,7 +53,7 @@
     \put(0.35646474,0.55424955){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{ComponentDiagram.pdf}}%
     \put(0.19213382,0.36121157){\makebox(0,0)[lb]{\smash{Mobile}}}%
-    \put(0.35307414,0.539783){\makebox(0,0)[b]{\smash{\textbf{GUI}}}}%
+    \put(0.35578662,0.539783){\makebox(0,0)[b]{\smash{\textbf{GUI Logic}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{ComponentDiagram.pdf}}%
     \put(0.08160036,0.51898734){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{ComponentDiagram.pdf}}%
@@ -69,15 +69,18 @@
     \put(0,0){\includegraphics[width=\unitlength,page=9]{ComponentDiagram.pdf}}%
     \put(0.3528481,0.51898734){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{ComponentDiagram.pdf}}%
-    \put(0.35307414,0.50180832){\makebox(0,0)[b]{\smash{\textbf{Passenger UI}}}}%
+    \put(0.35307414,0.50271248){\makebox(0,0)[b]{\smash{\textbf{Passenger UI}}}}%
+    \put(0.35307414,0.48824593){\makebox(0,0)[b]{\smash{\textbf{Logic}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{ComponentDiagram.pdf}}%
     \put(0.3528481,0.38336347){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{ComponentDiagram.pdf}}%
-    \put(0.35307414,0.36708861){\makebox(0,0)[b]{\smash{\textbf{Taxi Driver UI}}}}%
+    \put(0.35307414,0.36301989){\makebox(0,0)[b]{\smash{\textbf{Taxi Driver UI}}}}%
+    \put(0.35307414,0.34855335){\makebox(0,0)[b]{\smash{\textbf{Logic}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=13]{ComponentDiagram.pdf}}%
     \put(0.3528481,0.25678119){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=14]{ComponentDiagram.pdf}}%
-    \put(0.35307414,0.24050633){\makebox(0,0)[b]{\smash{\textbf{Sys Admin UI}}}}%
+    \put(0.35307414,0.23643761){\makebox(0,0)[b]{\smash{\textbf{Sys Admin UI}}}}%
+    \put(0.35307414,0.22197107){\makebox(0,0)[b]{\smash{\textbf{Logic}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=15]{ComponentDiagram.pdf}}%
     \put(0.19665461,0.52034358){\makebox(0,0)[lb]{\smash{Mobile}}}%
     \put(0.17857143,0.44439421){\makebox(0,0)[lb]{\smash{Web browser}}}%
