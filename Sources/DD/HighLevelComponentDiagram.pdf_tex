@@ -60,7 +60,7 @@
     \put(0,0){\includegraphics[width=\unitlength,page=5]{HighLevelComponentDiagram.pdf}}%
     \put(0.65345821,0.28722382){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{HighLevelComponentDiagram.pdf}}%
-    \put(0.65369837,0.26945245){\makebox(0,0)[b]{\smash{\textbf{Access Control}}}}%
+    \put(0.65369837,0.26945245){\makebox(0,0)[b]{\smash{\textbf{Access Control}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{HighLevelComponentDiagram.pdf}}%
     \put(0.65345821,0.07588857){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{HighLevelComponentDiagram.pdf}}%

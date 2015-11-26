@@ -1,12 +1,29 @@
 \section{Architectural Design}
 \subsection{Overview}
+\label{sec:overview}
 \subsection{High level components and their interaction}
+\label{sec:high-level}
+The following is a diagram that shows the composition of the system in terms of high level components. \newline
+In the next section this component are expanded and further analyzed so eventually the overall system is completely described.
 \begin{figure}[H]
 	\centering
 	\resizebox{6in}
 	{!}{\input{HighLevelComponentDiagram.pdf_tex}}
+	\caption{High level components diagram}
 \end{figure}
+As one can see in the diagram, the system is composed in three distinct levels:
+\begin{itemize}
+	\item GUI Logic
+	\item Access Control and Ride Manager
+	\item Database
+\end{itemize}
+This components can be easily mapped in the MVC architectural style (as later described in \nameref{sec:arch-styles-patterns} section).
+Each components also is mapped into a specified tier among the server architecture as briefly described in the \nameref{sec:overview} section and further explained in the \nameref{sec:arch-styles-patterns} section.
+The remaining component models all the possible actors, in the sense that it represents the physical things (a smartphone or a computer with the appropriate software installed on them) that actually interact with the system. \newline
+The diagram clearly shows that there's a single macro-component that exposes a set of functionalities and methods that an actor can use. This macro-component is the only entry point available for all the actors, the reason for this choice is to preserve a simple architecture and also increase the cohesion and reusability of the component. \newline
+This component is actually composed of a bunch of sub-components as described in the next section \nameref{sec:component-view}, each sub-component carry out specific functionalities for each actor defined in the RASD.
 \subsection{Component View}
+\label{sec:component-view}
 \begin{figure}[H]
 	\centering
 	\resizebox{6in}
@@ -22,7 +39,7 @@
 \subsection{Component Interfaces}
 In this section all the interfaces that connect each component in the component view are explained and analyzed.
 \subsubsection{Passenger UI Logic Interface}
-This interface provides the entry point to the system for the passenger.
+This interface provides the entry point to the system for the passenger. \newline
 The following is a list of the methods provided by this interface, they are all pretty self-explanatory:
 \begin{itemize}
 	\item \texttt{showHome()}
@@ -36,7 +53,7 @@ The following is a list of the methods provided by this interface, they are all 
 	\item \texttt{submitRequestData()}
 	\item \texttt{submitReservationData()}
 \end{itemize}
-The interface is comprised as a series of methods that the passenger can invoke. Each \texttt{show*()} method maps to a specific web page or screen in the mobile application, the actual invocation takes place when a passenger loads in his/her browser or in the application one of the screens. Each page or screen has some sort of navigation methods so that it can call some of the other \texttt{show*()} methods present in this interface.
+The interface is comprised as a series of methods that the passenger can invoke. Each \texttt{show*()} method maps to a specific web page or screen in the mobile application, the actual invocation takes place when a passenger loads in his/her browser or in the application one of the screens. Each page or screen has some sort of navigation methods so that it can call some of the other \texttt{show*()} methods present in this interface. \newline
 The \texttt{submit*()} methods are called when the passenger wants to send data to system for instance when he/she has just completed the filling of a form, they validate the input and forward the request of the appropriate component in the system back-end, eventually they show a informative page or screen that notifies the user whether the operation completed or not, and in the latter case why. 
 \subsubsection{Taxi Driver UI Logic Interface}
 This interface provides the entry point to the system for the taxi driver.
@@ -95,5 +112,7 @@ This interfaces is not directly implemented in the system-to-be, instead an exis
 \subsubsection{Maps Service interface}
 As with the previous section, also this interface is exposed by a third party component so that it exposes a series of methods that are suitable using in the system-to-be.
 \subsection{Selected architectural styles and patterns}
+\label{sec:arch-styles-patterns}
+
 SOA, Client-Server, three tier, MVC, publisher-subscriber
 \subsection{Other design decisions}
