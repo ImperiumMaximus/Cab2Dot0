@@ -29,6 +29,7 @@ This component is actually composed of a bunch of sub-components as described in
 	\resizebox{6in}
 	{!}{\input{ComponentDiagramStripped.pdf_tex}}
 \end{figure}
+appunti: actors exploded in three different components with specific ui logic for each one of them, for taxi driver and passengers use already present sdk frameworks to implement apps, explain why unique access control for all actors, one single ride manager for both reservations and requests, explain queue manager, how the ride manager and taxi driver ui logic interact with it, explain why a maps services component and an external db for cars and driver are needed
 \subsection{Deployment View}
 \begin{figure}[H]
 	\centering
@@ -36,6 +37,7 @@ This component is actually composed of a bunch of sub-components as described in
 	{!}{\input{DeploymentDiagram.pdf_tex}}
 \end{figure}
 \subsection{Runtime View}
+appunti: explode use cases sequence diagrams with detailed interaction between components.
 \subsection{Component Interfaces}
 In this section all the interfaces that connect each component in the component view are explained and analyzed.
 \subsubsection{Passenger UI Logic Interface}
@@ -107,12 +109,11 @@ List of methods:
 	\item \texttt{removeTaxi()}
 	\item \texttt{changeTaxiStatus()}
 \end{itemize}
-\subsubsection{myTaxiService Database interface}
-This interfaces is not directly implemented in the system-to-be, instead an existing third party library is used (JDBC) which already supplies its own set of interfaces so that the system can manipulate the database.
-\subsubsection{Maps Service interface}
+\subsubsection{Databases interface}
+This interface is not directly implemented in the system-to-be, instead an existing third party library is used (JDBC) which already supplies its own set of interfaces so that the system can manipulate the database.
+\subsubsection{Maps API}
 As with the previous section, also this interface is exposed by a third party component so that it exposes a series of methods that are suitable using in the system-to-be.
 \subsection{Selected architectural styles and patterns}
 \label{sec:arch-styles-patterns}
-
-SOA, Client-Server, three tier, MVC, publisher-subscriber
+appunti: SOA, Client-Server, three tier, MVC, publisher-subscriber. Divide them in paragraphs
 \subsection{Other design decisions}

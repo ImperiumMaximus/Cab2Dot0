@@ -50,39 +50,39 @@
   \makeatother%
   \begin{picture}(1,0.63514719)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{DeploymentDiagram.pdf}}%
-    \put(0.09407672,0.19982159){\makebox(0,0)[b]{\smash{:WebBrowser}}}%
+    \put(0.09388938,0.19982159){\makebox(0,0)[b]{\smash{:WebBrowser}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{DeploymentDiagram.pdf}}%
-    \put(0.09853702,0.17573595){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.09834969,0.17573595){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{DeploymentDiagram.pdf}}%
     \put(0.0985727,0.16369313){\makebox(0,0)[b]{\smash{\textbf{Sys Admin}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{DeploymentDiagram.pdf}}%
-    \put(0.09407672,0.36574487){\makebox(0,0)[b]{\smash{<<device>>}}}%
-    \put(0.09407672,0.3514719){\makebox(0,0)[b]{\smash{:Smartphone}}}%
-    \put(0.09407672,0.33719893){\makebox(0,0)[b]{\smash{\{OS=Android\}}}}%
+    \put(0.09388938,0.36574487){\makebox(0,0)[b]{\smash{<<device>>}}}%
+    \put(0.09388938,0.3514719){\makebox(0,0)[b]{\smash{:Smartphone}}}%
+    \put(0.09388938,0.33719893){\makebox(0,0)[b]{\smash{\{OS=Android\}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{DeploymentDiagram.pdf}}%
-    \put(0.09853702,0.3175736){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.09834969,0.3175736){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{DeploymentDiagram.pdf}}%
     \put(0.0985727,0.30463872){\makebox(0,0)[b]{\smash{\textbf{Taxi Driver}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{DeploymentDiagram.pdf}}%
-    \put(0.09407672,0.52988403){\makebox(0,0)[b]{\smash{<<device>>}}}%
-    \put(0.09407672,0.51561106){\makebox(0,0)[b]{\smash{:Smartphone/}}}%
-    \put(0.09407672,0.50133809){\makebox(0,0)[b]{\smash{Web Browser}}}%
+    \put(0.09388938,0.52988403){\makebox(0,0)[b]{\smash{<<device>>}}}%
+    \put(0.09388938,0.51561106){\makebox(0,0)[b]{\smash{:Smartphone/}}}%
+    \put(0.09388938,0.50133809){\makebox(0,0)[b]{\smash{Web Browser}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{DeploymentDiagram.pdf}}%
-    \put(0.09853702,0.48171276){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.09834969,0.48171276){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{DeploymentDiagram.pdf}}%
     \put(0.0985727,0.47011597){\makebox(0,0)[b]{\smash{\textbf{Passenger}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{DeploymentDiagram.pdf}}%
-    \put(0.42859946,0.57448707){\makebox(0,0)[b]{\smash{<<device>>}}}%
-    \put(0.42859946,0.56021409){\makebox(0,0)[b]{\smash{:PresentationServer}}}%
-    \put(0.42859946,0.54594112){\makebox(0,0)[b]{\smash{\{OS=Linux\}}}}%
+    \put(0.42841213,0.57448707){\makebox(0,0)[b]{\smash{<<device>>}}}%
+    \put(0.42841213,0.56021409){\makebox(0,0)[b]{\smash{:PresentationServer}}}%
+    \put(0.42841213,0.54594112){\makebox(0,0)[b]{\smash{\{OS=Linux\}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{DeploymentDiagram.pdf}}%
-    \put(0.42859946,0.52631579){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.42841213,0.52631579){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{DeploymentDiagram.pdf}}%
-    \put(0.43305976,0.27029438){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.43287244,0.27029438){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=13]{DeploymentDiagram.pdf}}%
-    \put(0.43305976,0.37109723){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.43287244,0.37109723){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=14]{DeploymentDiagram.pdf}}%
-    \put(0.43305976,0.48171276){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.43287244,0.48171276){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=15]{DeploymentDiagram.pdf}}%
     \put(0.42863515,0.514719){\makebox(0,0)[b]{\smash{\textbf{GUI}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=16]{DeploymentDiagram.pdf}}%
@@ -92,25 +92,25 @@
     \put(0,0){\includegraphics[width=\unitlength,page=18]{DeploymentDiagram.pdf}}%
     \put(0.1984835,0.50178412){\makebox(0,0)[lb]{\smash{<<SOAP/HTTPS>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=19]{DeploymentDiagram.pdf}}%
-    \put(0.70959859,0.57448707){\makebox(0,0)[b]{\smash{<<device>>}}}%
-    \put(0.70959859,0.56021409){\makebox(0,0)[b]{\smash{:ApplicationServer}}}%
-    \put(0.70959859,0.54594112){\makebox(0,0)[b]{\smash{\{OS = Linux\}}}}%
+    \put(0.70941124,0.57448707){\makebox(0,0)[b]{\smash{<<device>>}}}%
+    \put(0.70941124,0.56021409){\makebox(0,0)[b]{\smash{:ApplicationServer}}}%
+    \put(0.70941124,0.54594112){\makebox(0,0)[b]{\smash{\{OS = Linux\}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=20]{DeploymentDiagram.pdf}}%
-    \put(0.7140589,0.42105263){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.71387154,0.42105263){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=21]{DeploymentDiagram.pdf}}%
     \put(0.71409456,0.40767172){\makebox(0,0)[b]{\smash{\textbf{Access Control}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=22]{DeploymentDiagram.pdf}}%
-    \put(0.7140589,0.52809991){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.71387154,0.52809991){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=23]{DeploymentDiagram.pdf}}%
     \put(0.71409456,0.514719){\makebox(0,0)[b]{\smash{\textbf{Ride Manager}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=24]{DeploymentDiagram.pdf}}%
     \put(0.56422837,0.46164139){\makebox(0,0)[lb]{\smash{<<EJB>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=25]{DeploymentDiagram.pdf}}%
-    \put(0.91031224,0.57448707){\makebox(0,0)[b]{\smash{<<device>>}}}%
-    \put(0.91031224,0.56021409){\makebox(0,0)[b]{\smash{:DBServer}}}%
-    \put(0.91031224,0.54594112){\makebox(0,0)[b]{\smash{\{OS: Linux\}}}}%
+    \put(0.91012489,0.57448707){\makebox(0,0)[b]{\smash{<<device>>}}}%
+    \put(0.91012489,0.56021409){\makebox(0,0)[b]{\smash{:DBServer}}}%
+    \put(0.91012489,0.54594112){\makebox(0,0)[b]{\smash{\{OS: Linux\}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=26]{DeploymentDiagram.pdf}}%
-    \put(0.91031224,0.52631579){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.91012489,0.52631579){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=27]{DeploymentDiagram.pdf}}%
     \put(0.9103479,0.50669045){\makebox(0,0)[b]{\smash{\textbf{myTaxiService}}}}%
     \put(0.9103479,0.49241748){\makebox(0,0)[b]{\smash{\textbf{Database}}}}%
@@ -118,14 +118,14 @@
     \put(0,0){\includegraphics[width=\unitlength,page=28]{DeploymentDiagram.pdf}}%
     \put(0.78278323,0.62221231){\makebox(0,0)[lb]{\smash{<<JDBC>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=29]{DeploymentDiagram.pdf}}%
-    \put(0.7140589,0.32024978){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.71387154,0.32024978){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=30]{DeploymentDiagram.pdf}}%
     \put(0.71543265,0.30463872){\makebox(0,0)[b]{\smash{\textbf{Queue Manager}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=31]{DeploymentDiagram.pdf}}%
-    \put(0.70959859,0.11864407){\makebox(0,0)[b]{\smash{<<external device>>}}}%
-    \put(0.70959859,0.1043711){\makebox(0,0)[b]{\smash{:MapsServer}}}%
+    \put(0.70941124,0.11864407){\makebox(0,0)[b]{\smash{<<external device>>}}}%
+    \put(0.70941124,0.1043711){\makebox(0,0)[b]{\smash{:MapsServer}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=32]{DeploymentDiagram.pdf}}%
-    \put(0.70959859,0.07047279){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0.70941124,0.07047279){\makebox(0,0)[b]{\smash{<<component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=33]{DeploymentDiagram.pdf}}%
     \put(0.71008029,0.05218555){\makebox(0,0)[b]{\smash{\textbf{Maps API}}}}%
     \put(0.71008029,0.03791258){\makebox(0,0)[b]{\smash{\textbf{\{Vendor: Google\}}}}}%
@@ -134,5 +134,15 @@
     \put(0.43309545,0.46699376){\makebox(0,0)[b]{\smash{\textbf{Passenger UI}}}}%
     \put(0.43309545,0.35816236){\makebox(0,0)[b]{\smash{\textbf{Taxi Driver UI}}}}%
     \put(0.43309545,0.25379126){\makebox(0,0)[b]{\smash{\textbf{Sys Admin UI}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=35]{DeploymentDiagram.pdf}}%
+    \put(0.91012489,0.39518287){\makebox(0,0)[b]{\smash{<<external device>>}}}%
+    \put(0.91012489,0.3809099){\makebox(0,0)[b]{\smash{:ExtDBServer}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=36]{DeploymentDiagram.pdf}}%
+    \put(0.91458519,0.34790366){\makebox(0,0)[b]{\smash{<<component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=37]{DeploymentDiagram.pdf}}%
+    \put(0.91480821,0.32872435){\makebox(0,0)[b]{\smash{\textbf{Cars and Drivers}}}}%
+    \put(0.91480821,0.31445138){\makebox(0,0)[b]{\smash{\textbf{Database}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=38]{DeploymentDiagram.pdf}}%
+    \put(0.83184657,0.23505798){\makebox(0,0)[lb]{\smash{<<JDBC>>}}}%
   \end{picture}%
 \endgroup%

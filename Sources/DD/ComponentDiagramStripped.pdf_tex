@@ -104,11 +104,11 @@
     \put(0.4717564,0.50176523){\makebox(0,0)[lb]{\smash{Access Control}}}%
     \put(0.4717564,0.48940865){\makebox(0,0)[lb]{\smash{Interface}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=25]{ComponentDiagramStripped.pdf}}%
-    \put(0.91990291,0.36275375){\makebox(0,0)[b]{\smash{<<external component>>}}}%
+    \put(0.9190203,0.3168579){\makebox(0,0)[b]{\smash{<<external component>>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=26]{ComponentDiagramStripped.pdf}}%
-    \put(0.92012357,0.34598411){\makebox(0,0)[b]{\smash{\textbf{Maps Service}}}}%
+    \put(0.91924095,0.30008826){\makebox(0,0)[b]{\smash{\textbf{Maps Service}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=27]{ComponentDiagramStripped.pdf}}%
-    \put(0.77360989,0.36760812){\makebox(0,0)[lb]{\smash{Maps API}}}%
+    \put(0.77272727,0.32171227){\makebox(0,0)[lb]{\smash{Maps API}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=28]{ComponentDiagramStripped.pdf}}%
     \put(0.62621359,0.26522507){\makebox(0,0)[lb]{\smash{Ride Manager}}}%
     \put(0.62621359,0.25286849){\makebox(0,0)[lb]{\smash{Interface}}}%
@@ -121,5 +121,11 @@
     \put(0.1831421,0.25728155){\makebox(0,0)[lb]{\smash{Sys Admin UI}}}%
     \put(0.1831421,0.24492498){\makebox(0,0)[lb]{\smash{Logic Interface}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=30]{ComponentDiagramStripped.pdf}}%
+    \put(0.91990291,0.41924095){\makebox(0,0)[b]{\smash{<<external component>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=31]{ComponentDiagramStripped.pdf}}%
+    \put(0.91482789,0.40379523){\makebox(0,0)[b]{\smash{\textbf{Cars and Drivers}}}}%
+    \put(0.91482789,0.38967343){\makebox(0,0)[b]{\smash{\textbf{Database}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=32]{ComponentDiagramStripped.pdf}}%
+    \put(0.73300971,0.40379523){\makebox(0,0)[lb]{\smash{JDBC}}}%
   \end{picture}%
 \endgroup%
