@@ -20,7 +20,7 @@ As one can see in the diagram, the system is composed in three distinct levels:
 This components can be easily mapped in the MVC architectural style (as later described in \nameref{sec:arch-styles-patterns} section).
 Each components also is mapped into a specified tier among the server architecture as briefly described in the \nameref{sec:overview} section and further explained in the \nameref{sec:arch-styles-patterns} section.
 The remaining component models all the possible actors, in the sense that it represents the physical things (a smartphone or a computer with the appropriate software installed on them) that actually interact with the system. \newline
-The diagram clearly shows that there's a single macro-component that exposes a set of functionalities and methods that an actor can use. This macro-component is the only entry point available for all the actors, the reason for this choice is to preserve a simple architecture and also increase the cohesion and reusability of the component. \newline
+The diagram clearly shows that there's a single macro-component that exposes a set of functionalities and methods that an actor can use. This macro-component is the only entry point available for all the actors, the reason for this choice is to preserve a simple architecture and also increase the cohesion and reusability of the component itself. \newline
 This component is actually composed of a bunch of sub-components as described in the next section \nameref{sec:component-view}, each sub-component carry out specific functionalities for each actor defined in the RASD.
 \subsection{Component View}
 \label{sec:component-view}
@@ -29,13 +29,17 @@ This component is actually composed of a bunch of sub-components as described in
 	\resizebox{6in}
 	{!}{\input{ComponentDiagramStripped.pdf_tex}}
 \end{figure}
-appunti: actors exploded in three different components with specific ui logic for each one of them, for taxi driver and passengers use already present sdk frameworks to implement apps, explain why unique access control for all actors, one single ride manager for both reservations and requests, explain queue manager, how the ride manager and taxi driver ui logic interact with it, explain why a maps services component and an external db for cars and driver are needed
+appunti: explain why unique access control for all actors, one single ride manager for both reservations and requests, explain queue manager, how the ride manager and taxi driver ui logic interact with it, explain why a maps services component and an external db for cars and driver are needed. \newline
+As one can see from the diagram, the generic ``Actor'' component is now split in three different components one for each actor, the main reason for this is that each actor access and use a specific interface supplied in one of the three sub-components in the GUI Logic component. The methods that comprise such interfaces are described in the \nameref{sec:arch-styles-patterns} section. \newline
+The GUI Logic component hosts the interface logic suitable for viewing either with a web browser or a mobile application, this component has the main role of collecting all the requests from the external devices of all the actors, and then forward them to the right back-end component. \newline
+The Access control component is in charge of authenticating the users, ensuring that only registered users can use the system.
 \subsection{Deployment View}
 \begin{figure}[H]
 	\centering
 	\resizebox{6in}
 	{!}{\input{DeploymentDiagram.pdf_tex}}
 \end{figure}
+appunti: for taxi driver and passengers use already present sdk frameworks to implement apps,
 \subsection{Runtime View}
 appunti: explode use cases sequence diagrams with detailed interaction between components.
 \subsection{Component Interfaces}
@@ -115,5 +119,5 @@ This interface is not directly implemented in the system-to-be, instead an exist
 As with the previous section, also this interface is exposed by a third party component so that it exposes a series of methods that are suitable using in the system-to-be.
 \subsection{Selected architectural styles and patterns}
 \label{sec:arch-styles-patterns}
-appunti: SOA, Client-Server, three tier, MVC, publisher-subscriber. Divide them in paragraphs
+appunti: SOA, Client-Server, three tier, JEE, MVC, publisher-subscriber, façade. Divide them in paragraphs
 \subsection{Other design decisions}
