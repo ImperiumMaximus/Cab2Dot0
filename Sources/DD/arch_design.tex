@@ -1,10 +1,11 @@
 \section{Architectural Design}
 \subsection{Overview}
 \label{sec:overview}
+The system is constituted by a three-tier architecture, in fact it's divided into GUI, application programs and database. The first one isn't only on users' devices, since the interface stays on users' smartphones and browsers, but the logic part is located on server side. On another server lays the application part where the system manages interactions beetween components and elaborates inputs coming from GUI. Database storage stays on a separated server from the logic one, it contains information about taxi drivers and their cabs, in addition to passenger personal details.  
 \subsection{High level components and their interaction}
 \label{sec:high-level}
-The following is a diagram that shows the composition of the system in terms of high level components. \newline
-In the next section this component are expanded and further analyzed so eventually the overall system is completely described.
+The following diagram shows the composition of the system in terms of high level components. \newline
+In the next section these components are explained and further analyzed to describe the overall system.
 \begin{figure}[H]
 	\centering
 	\resizebox{6in}
@@ -17,11 +18,11 @@ As one can see in the diagram, the system is composed in three distinct levels:
 	\item Access Control and Ride Manager
 	\item Database
 \end{itemize}
-This components can be easily mapped in the MVC architectural style (as later described in \nameref{sec:arch-styles-patterns} section).
-Each components also is mapped into a specified tier among the server architecture as briefly described in the \nameref{sec:overview} section and further explained in the \nameref{sec:arch-styles-patterns} section.
-The remaining component models all the possible actors, in the sense that it represents the physical things (a smartphone or a computer with the appropriate software installed on them) that actually interact with the system. \newline
-The diagram clearly shows that there's a single macro-component that exposes a set of functionalities and methods that an actor can use. This macro-component is the only entry point available for all the actors, the reason for this choice is to preserve a simple architecture and also increase the cohesion and reusability of the component itself. \newline
-This component is actually composed of a bunch of sub-components as described in the next section \nameref{sec:component-view}, each sub-component carry out specific functionalities for each actor defined in the RASD.
+These components can be easily mapped in the MVC architectural style (as later described in \nameref{sec:arch-styles-patterns} section).
+Each component is also mapped in a specified tier among the server architecture as briefly described in the \nameref{sec:overview} section and further explained in the \nameref{sec:arch-styles-patterns} section.
+The remaining component models all possible actors, in fact it represents physical elements (a smartphone or a computer with an appropriate software installed on them) that actually interact with the system. \newline
+The diagram clearly shows that there is a single macro-component that exposes a set of functionalities and methods an actor can use. This macro-component is the only entry point available to all the actors, this coiche has been made to preserve a simple architecture and also to increase the cohesion and reusability of the component itself. \newline
+This component is actually composed of a bunch of sub-components as described in the next section \nameref{sec:component-view}, each sub-component carries out specific functionalities for each actor defined in the RASD.
 \subsection{Component View}
 \label{sec:component-view}
 \begin{figure}[H]
@@ -30,9 +31,9 @@ This component is actually composed of a bunch of sub-components as described in
 	{!}{\input{ComponentDiagramStripped.pdf_tex}}
 \end{figure}
 appunti: explain why unique access control for all actors, one single ride manager for both reservations and requests, explain queue manager, how the ride manager and taxi driver ui logic interact with it, explain why a maps services component and an external db for cars and driver are needed. \newline
-As one can see from the diagram, the generic ``Actor'' component is now split in three different components one for each actor, the main reason for this is that each actor access and use a specific interface supplied in one of the three sub-components in the GUI Logic component. The methods that comprise such interfaces are described in the \nameref{sec:arch-styles-patterns} section. \newline
-The GUI Logic component hosts the interface logic suitable for viewing either with a web browser or a mobile application, this component has the main role of collecting all the requests from the external devices of all the actors, and then forward them to the right back-end component. \newline
-The Access control component is in charge of authenticating the users, ensuring that only registered users can use the system.
+It's possible to see from this diagram a generic ``Actor'' component is now split in three different components, one for each actor, the main reason for this decision is that each actor accesses and uses a specific interface supplied in one of the three sub-components in the GUI Logic component. Methods that comprise such interfaces are described in the \nameref{sec:arch-styles-patterns} section. \newline
+The GUI Logic component hosts the interface logic suitable for using both a web browser and a mobile application, this component has the main role of collecting all requests from external devices of all actors, and then forward them to the right back-end component. \newline
+The Access control component is in charge of authenticating users, ensuring that only registered users can use the system.
 \subsection{Deployment View}
 \begin{figure}[H]
 	\centering
@@ -43,9 +44,9 @@ appunti: for taxi driver and passengers use already present sdk frameworks to im
 \subsection{Runtime View}
 appunti: explode use cases sequence diagrams with detailed interaction between components.
 \subsection{Component Interfaces}
-In this section all the interfaces that connect each component in the component view are explained and analyzed.
+In this section all interfaces that connect each component in the component view are explained and analyzed.
 \subsubsection{Passenger UI Logic Interface}
-This interface provides the entry point to the system for the passenger. \newline
+This interface provides the entry point to the system for passengers. \newline
 The following is a list of the methods provided by this interface, they are all pretty self-explanatory:
 \begin{itemize}
 	\item \texttt{showHome()}
@@ -59,8 +60,8 @@ The following is a list of the methods provided by this interface, they are all 
 	\item \texttt{submitRequestData()}
 	\item \texttt{submitReservationData()}
 \end{itemize}
-The interface is comprised as a series of methods that the passenger can invoke. Each \texttt{show*()} method maps to a specific web page or screen in the mobile application, the actual invocation takes place when a passenger loads in his/her browser or in the application one of the screens. Each page or screen has some sort of navigation methods so that it can call some of the other \texttt{show*()} methods present in this interface. \newline
-The \texttt{submit*()} methods are called when the passenger wants to send data to system for instance when he/she has just completed the filling of a form, they validate the input and forward the request of the appropriate component in the system back-end, eventually they show a informative page or screen that notifies the user whether the operation completed or not, and in the latter case why. 
+The interface is comprised as a series of methods that passengers can invoke. Each \texttt{show*()} method maps to a specific web page or screen in the mobile application, the actual invocation takes place when a passenger loads in his/her browser or in one screen of the application. Each page or screen has some sort of navigation methods so that it can call other \texttt{show*()} methods present in this interface. \newline
+The \texttt{submit*()} methods are called when a passenger wants to send data to system, for instance when he/she has just completed the filling of a form, these methods validate inputs and forward the request of the appropriate component in the system back-end, eventually they show an informative page or a screen that notify the user whether the operation is completed or not, and in the latter case why. 
 \subsubsection{Taxi Driver UI Logic Interface}
 This interface provides the entry point to the system for the taxi driver.
 The list of the methods is the following:
@@ -71,10 +72,10 @@ The list of the methods is the following:
 	\item \texttt{submitNewWorkingStatus()}
 	\item \texttt{showNewIncomingRequest()}
 \end{itemize}
-The meaning and the functional aspects of these methods are more or less similar of what explained in the previous section, one point to note is that this time this methods are invoked only by the mobile application installed in the taxi driver's smartphone, so there is no web interface available for this specific actor.
+Meaning and functional aspects of these methods are more or less similar to what has been explained in the previous section, one point to note is that this time these methods are invoked only by the mobile application installed in the taxi driver's smartphone, so there is no web interface available to this specific actor.
 \subsubsection{System Administrator UI Logic Interface}
 This interface provides the entry point to the system for the administrator. \newline
-As usual the methods list is the following:
+List of methods:
 \begin{itemize}
 	\item \texttt{showLogin()}
 	\item \texttt{showMainMenu()}
@@ -85,10 +86,10 @@ As usual the methods list is the following:
 	\item \texttt{submitDriverInformations()}
 	\item \texttt{submitDeleteRequest()}
 \end{itemize}
-One can notice that the name patterns for these methods are the same as in the previous sections.
+It can notice that pattern names for these methods are the same of previous sections.
 \subsubsection{Access control Interface}
-This interface supplies all the methods that enforce authentication and rights management in the system. \newline
-The following is a list of these methods:
+This interface supplies all the methods that enforce authentication and right management in the system. \newline
+List of methods:
 \begin{itemize}
 	\item \texttt{login()}
 	\item \texttt{logout()}
@@ -97,8 +98,8 @@ The following is a list of these methods:
 	\item \texttt{modifyPassengerCredentials()}
 \end{itemize}
 \subsubsection{Ride manager Interface}
-This interface contains the methods for creating and managing a single ride instance, either a request or a reservation. \newline
-Methods list:
+This interface contains methods to create and to manage a single ride instance, both requests and reservations. \newline
+List of methods:
 \begin{itemize}
 	\item \texttt{createRequest()}
 	\item \texttt{acceptRequest()}
@@ -106,7 +107,7 @@ Methods list:
 	\item \texttt{createReservation()}
 \end{itemize}
 \subsubsection{Queue manager Interface}
-This interface is comprised with methods that manages the availability of the taxis, functions for adding, or removing the taxis are supplied. \newline
+This interface comprises methods that manage the availability of taxis and supplies functions to add or to remove taxis. \newline
 List of methods:
 \begin{itemize}
 	\item \texttt{addTaxi()}
@@ -114,9 +115,9 @@ List of methods:
 	\item \texttt{changeTaxiStatus()}
 \end{itemize}
 \subsubsection{Databases interface}
-This interface is not directly implemented in the system-to-be, instead an existing third party library is used (JDBC) which already supplies its own set of interfaces so that the system can manipulate the database.
+This interface is not directly implemented in the system-to-be, instead an existing third party library (JDBC) is used which supplies its own set of interfaces to the system that can manipulate the database.
 \subsubsection{Maps API}
-As with the previous section, also this interface is exposed by a third party component so that it exposes a series of methods that are suitable using in the system-to-be.
+As with the previous section, also this interface is exposed by a third party component so that it exposes a series of methods that are suitable in the system-to-be.
 \subsection{Selected architectural styles and patterns}
 \label{sec:arch-styles-patterns}
 appunti: SOA, Client-Server, three tier, JEE, MVC, publisher-subscriber, façade. Divide them in paragraphs
