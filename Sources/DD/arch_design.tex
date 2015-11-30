@@ -30,17 +30,29 @@ This component is actually composed of a bunch of sub-components as described in
 	\resizebox{6in}
 	{!}{\input{ComponentDiagramStripped.pdf_tex}}
 \end{figure}
-appunti: explain why unique access control for all actors, one single ride manager for both reservations and requests, explain queue manager, how the ride manager and taxi driver ui logic interact with it, explain why a maps services component and an external db for cars and driver are needed. \newline
-It's possible to see from this diagram a generic ``Actor'' component is now split in three different components, one for each actor, the main reason for this decision is that each actor accesses and uses a specific interface supplied in one of the three sub-components in the GUI Logic component. Methods that comprise such interfaces are described in the \nameref{sec:arch-styles-patterns} section. \newline
-The GUI Logic component hosts the interface logic suitable for using both a web browser and a mobile application, this component has the main role of collecting all requests from external devices of all actors, and then forward them to the right back-end component. \newline
-The Access control component is in charge of authenticating users, ensuring that only registered users can use the system.
+appunti: explain queue manager, how the ride manager and taxi driver ui logic interact with it, explain why a maps services component and an external db for cars and driver are needed.
+\paragraph{Actors}
+It's possible to see from this diagram a generic ``Actor'' component is now split in three different components, one for each actor, the main reason for this decision is that each actor accesses and uses a specific interface supplied in one of the three sub-components in the GUI Logic component. Methods that comprise such interfaces are described in the \nameref{sec:arch-styles-patterns} section.
+\paragraph{GUI Logic}
+The GUI Logic component hosts the interface logic suitable for using both a web browser and a mobile application, this component has the main role of collecting all requests from external devices of all actors, and then forward them to the right back-end component.
+\paragraph{Access Control}
+The Access Control component manages the authentication users, and their permissions, ensuring that only registered users can use certain functions of the system. \newline Since these functionalities are similar to all actors, this component is unique, and the methods in its external interface are designed so that the component is aware of what type of actor is performing a specific action, the advantage of using such design is to increase the flexibility, and the reusability without sacrificing the simplicity of the overall system.
+\paragraph{Ride Manager}
+The Ride Manager component in charge of managing all the rides instances that are being served. This component creates, keeps track, terminates, each ride managed by the system. Each instance can be seen as a FSA, and the methods in the external interface in the component implement a state transition in the automaton, this is further described in the \nameref{sec:arch-styles-patterns} section. \newline
+This component manages both the requests and the reservations, in fact a reservation can be seen as a ``delayed'' request, thus we a little addition in the algorithms we can achieve both functionalities with little effort maximizing the reusability of such component.
+\paragraph{Queue Manager}
+This component manages all the queues belonging to the city map, one queue for each zone. The component strictly cooperate with the Ride Manager, but its external interface is generic enough to abstract the actual implementation of the policies for managing the queues. This allows the best flexibility and decoupling between this two components, whereas the architecture still remain simple and easy to understand, one can realize different implementations of the Queue Manager for instance a generic one for most of the zones, and a specific one for certain zones, for different reasons, for instance traffic load higher than normal, or a higher or a lesser probability of receive a request for a client in a specific zone. This policies can be considered during the implementation phase. \newline
+The component also manages the working state of the Taxi drivers, allow them to change between unavailable and available state then in turn removing or inserting them in the appropriate queue according to their location in the map (further described in the \nameref{sec:algo} section)
+\paragraph{myTaxiService Database}
+\paragraph{External Maps Services}
+\paragraph{External Cars and Drivers database}
 \subsection{Deployment View}
 \begin{figure}[H]
 	\centering
 	\resizebox{6in}
 	{!}{\input{DeploymentDiagram.pdf_tex}}
 \end{figure}
-appunti: for taxi driver and passengers use already present sdk frameworks to implement apps,
+appunti: for taxi driver and passengers use already present sdk frameworks to implement apps, JEE, mysql, JDBC, SOAP
 \subsection{Runtime View}
 appunti: explode use cases sequence diagrams with detailed interaction between components.
 \subsection{Component Interfaces}
@@ -87,7 +99,7 @@ List of methods:
 	\item \texttt{submitDeleteRequest()}
 \end{itemize}
 It can notice that pattern names for these methods are the same of previous sections.
-\subsubsection{Access control Interface}
+\subsubsection{Access Control Interface}
 This interface supplies all the methods that enforce authentication and right management in the system. \newline
 List of methods:
 \begin{itemize}
@@ -97,7 +109,7 @@ List of methods:
 	\item \texttt{taxiDriverSignUp()}
 	\item \texttt{modifyPassengerCredentials()}
 \end{itemize}
-\subsubsection{Ride manager Interface}
+\subsubsection{Ride Manager Interface}
 This interface contains methods to create and to manage a single ride instance, both requests and reservations. \newline
 List of methods:
 \begin{itemize}
@@ -106,7 +118,7 @@ List of methods:
 	\item \texttt{declineRequest()}
 	\item \texttt{createReservation()}
 \end{itemize}
-\subsubsection{Queue manager Interface}
+\subsubsection{Queue Manager Interface}
 This interface comprises methods that manage the availability of taxis and supplies functions to add or to remove taxis. \newline
 List of methods:
 \begin{itemize}
@@ -120,5 +132,26 @@ This interface is not directly implemented in the system-to-be, instead an exist
 As with the previous section, also this interface is exposed by a third party component so that it exposes a series of methods that are suitable in the system-to-be.
 \subsection{Selected architectural styles and patterns}
 \label{sec:arch-styles-patterns}
-appunti: SOA, Client-Server, three tier, JEE, MVC, publisher-subscriber, façade. Divide them in paragraphs
+The following section lists and describes the architectural styles that represent feasible choices during the development and the deployment phases. All the requirements specified in the RASD are taken into account, and also the design choices described in this document. 
+\subsection{Architectural styles}
+\paragraph{3-tier architecture}
+As implicitly explained in the \nameref{sec:overview} section, this is perhaps the most important style, also because all the components diagram and also the deployment view is modeled against this architecture, from the latter diagram we can infer that the tiers map in this way:
+\begin{itemize}
+	\item GUI Logic to Presentation tier 
+	\item Ride Manager, Access Control, Queue Manager, Maps to Logic tier
+	\item Databases to the Data tier
+\end{itemize}
+The main advantages of using this style is that it achieves a high level of modularity and flexibility of the overall system, also each tier can be designed and dimensioned based on the computational and power needed for it, moreover, as described in the non-functional requirements in the RASD each component is isolated with the respect to the others so that increases the security of each of them and also the overall system. One possible drawbacks is the increased complexity of the interfaces that need to be designed so that each tier can communicate each other, also each user interaction corresponds to many API methods calls within the system which in turn trigger some further processing of the data exchanged between the tiers, this can result in some loss of performance and response times, but this is mitigated by the fact that our interfaces are simple enough and also require little to none processing of the data when passing it from one tier to another.
+\paragraph{SOA}
+This style is used throughout the system both for the services that itself offers to the ``Actors'' and for the third party services that the system use to achieve its goals. Thus the system acts both as a service provider and as a service requester. \newline
+The services provided are of course the ones that derive from the goals already described in the RASD, thus requesting and reserving taxi, plus some accessory functionalities that we also described in the RASD (login, signup, etc.).\newline
+The services requested are the Maps Service and the external Cars and Drivers database that are needed in order to actually implement the services offered by this system, both are already been defined, implemented and documented so this document doesn't specify them in detail but we assume that can be easily integrated in the system using the already existing documentation. 
+\paragraph{Client-Server architecture}
+This is tightly coupled with both the 3-tier and SOA styles described previously, and this is one of the most used and common style used.
+\subsection{Design patterns}
+\paragraph{MVC}
+\paragraph{Publisher-subscriber}
+\paragraph{Fa\c{c}ade}
+\paragraph{Singleton}
+\paragraph{State pattern}
 \subsection{Other design decisions}
