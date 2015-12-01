@@ -28,7 +28,7 @@ From this browser page users can go to homepage and other important pages.
 \end{figure}
 \break
 \subsection{Login}
-From this page registered users can log in inserting either the registration email or username and the password chosen during registration. \newline If an user forgets his/her password, username or email, it's possible to recover them: a message on the mobile phone or an email is sent to him/her. \newline Also from this browser page users can go to homepage and other important pages.
+From this page registered users can log in inserting either the registration email or username and the password chosen during registration. \newline If an user forgets his/her password, username or email, it's possible to recover them: a message on the mobile phone or an email is sent to him/her. \newline Also from this browser page users can go to homepage and other important pages. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.35]{mockups/login_web.png}
@@ -38,6 +38,19 @@ From this page registered users can log in inserting either the registration ema
 \centering
 \includegraphics[scale=0.35]{mockups/login_mobile.png}
 \caption{Login Mobile Version}
+\end{figure}
+\break
+\subsection{Recovery Password}
+In the web version, registered users can recover their username, password and registration e-mail inserting following information. A SMS will send to the user who uses the recovery procedure containing all information necessary to log in. \newline On the contrary in mobile version, the recovery SMS is sent to the smartphone where the application is installed. \newline For the administrator it's not possible to use revorey procedure. \newline From this browser page users can go to homepage and other important pages.  
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.35]{mockups/recovery_login_page_web.png}
+\caption{Recovery Web Version}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.35]{mockups/recovery_login_mobile.png}
+\caption{Recovery Mobile Version}
 \end{figure}
 \break
 \subsection{Request}
@@ -79,3 +92,10 @@ This page is accessible only to registered taxi drivers, here they can manage in
 \caption{Driver Interface Mobile Version}
 \end{figure}
 \break
+\subsection{Administrator}
+This page is accessible only to the administrator. It's possible to add taci drivers inserting name, surname, taxi driver license and cab numbers. Taxi driver ID can be used only to search taxi drivers in DB to modify their information or to delete them from records. \newline Hyperlinks work exactly like in other cases, but to use web and mobile functions it's necessary to log in as passengers or taxi driver.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.35]{mockups/administrator.png}
+\caption{Administrator Web Page}
+\end{figure}
