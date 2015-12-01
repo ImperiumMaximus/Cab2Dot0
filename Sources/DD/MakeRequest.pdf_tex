@@ -1,0 +1,113 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'MakeRequest.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{764.8bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.82799232)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{MakeRequest.pdf}}%
+    \put(0.07348326,0.80184169){\makebox(0,0)[b]{\smash{:Passenger}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{MakeRequest.pdf}}%
+    \put(0.23038703,0.80916387){\makebox(0,0)[b]{\smash{:Passenger UI}}}%
+    \put(0.23038703,0.79451952){\makebox(0,0)[b]{\smash{Logic}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{MakeRequest.pdf}}%
+    \put(0.26621339,0.648076){\makebox(0,0)[lb]{\smash{4: validateData()}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{MakeRequest.pdf}}%
+    \put(0.15219665,0.76575383){\makebox(0,0)[b]{\smash{1: showRequestPage()}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{MakeRequest.pdf}}%
+    \put(0.15219665,0.72914295){\makebox(0,0)[b]{\smash{2:}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{MakeRequest.pdf}}%
+    \put(0.15219665,0.67684169){\makebox(0,0)[b]{\smash{3: submitRequestData()}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{MakeRequest.pdf}}%
+    \put(0.65925732,0.80184169){\makebox(0,0)[b]{\smash{:Ride Manager}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{MakeRequest.pdf}}%
+    \put(0.57374477,0.59315969){\makebox(0,0)[b]{\smash{5: createRequest()}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{MakeRequest.pdf}}%
+    \put(0.79524059,0.80184169){\makebox(0,0)[b]{\smash{:Queue}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{MakeRequest.pdf}}%
+    \put(0.72751046,0.57223918){\makebox(0,0)[b]{\smash{6: selectTaxi()}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{MakeRequest.pdf}}%
+    \put(0.72751046,0.52202998){\makebox(0,0)[b]{\smash{7: TaxiDriver}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{MakeRequest.pdf}}%
+    \put(0.94691423,0.80184169){\makebox(0,0)[b]{\smash{:Maps Service}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{MakeRequest.pdf}}%
+    \put(0.48666318,0.80916387){\makebox(0,0)[b]{\smash{:Taxi Driver UI}}}%
+    \put(0.48666318,0.79451952){\makebox(0,0)[b]{\smash{Logic}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{MakeRequest.pdf}}%
+    \put(0.57269874,0.50006345){\makebox(0,0)[b]{\smash{8: showNewIncomingRequest()}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{MakeRequest.pdf}}%
+    \put(0.35591004,0.80184169){\makebox(0,0)[b]{\smash{:Taxi Driver}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{MakeRequest.pdf}}%
+    \put(0.4210251,0.47809692){\makebox(0,0)[b]{\smash{9: dispatchNotification()}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{MakeRequest.pdf}}%
+    \put(0.42207113,0.44985425){\makebox(0,0)[b]{\smash{10: submitRequest}}}%
+    \put(0.42207113,0.43625592){\makebox(0,0)[b]{\smash{Response()}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{MakeRequest.pdf}}%
+    \put(0.03242678,0.37820153){\makebox(0,0)[b]{\smash{alt}}}%
+    \put(0.08106695,0.38395467){\makebox(0,0)[lb]{\smash{[Request Declined]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{MakeRequest.pdf}}%
+    \put(0.57374477,0.38395467){\makebox(0,0)[b]{\smash{11: Driver not Available}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{MakeRequest.pdf}}%
+    \put(0.44508368,0.32851533){\makebox(0,0)[b]{\smash{12:}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{MakeRequest.pdf}}%
+    \put(0.15219665,0.31282496){\makebox(0,0)[b]{\smash{13:}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{MakeRequest.pdf}}%
+    \put(0.80334728,0.17474964){\makebox(0,0)[b]{\smash{14: requestETA()}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{MakeRequest.pdf}}%
+    \put(0.80334728,0.14023082){\makebox(0,0)[b]{\smash{15:}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=24]{MakeRequest.pdf}}%
+    \put(0.57374477,0.2479714){\makebox(0,0)[b]{\smash{11: Driver Available}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=25]{MakeRequest.pdf}}%
+    \put(0.3875523,0.13290864){\makebox(0,0)[b]{\smash{15: confirmationMessage with ETA}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=26]{MakeRequest.pdf}}%
+    \put(0.15219665,0.11198814){\makebox(0,0)[b]{\smash{16:}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=27]{MakeRequest.pdf}}%
+    \put(0.72751046,0.20717642){\makebox(0,0)[b]{\smash{13:}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=28]{MakeRequest.pdf}}%
+    \put(0.72751046,0.23751115){\makebox(0,0)[b]{\smash{12: removeTaxi()}}}%
+  \end{picture}%
+\endgroup%

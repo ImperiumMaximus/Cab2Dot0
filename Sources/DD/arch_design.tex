@@ -1,7 +1,7 @@
 \section{Architectural Design}
 \subsection{Overview}
 \label{sec:overview}
-The system is constituted by a three-tier architecture, in fact it's divided into GUI, application programs and database. The first one isn't only on users' devices, since the interface stays on users' smartphones and browsers, but the logic part is located on server side. On another server lays the application part where the system manages interactions beetween components and elaborates inputs coming from GUI. Database storage stays on a separated server from the logic one, it contains information about taxi drivers and their cabs, in addition to passenger personal details.  
+The system is constituted by a three-tier architecture, in fact it's divided into GUI, application programs and database. The first one isn't only on users' devices, since the interface stays on users' smartphones and browsers, but the logic part is located on server side. On another server lays the application part where the system manages interactions between components and elaborates inputs coming from GUI. Database storage stays on a separated server from the logic one, it contains information about taxi drivers and their cabs, in addition to passenger personal details.  
 \subsection{High level components and their interaction}
 \label{sec:high-level}
 The following diagram shows the composition of the system in terms of high level components. \newline
@@ -54,7 +54,34 @@ The component also manages the working state of the Taxi drivers, allow them to 
 \end{figure}
 appunti: for taxi driver and passengers use already present sdk frameworks to implement apps, JEE, mysql, JDBC, SOAP
 \subsection{Runtime View}
-appunti: explode use cases sequence diagrams with detailed interaction between components.
+\subsubsection{Passenger Login}
+\begin{figure}[H]
+	\small
+	\centering
+	\resizebox{6in}
+	{!}{\input{LoginRuntime.pdf_tex}}
+	\end{figure}
+\subsubsection{Passenger's Request}
+\begin{figure}[H]
+	\small
+	\centering
+	\resizebox{6in}
+	{!}{\input{MakeRequest.pdf_tex}}
+\end{figure}
+\subsubsection{Taxi Driver Registration}
+\begin{figure}[H]
+	\small
+	\centering
+	\resizebox{6in}
+	{!}{\input{DriverRegistration.pdf_tex}}
+\end{figure}
+\subsubsection{Taxi Driver Availability status change}
+\begin{figure}[H]
+	\small
+	\centering
+	\resizebox{6in}
+	{!}{\input{DriverStatusChange.pdf_tex}}
+\end{figure}
 \subsection{Component Interfaces}
 In this section all interfaces that connect each component in the component view are explained and analyzed.
 \subsubsection{Passenger UI Logic Interface}
@@ -95,7 +122,7 @@ List of methods:
 	\item \texttt{showRemoveDriver()}
 	\item \texttt{showModifyDriver()}
 	\item \texttt{submitLoginCredentials()}
-	\item \texttt{submitDriverInformations()}
+	\item \texttt{submitDriverInformation()}
 	\item \texttt{submitDeleteRequest()}
 \end{itemize}
 It can notice that pattern names for these methods are the same of previous sections.
@@ -107,6 +134,9 @@ List of methods:
 	\item \texttt{logout()}
 	\item \texttt{passengerSignUp()}
 	\item \texttt{taxiDriverSignUp()}
+	\item \texttt{passengerDelete()}
+	\item \texttt{taxiDriverDelete()}
+	\item \texttt{taxiDriverModifyCredentials()}
 	\item \texttt{modifyPassengerCredentials()}
 \end{itemize}
 \subsubsection{Ride Manager Interface}
@@ -124,6 +154,7 @@ List of methods:
 \begin{itemize}
 	\item \texttt{addTaxi()}
 	\item \texttt{removeTaxi()}
+	\item \texttt{assignTaxi()}
 	\item \texttt{changeTaxiStatus()}
 \end{itemize}
 \subsubsection{Databases interface}
