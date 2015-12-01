@@ -30,7 +30,7 @@ This component is actually composed of a bunch of sub-components as described in
 	\resizebox{6in}
 	{!}{\input{ComponentDiagramStripped.pdf_tex}}
 \end{figure}
-appunti: explain queue manager, how the ride manager and taxi driver ui logic interact with it, explain why a maps services component and an external db for cars and driver are needed.
+appunti: explain why a maps services component and an external db for cars and driver are needed.
 \paragraph{Actors}
 It's possible to see from this diagram a generic ``Actor'' component is now split in three different components, one for each actor, the main reason for this decision is that each actor accesses and uses a specific interface supplied in one of the three sub-components in the GUI Logic component. Methods that comprise such interfaces are described in the \nameref{sec:arch-styles-patterns} section.
 \paragraph{GUI Logic}
