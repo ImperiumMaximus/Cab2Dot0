@@ -21,6 +21,7 @@
 		\KwRet{$null$}\;
 	}
 \end{algorithm}
+When a request or a reservation is processed, this algorithm finds the nearest queue. The functions uses a location parameter passed during invocation, then it searches in which queue the location stays, returning the isance of that queue.
 \subsection{Queues setup}
 \begin{algorithm}[H]
 	\SetKwFunction{qSetup}{queuesSetup}
@@ -51,6 +52,7 @@
 		}\
 	}
 \end{algorithm}
+This function adds a taxi driver to a queue. The location parameter passed during invocation is used as a parameter for findQueue function, returning a value that is checked. If it is different from null, if so the taxi driver passed as a parameter is enqueued to the queue previously returned and the addTaxiToQueue function returns true. Any type of problem makes the function return false.  
 \subsection{Assign a taxi to an incoming request}
 \begin{algorithm}[H]
 	\SetKwData{queue}{q}
@@ -101,3 +103,4 @@
 		}\
 	}
 \end{algorithm}
+Location and request are the two parameters passed to this function. The first one is used to find the queue where there is the location instance. Then the algorithm controls if the queue is empty, if so, a adjacent queue is searched. If all queues are empty or there aren't taxi drivers in any of them, the function returns false, otherwise the request is sent to a taxi driver, if he/she is available, the taxi driver is removed from his/her queue and the request is assigned to him/her, returning true, in other cases the function returns false.
