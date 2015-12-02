@@ -21,7 +21,7 @@ As one can see in the diagram, the system is composed in three distinct levels:
 These components can be easily mapped in the MVC architectural style (as later described in \nameref{sec:arch-styles-patterns} section).
 Each component is also mapped in a specified tier among the server architecture as briefly described in the \nameref{sec:overview} section and further explained in the \nameref{sec:arch-styles-patterns} section.
 The remaining component models all possible actors, in fact it represents physical elements (a smartphone or a computer with an appropriate software installed on them) that actually interact with the system. \newline
-The diagram clearly shows that there is a single macro-component that exposes a set of functionalities and methods an actor can use. This macro-component is the only entry point available to all the actors, this coiche has been made to preserve a simple architecture and also to increase the cohesion and reusability of the component itself. \newline
+The diagram clearly shows that there is a single macro-component that exposes a set of functionalities and methods an actor can use. This macro-component is the only entry point available to all the actors, this choice has been made to preserve a simple architecture and also to increase the cohesion and reusability of the component itself. \newline
 This component is actually composed of a bunch of sub-components as described in the next section \nameref{sec:component-view}, each sub-component carries out specific functionalities for each actor defined in the RASD.
 \subsection{Component View}
 \label{sec:component-view}
@@ -30,22 +30,24 @@ This component is actually composed of a bunch of sub-components as described in
 	\resizebox{6in}
 	{!}{\input{ComponentDiagramStripped.pdf_tex}}
 \end{figure}
-appunti: explain why a maps services component and an external db for cars and driver are needed.
 \paragraph{Actors}
-It's possible to see from this diagram a generic ``Actor'' component is now split in three different components, one for each actor, the main reason for this decision is that each actor accesses and uses a specific interface supplied in one of the three sub-components in the GUI Logic component. Methods that comprise such interfaces are described in the \nameref{sec:arch-styles-patterns} section.
+It's possible to see from this diagram a generic ``Actor'' component is now splitted in three different components, one for each actor, the main reason for this decision is that each actor accesses and uses a specific interface supplied in one of the three sub-components in the GUI Logic component. Methods that comprise such interfaces are described in the \nameref{sec:arch-styles-patterns} section.
 \paragraph{GUI Logic}
 The GUI Logic component hosts the interface logic suitable for using both a web browser and a mobile application, this component has the main role of collecting all requests from external devices of all actors, and then forward them to the right back-end component.
 \paragraph{Access Control}
-The Access Control component manages the authentication users, and their permissions, ensuring that only registered users can use certain functions of the system. \newline Since these functionalities are similar to all actors, this component is unique, and the methods in its external interface are designed so that the component is aware of what type of actor is performing a specific action, the advantage of using such design is to increase the flexibility, and the reusability without sacrificing the simplicity of the overall system.
+The Access Control component manages the authentication users, and their permissions, ensuring that only registered users can use certain functions of the system. \newline Since these functionalities are similar to all actors, this component is unique, and methods in its external interface are designed so that the component is aware of what type of actor is performing a specific action, the advantage of using such design is to increase the flexibility, and the reusability without sacrificing the simplicity of the overall system.
 \paragraph{Ride Manager}
-The Ride Manager component in charge of managing all the rides instances that are being served. This component creates, keeps track, terminates, each ride managed by the system. Each instance can be seen as a FSA, and the methods in the external interface in the component implement a state transition in the automaton, this is further described in the \nameref{sec:arch-styles-patterns} section. \newline
-This component manages both the requests and the reservations, in fact a reservation can be seen as a ``delayed'' request, thus we a little addition in the algorithms we can achieve both functionalities with little effort maximizing the reusability of such component.
+The Ride Manager component is in charge of managing all rides instances that are being served. This component creates, keeps track, terminates each ride managed by the system. Each instance can be seen as a FSA, and methods in component external interface implement a state transition in a automaton, this is further described in the \nameref{sec:arch-styles-patterns} section. \newline
+This component manages both requests and reservations, in fact a reservation can be seen as a ``delayed'' request, thus with a little addition in algorithms, we can achieve both functionalities with little effort, maximizing reusability of this component.
 \paragraph{Queue Manager}
-This component manages all the queues belonging to the city map, one queue for each zone. The component strictly cooperate with the Ride Manager, but its external interface is generic enough to abstract the actual implementation of the policies for managing the queues. This allows the best flexibility and decoupling between this two components, whereas the architecture still remain simple and easy to understand, one can realize different implementations of the Queue Manager for instance a generic one for most of the zones, and a specific one for certain zones, for different reasons, for instance traffic load higher than normal, or a higher or a lesser probability of receive a request for a client in a specific zone. This policies can be considered during the implementation phase. \newline
-The component also manages the working state of the Taxi drivers, allow them to change between unavailable and available state then in turn removing or inserting them in the appropriate queue according to their location in the map (further described in the \nameref{sec:algo} section)
+This component manages all queues belonging to the city map, one queue for each zone. The component strictly cooperates with the Ride Manager, but its external interface is generic enough to abstract actual implementation of policies for managing queues. This allows two components to be separated and more flexible, whereas the architecture still remains simple and easy to understand, it is possible realize different implementations of the Queue Manager, for example a generic one for most of the zones, and a specific one for certain zones, for different reasons, for instance traffic load higher than normal, or a higher or a less probability to receive a request from a client in a specific zone. These policies can be considered during the implementation phase. \newline
+The component also manages working state of Taxi drivers, it allows them to change between unavailable and available state then it removes or inserts them in an appropriate queue according to their location in the map (further described in the \nameref{sec:algo} section)
 \paragraph{myTaxiService Database}
+This database contais all information about registered users, both passengers and taxi drivers. Moreover it records all reservations and requests, active and terminated.
 \paragraph{External Maps Services}
+This external component is used to localize precisely where departure and arrival points are. Geolocalization systems are difficult to create without adequate instruments that can trace every route in the city and GPS systems. For this reason, we decided to entrust map services to an external company.
 \paragraph{External Cars and Drivers database}
+This database contains information about taxi drivers such as names, surnames, adresses, phone numbers, taxi driver license numbers and cab numbers. myTaxiService relies on this external data to control if all information about taxi drivers are legal.
 \subsection{Deployment View}
 \begin{figure}[H]
 	\centering
@@ -85,7 +87,7 @@ appunti: for taxi driver and passengers use already present sdk frameworks to im
 \subsection{Component Interfaces}
 In this section all interfaces that connect each component in the component view are explained and analyzed.
 \subsubsection{Passenger UI Logic Interface}
-This interface provides the entry point to the system for passengers. \newline
+This interface provides an entry point to the system for passengers. \newline
 The following is a list of the methods provided by this interface, they are all pretty self-explanatory:
 \begin{itemize}
 	\item \texttt{showHome()}
@@ -99,8 +101,8 @@ The following is a list of the methods provided by this interface, they are all 
 	\item \texttt{submitRequestData()}
 	\item \texttt{submitReservationData()}
 \end{itemize}
-The interface is comprised as a series of methods that passengers can invoke. Each \texttt{show*()} method maps to a specific web page or screen in the mobile application, the actual invocation takes place when a passenger loads in his/her browser or in one screen of the application. Each page or screen has some sort of navigation methods so that it can call other \texttt{show*()} methods present in this interface. \newline
-The \texttt{submit*()} methods are called when a passenger wants to send data to system, for instance when he/she has just completed the filling of a form, these methods validate inputs and forward the request of the appropriate component in the system back-end, eventually they show an informative page or a screen that notify the user whether the operation is completed or not, and in the latter case why. 
+The interface comprised a series of methods that passengers can invoke. Each \texttt{show*()} method maps to a specific web page or screen in the mobile application, the actual invocation takes place when a passenger loads in his/her browser or in one screen of the application. Each page or screen has some sort of navigation methods so that it can call other \texttt{show*()} methods present in this interface. \newline
+The \texttt{submit*()} methods are called when a passenger wants to send data to system, for instance when he/she has just completed the filling of a form, these methods validate inputs and forward the request to the appropriate component in the system back-end, eventually they show an informative page or a screen that notify the user whether the operation is completed or not, and in the latter case why. 
 \subsubsection{Taxi Driver UI Logic Interface}
 This interface provides the entry point to the system for the taxi driver.
 The list of the methods is the following:
@@ -111,7 +113,7 @@ The list of the methods is the following:
 	\item \texttt{submitNewWorkingStatus()}
 	\item \texttt{showNewIncomingRequest()}
 \end{itemize}
-Meaning and functional aspects of these methods are more or less similar to what has been explained in the previous section, one point to note is that this time these methods are invoked only by the mobile application installed in the taxi driver's smartphone, so there is no web interface available to this specific actor.
+Meaning and functional aspects of these methods are more or less similar to what has been explained in the previous section, one point to note is that this time, these methods are invoked only by the mobile application installed in the taxi driver's smartphone, so there is no web interface available to this specific actor.
 \subsubsection{System Administrator UI Logic Interface}
 This interface provides the entry point to the system for the administrator. \newline
 List of methods:
@@ -158,31 +160,34 @@ List of methods:
 	\item \texttt{changeTaxiStatus()}
 \end{itemize}
 \subsubsection{Databases interface}
-This interface is not directly implemented in the system-to-be, instead an existing third party library (JDBC) is used which supplies its own set of interfaces to the system that can manipulate the database.
+This interface is not directly implemented in the system-to-be, instead an existing third party library (JDBC) is used, it supplies its own set of interfaces to the system that can manipulate the database.
 \subsubsection{Maps API}
-As with the previous section, also this interface is exposed by a third party component so that it exposes a series of methods that are suitable in the system-to-be.
+As with the previous section, also this interface is exposed to a third party component so that it can use a series of methods that are suitable in the system-to-be.
 \subsection{Selected architectural styles and patterns}
 \label{sec:arch-styles-patterns}
-The following section lists and describes the architectural styles that represent feasible choices during the development and the deployment phases. All the requirements specified in the RASD are taken into account, and also the design choices described in this document. 
+The following section lists and describes the architectural styles that represent feasible choices during development and deployment phases. All requirements specified in the RASD are taken into account with also design choices described in this document. 
 \subsection{Architectural styles}
 \paragraph{3-tier architecture}
-As implicitly explained in the \nameref{sec:overview} section, this is perhaps the most important style, also because all the components diagram and also the deployment view is modeled against this architecture, from the latter diagram we can infer that the tiers map in this way:
+As implicitly explained in the \nameref{sec:overview} section, this is perhaps the most important style, also because all component diagrams and also the deployment view are modelled against this architecture, from the latter diagram we can infer that tier map in this way:
 \begin{itemize}
 	\item GUI Logic to Presentation tier 
 	\item Ride Manager, Access Control, Queue Manager, Maps to Logic tier
 	\item Databases to the Data tier
 \end{itemize}
-The main advantages of using this style is that it achieves a high level of modularity and flexibility of the overall system, also each tier can be designed and dimensioned based on the computational and power needed for it, moreover, as described in the non-functional requirements in the RASD each component is isolated with the respect to the others so that increases the security of each of them and also the overall system. One possible drawbacks is the increased complexity of the interfaces that need to be designed so that each tier can communicate each other, also each user interaction corresponds to many API methods calls within the system which in turn trigger some further processing of the data exchanged between the tiers, this can result in some loss of performance and response times, but this is mitigated by the fact that our interfaces are simple enough and also require little to none processing of the data when passing it from one tier to another.
+Advantages coming from use of this syle is that it achieves a high level of modularity and flexibility of the overall system, also each tier can be designed and dimensioned based on the computational and power needed for it, moreover, as described in non-functional requirements in the RASD, each component is isolated with the respect to others to increase security in each of them and also in the overall system. One possible drawback is the increasing complexity of interfaces to design, in fact every tier has to communicate with others, also each user interaction corresponds to many API method calls within the system, which in turn trigger some further processes of exchanged data between tiers. This can produce a loss of performances and raise response times, but this is mitigated by the fact that our interfaces are simple enough and also require little of data to process when are passed from one tier to another.
 \paragraph{SOA}
-This style is used throughout the system both for the services that itself offers to the ``Actors'' and for the third party services that the system use to achieve its goals. Thus the system acts both as a service provider and as a service requester. \newline
-The services provided are of course the ones that derive from the goals already described in the RASD, thus requesting and reserving taxi, plus some accessory functionalities that we also described in the RASD (login, signup, etc.).\newline
-The services requested are the Maps Service and the external Cars and Drivers database that are needed in order to actually implement the services offered by this system, both are already been defined, implemented and documented so this document doesn't specify them in detail but we assume that can be easily integrated in the system using the already existing documentation. 
+This style is used by the system for both services that are offered to ``Actors'' and third party services that the system uses to achieve its goals. Thus the system acts both as a service provider and as a service requester. \newline
+Services provided are of course the ones that derive from goals already described in the RASD (request and reservation of taxis), plus some accessory functionalities that we also described in the RASD (login, signup, etc.).\newline
+Requested services are the Maps Service and the external car and driver database that are needed in order to actually implement services offered by this system, both are already been defined, implemented and documented, in fact this document doesn't specify them in details but we assume it can be easily integrated in the system using the already existing documentation. 
 \paragraph{Client-Server architecture}
-This is tightly coupled with both the 3-tier and SOA styles described previously, and this is one of the most used and common style used.
+This is tightly coupled to both 3-tier and SOA styles described previously. This is one of the most used and common style.
 \subsection{Design patterns}
 \paragraph{MVC}
 \paragraph{Publisher-subscriber}
 \paragraph{Fa\c{c}ade}
+This pattern allows to users to communicate with applicative logic in an easy way, in fact they don't have to work with various components, but only with the fa\c{c}ade, it is up to this last one to communicate with other parts of the system.
 \paragraph{Singleton}
+This pattern allows to create one and only one instance of a determinated object. For example it is used when a new registered user is created, in fact this pattern forbids to duplicate users already present in database. 
 \paragraph{State pattern}
+This pattern allows to change an object behaviour during runtime. Here it is used to change ride states when a request or a reservation wait to be accepted, are working progress or are terminated.
 \subsection{Other design decisions}
