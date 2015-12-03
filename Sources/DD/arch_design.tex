@@ -200,8 +200,10 @@ This is tightly coupled to both 3-tier and SOA styles described previously. This
 \paragraph{Fa\c{c}ade}
 This pattern allows to users to communicate with applicative logic in an easy way, in fact they don't have to work with various components, but only with the fa\c{c}ade, it is up to this last one to communicate with other parts of the system.
 \paragraph{Singleton}
-This pattern allows to create one and only one instance of a determinated object. For example it is used when a new registered user is created, in fact this pattern forbids to duplicate users already present in database. 
+This pattern allows to create one and only one instance of a determined object. For example it is used when a new registered user is created, in fact this pattern forbids to duplicate users already present in database. 
 \paragraph{State pattern}
-This pattern allows to change an object behaviour during runtime. Here it is used to change ride states when a request or a reservation wait to be accepted, are working progress or are terminated.
+This pattern allows to change an object behavior during runtime. Here it is used to change ride states when a request or a reservation wait to be accepted, are working progress or are terminated.
 \subsection{Other design decisions}
-appunti: JEE
+As already discussed in the RASD and showed in this document, we decided that the overall logic of the service will be implemented in Java using the JEE technology. This has the main advantage of having a single programming language and set of libraries on the server side that are able to deal with View, Controller and also the Model providing some techniques that are capable of abstracting the database using the Object Oriented Programming Paradigm. \newline
+The View will be implemented using the Java Server Faces technology exposing the methods in the GUI Logic presented in the previous sections. The Controller will work tightly coupled with the rest of the components again using Java and JEE, thus enabling a simpler and a coherent way to establish a communication between each tier. \newline Moreover, the developers can use an IDE to implement the actual code and use enhanced feature of the IDE itself such as automated code inspection and testing (using frameworks such as JUnit), thus allowing a more stable and bug-free code since the very first release. 
+ 
