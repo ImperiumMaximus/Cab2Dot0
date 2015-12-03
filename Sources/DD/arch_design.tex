@@ -43,41 +43,53 @@ This component manages both requests and reservations, in fact a reservation can
 This component manages all queues belonging to the city map, one queue for each zone. The component strictly cooperates with the Ride Manager, but its external interface is generic enough to abstract actual implementation of policies for managing queues. This allows two components to be separated and more flexible, whereas the architecture still remains simple and easy to understand, it is possible realize different implementations of the Queue Manager, for example a generic one for most of the zones, and a specific one for certain zones, for different reasons, for instance traffic load higher than normal, or a higher or a less probability to receive a request from a client in a specific zone. These policies can be considered during the implementation phase. \newline
 The component also manages working state of Taxi drivers, it allows them to change between unavailable and available state then it removes or inserts them in an appropriate queue according to their location in the map (further described in the \nameref{sec:algo} section)
 \paragraph{myTaxiService Database}
-This database contais all information about registered users, both passengers and taxi drivers. Moreover it records all reservations and requests, active and terminated.
+This database contains all information about registered users, both passengers and taxi drivers. Moreover it records all reservations and requests, active and terminated.
 \paragraph{External Maps Services}
 This external component is used to localize precisely where departure and arrival points are. Geolocalization systems are difficult to create without adequate instruments that can trace every route in the city and GPS systems. For this reason, we decided to entrust map services to an external company.
 \paragraph{External Cars and Drivers database}
-This database contains information about taxi drivers such as names, surnames, adresses, phone numbers, taxi driver license numbers and cab numbers. myTaxiService relies on this external data to control if all information about taxi drivers are legal.
+This database contains information about taxi drivers such as names, surnames, addresses, phone numbers, taxi driver license numbers and cab numbers. myTaxiService relies on this external data to control if all information about taxi drivers are legal.
 \subsection{Deployment View}
+The following is the deployment diagram for the myTaxiService system, each component showed in the previous sections are mapped in a device and also the communication protocols used between devices are showed.
 \begin{figure}[H]
 	\centering
 	\resizebox{6in}
 	{!}{\input{DeploymentDiagram.pdf_tex}}
 \end{figure}
-appunti: for taxi driver and passengers use already present sdk frameworks to implement apps, JEE, mysql, JDBC, SOAP
+It can be noticed that each Actor maps to a single device, regarding the mobile applications installed in such devices, they will be developed using the existing SDK frameworks, which provides already well defined interfaces and libraries to implement the rendering of the GUI, dealing with user input, and providing the abstractions for communicate with the server. \newline
+In the database devices a MySQL implementation is used, and exposed using JDBC witch is comprised as a set of interfaces that are used in the Business Logic Tier and later discussed in the \nameref{sec:interfaces} section. \newline
+JSON is used as a mean to encapsulate the data exchanged between tiers, this has the advantage of being independent of the programming language used for implementing the overall system. 
 \subsection{Runtime View}
+This section presents some sequence diagrams that explain the interaction between components defined in the previous sections. This will further clarify how the component work in the system as a whole, and also in what order should the method be called in order to accomplish a specific task. \newline
+These diagrams don't take into account the possible exceptions that can occur during the execution of a task, because this would increase the complexity of the diagrams and thus making more difficult the comprehension of them, and also the notation used don't really implement a way for dealing with possible errors or exceptions.
 \subsubsection{Passenger Login}
+The following describes the sequence of actions performed when a visitor which is supposed to be already registered passenger, logs into the system. 
 \begin{figure}[H]
 	\small
 	\centering
 	\resizebox{6in}
 	{!}{\input{LoginRuntime.pdf_tex}}
 	\end{figure}
+\break
 \subsubsection{Passenger's Request}
+The following describes the sequence of actions performed when a passenger wants to perform a request. 
 \begin{figure}[H]
 	\small
 	\centering
 	\resizebox{6in}
 	{!}{\input{MakeRequest.pdf_tex}}
 \end{figure}
+\break
 \subsubsection{Taxi Driver Registration}
+The following describes the sequence of actions performed when a new Taxi Driver has just been hired and is registered into the system so that he/she can begin to work.
 \begin{figure}[H]
 	\small
 	\centering
 	\resizebox{6in}
 	{!}{\input{DriverRegistration.pdf_tex}}
 \end{figure}
+\break
 \subsubsection{Taxi Driver Availability status change}
+The following describes the sequence of actions performed when a Taxi Driver is willing to change his/her working status.
 \begin{figure}[H]
 	\small
 	\centering
@@ -85,6 +97,7 @@ appunti: for taxi driver and passengers use already present sdk frameworks to im
 	{!}{\input{DriverStatusChange.pdf_tex}}
 \end{figure}
 \subsection{Component Interfaces}
+\label{sec:interfaces}
 In this section all interfaces that connect each component in the component view are explained and analyzed.
 \subsubsection{Passenger UI Logic Interface}
 This interface provides an entry point to the system for passengers. \newline
@@ -191,3 +204,4 @@ This pattern allows to create one and only one instance of a determinated object
 \paragraph{State pattern}
 This pattern allows to change an object behaviour during runtime. Here it is used to change ride states when a request or a reservation wait to be accepted, are working progress or are terminated.
 \subsection{Other design decisions}
+appunti: JEE
