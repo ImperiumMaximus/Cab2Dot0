@@ -49,20 +49,20 @@ This external component is used to localize precisely where departure and arriva
 \paragraph{External Cars and Drivers database}
 This database contains information about taxi drivers such as names, surnames, addresses, phone numbers, taxi driver license numbers and cab numbers. myTaxiService relies on this external data to control if all information about taxi drivers are legal.
 \subsection{Deployment View}
-The following is the deployment diagram for the myTaxiService system, each component showed in the previous sections are mapped in a device and also the communication protocols used between devices are showed.
+The following picture is a deployment diagram for the myTaxiService system, each component showed in previous sections are mapped in a device and also communication protocols used between devices are showed.
 \begin{figure}[H]
 	\centering
 	\resizebox{6in}
 	{!}{\input{DeploymentDiagram.pdf_tex}}
 \end{figure}
-It can be noticed that each Actor maps to a single device, regarding the mobile applications installed in such devices, they will be developed using the existing SDK frameworks, which provides already well defined interfaces and libraries to implement the rendering of the GUI, dealing with user input, and providing the abstractions for communicate with the server. \newline
-In the database devices a MySQL implementation is used, and exposed using JDBC witch is comprised as a set of interfaces that are used in the Business Logic Tier and later discussed in the \nameref{sec:interfaces} section. \newline
-JSON is used as a mean to encapsulate the data exchanged between tiers, this has the advantage of being independent of the programming language used for implementing the overall system. 
+It can be noticed that each Actor corresponds to a single device. Regarding to mobile applications installed on devices, they will be developed using existing SDK frameworks which provide: already well defined interfaces and libraries to implement the rendering of the GUI, dealing with user inputs, and abstractions to communicate with the server. \newline
+In database devices a MySQL implementation is used and exposed using JDBC which is comprised like a set of interfaces that are used in the Business Logic Tier and later discussed in the \nameref{sec:interfaces} section. \newline
+JSON is used like a mean to encapsulate data exchanged between tiers, this brings the advantage to make independent the programming language used for implementing the overall system. 
 \subsection{Runtime View}
-This section presents some sequence diagrams that explain the interaction between components defined in the previous sections. This will further clarify how the component work in the system as a whole, and also in what order should the method be called in order to accomplish a specific task. \newline
-These diagrams don't take into account the possible exceptions that can occur during the execution of a task, because this would increase the complexity of the diagrams and thus making more difficult the comprehension of them, and also the notation used don't really implement a way for dealing with possible errors or exceptions.
+This section presents some sequence diagrams that explain interaction between components defined in previous sections. This will further clarify how components work in the system as a whole, and also in which order should methods be called in order to accomplish a specific task. \newline
+These diagrams don't take into account possible exceptions that can occur during the execution of a task, because of this complexity of the diagrams would increase, making more difficult their comprehension of them,. Also the notation used don't really implement a way for dealing with possible errors or exceptions.
 \subsubsection{Passenger Login}
-The following describes the sequence of actions performed when a visitor which is supposed to be already registered passenger, logs into the system. 
+The following describes a sequence of actions performed when a visitor who is supposed to be already registered passenger, logs in the system. 
 \begin{figure}[H]
 	\small
 	\centering
@@ -204,6 +204,6 @@ This pattern allows to create one and only one instance of a determined object. 
 \paragraph{State pattern}
 This pattern allows to change an object behavior during runtime. Here it is used to change ride states when a request or a reservation wait to be accepted, are working progress or are terminated.
 \subsection{Other design decisions}
-As already discussed in the RASD and showed in this document, we decided that the overall logic of the service will be implemented in Java using the JEE technology. This has the main advantage of having a single programming language and set of libraries on the server side that are able to deal with View, Controller and also the Model providing some techniques that are capable of abstracting the database using the Object Oriented Programming Paradigm. \newline
-The View will be implemented using the Java Server Faces technology exposing the methods in the GUI Logic presented in the previous sections. The Controller will work tightly coupled with the rest of the components again using Java and JEE, thus enabling a simpler and a coherent way to establish a communication between each tier. \newline Moreover, the developers can use an IDE to implement the actual code and use enhanced feature of the IDE itself such as automated code inspection and testing (using frameworks such as JUnit), thus allowing a more stable and bug-free code since the very first release. 
+As already discussed in the RASD and showed in this document, we decided that the overall logic of the service will be implemented in Java using the JEE technology. This brings the main advantage to use a single programming language and a set of libraries on the server side that are able to deal with View, Controller and also Model, providing some techniques that are capable of abstracting the database, using Object Oriented Programming Paradigms. \newline
+The View will be implemented using the Java Server Faces technology exposing methods in the GUI Logic presented in previous sections. The Controller will work tightly coupled with the rest of components again using Java and JEE, thus enabling a simpler and a coherent way to establish a communication between each tier. \newline Moreover, developers can use an IDE to implement actual code and to enhance features of the IDE itself, such as automated code inspection and testing (using frameworks like JUnit), to allow a more stable and bug-free code since the very first release. 
  
