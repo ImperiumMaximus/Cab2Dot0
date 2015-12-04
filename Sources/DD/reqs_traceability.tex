@@ -1,20 +1,20 @@
-\newpage
+\break
 \section{Requirements Traceability}
 The following table shows how it is the mapping between the goals and their requirements with the design decisions described and analyzed in this document.
 \begin{center}
 \def\arraystretch{1.5}
-\begin{longtable}{|p{0.25\textwidth}|p{0.75\textwidth}|}
+\begin{longtable}{|p{0.6\textwidth}|p{0.4\textwidth}|}
 	\hline
 	Requirements & Design Decisions \\
 	\hline\MPtrue
 	\begin{itemize}
-		\item {[}G1{]}
+		\item {[}G1{]} Allow visitors to sign up for the service
 	\begin{itemize}
-		\item {[}R1{]}
-		\item {[}R2{]}
-		\item {[}R3{]}
-		\item {[}R4{]}
-		\item {[}R5{]}
+		\item {[}R1{]} The system requests an e-mail or a telephone number during the registration
+		\item {[}R2{]} The system rejects an e-mail or a telephone number already used by another registered passenger
+		\item {[}R3{]} After the completion of registration process, the system must send a confirmation to newly registered passengers
+		\item {[}R4{]} The system checks if e-mails or telephone numbers are well formed
+		\item {[}R5{]} The system considers passengers officially registered if and only if passengers either open an activation link in a confirmation e-mail, or insert a code received through a SMS in mobile application or in web service.
 	\end{itemize}\end{itemize} & \MPtrue\begin{itemize}
 	\item Access control component and interface
 	\item Passenger UI Logic component and interface
@@ -22,23 +22,22 @@ The following table shows how it is the mapping between the goals and their requ
 	\end{itemize} \\
 	\hline\MPtrue
 	\begin{itemize}
-		\item {[}G2{]}
+		\item {[}G2{]} Allow registered passengers to request a taxi
 	\begin{itemize}
-		\item {[}R1{]}
-		\item {[}R2{]}
-		\item {[}R3{]}
-		\item {[}R4{]}
-		\item {[}R5{]}
-		\item {[}R6{]}
+		\item {[}R1{]} The system must disallow visitors to perform such operation
+		\item {[}R2{]} The system has to locate passengers using GPS in his/her smartphone or through browser.
+		\item {[}R3{]} After selecting the most appropriate taxi (explained in goal \hyperref[goal4]{[G4]}), the system must inform drivers that a request is incoming.
+		\item {[}R4{]} Upon confirmation by the driver about the request of availability, the system has to inform the passenger about a positive outcome,if it occurs, and provide additional information, such as ETA
+		\item {[}R5{]} In case of unavailability of a contacted driver, the system has to pick another taxi from the most appropriate queue and to repeat what described in requirement [R3]
+		\item {[}R6{]} The system must proceed to the cancellation of the request if and only if the user requested to do it and the condition in [D1] has not met yet.
 	\end{itemize}
-	\item {[}G3{]}
+	\item {[}G3{]} Allow registered passengers to reserve a taxi
 	\begin{itemize}
-		\item {[}R1{]}
-		\item {[}R2{]}
-		\item {[}R3{]}
-		\item {[}R4{]}
-		\item {[}R5{]}
-		\item {[}R6{]}
+		\item {[}R1{]} The system must disallow visitors to perform such operation.
+		\item {[}R2{]} The system must check if time and the date specified is at least past two hours with the respect of present time.
+		\item {[}R3{]} The system must disallow the reservation of a taxi with an invalid meeting point.
+		\item {[}R4{]} The system must disallow the reservation of a taxi with a meeting point outside the area served by the service.
+		\item {[}R5{]} The system shall allocate a timer that will timeouts ten minutes before the time and date specified, triggering the event of allocating a taxi for this reservation.
 	\end{itemize}
 \end{itemize} & \MPtrue \begin{itemize}
 \item Access control component and interface
@@ -48,25 +47,25 @@ The following table shows how it is the mapping between the goals and their requ
 \end{itemize}\\
 	\hline\MPtrue
 	\begin{itemize}
-	\item {[}G4{]}
+	\item {[}G4{]} Guarantee a fair management of the taxi queue
 	\begin{itemize}
-		\item {[}R1{]}
-		\item {[}R2{]}
-		\item {[}R3{]}
-		\item {[}R4{]}
-		\item {[}R5{]}
-		\item {[}R6{]}
+		\item {[}R1{]} The system must select the first free taxi in the queue corresponding to the zone in which the meeting point is.
+		\item {[}R2{]} The system has to manage the queue using a predefined policy.
+		\item {[}R3{]} If there are no available taxis in a queue, the system scans queues of adjacent zones.
+		\item {[}R4{]} The system must remove a taxi from the queue if and only if a passenger has confirmed the intention of taking that taxi.
+		\item {[}R5{]} Queues contain only free taxis.
+		\item {[}R6{]} The system must not select taxis that belong to drivers who are spending their breaks.
 	\end{itemize}
 	\end{itemize} & \begin{itemize}\item Queue manager component and interface\end{itemize}\\
 	\hline
 	\MPtrue
 	\begin{itemize}
-	\item {[}G5{]}
+	\item {[}G5{]} Allow taxi drivers to manage their workday
 	\begin{itemize}
-		\item {[}R1{]}
-		\item {[}R2{]}
-		\item {[}R3{]}
-		\item {[}R4{]}
+	\item {[}R1{]} The system must disallow non-taxi drivers to perform such operations.
+	\item {[}R2{]} The system must not allow to start a workday twice or more in the same day.
+	\item {[}R3{]} The system must not allow to end a workday before a workday is started.
+	\item {[}R4{]} The system must enforce the driver to take some breaks during the day.
 	\end{itemize}\end{itemize} &\MPtrue \begin{itemize}
 	\item Access control component and interface
 	\item Taxi Driver UI Logic component and interface
@@ -75,11 +74,11 @@ The following table shows how it is the mapping between the goals and their requ
 	\hline
 	\MPtrue
 	\begin{itemize}
-	\item {[}G6{]}
+	\item {[}G6{]} Allow the system administrator to update the information about drivers and taxis
 	\begin{itemize}
-		\item {[}R1{]}
-		\item {[}R2{]}
-		\item {[}R3{]}
+		\item {[}R1{]} The system must disallow non-system administrator to perform such operations.
+		\item {[}R2{]} The system must disallow the insertion of inconsistent data (for example drivers with invalid license or without a car).
+		\item {[}R3{]} The system must disallow the insertion of already present data.
 	\end{itemize}\end{itemize} &\MPtrue \begin{itemize}
 	\item Access control component and interface
 	\item myTaxiService Database component and interface
