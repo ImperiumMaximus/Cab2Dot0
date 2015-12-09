@@ -1,0 +1,52 @@
+\documentclass[a4paper,12pt,dvipsnames]{article}%
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{svg}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage[linesnumbered]{algorithm2e}
+\usepackage[parfill]{parskip}
+\usepackage{listings}
+\usepackage[toc,page]{appendix}
+\geometry{margin=1in}
+\makeatletter\let\MPtrue\@minipagetrue\makeatother
+
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\begin{document}
+% Nice Eclipse-style syntax highlight
+\lstset{language=Java,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{javapurple}\bfseries,
+	stringstyle=\color{javared},
+	commentstyle=\color{javagreen},
+	morecomment=[s][\color{javadocblue}]{/**}{*/},
+	numbers=left,
+	numberstyle=\tiny\color{black},
+	stepnumber=2,
+	numbersep=10pt,
+	tabsize=4,
+	showspaces=false,
+	showstringspaces=false} 
+% \begin{lstlisting}[language=lang] if you want to override this
+% example of how to use listing package (just write the code as you do in a normal text editor)
+% \begin{lstlisting}
+% public static void main(String[] args) {
+%	System.out.println("Hello World!");
+% }
+% \end{lstlisting}
+\input{frontpage.tex}
+\input{introduction.tex}
+\input{appendices.tex}
+\end{document}
