@@ -9,7 +9,7 @@ As said before the Code Inspection is applied to an existing software project wh
 The project itself is written mainly in Java using Maven as a build tool, thus the structure of the software is highly modularized. \newline
 Since there are a lot of contributors to the project, the entire code base itself is managed using a VCS, specifically SVN. A VCS is a centralized service that keeps track and provide control of all the modification made by the contributors. Every time the source code of the software is modified, a new revision is published to the server so that every other contributor can view the changes and (possibly) discuss them and eventually improve them, as long as the server is reliable this eliminate the need of doing local backups by the developers.\newline
 This document focuses on a particular version and revision of such software which is Glasshfish v4.1.1 at revision 64219.
-The entire code base consist of $\sim 1,000,000$ SLoC\footnote{Code statistics generated using David A. Wheeler's ``SLOCCount''.}, which $\approx 84\%$ is written in Java and $\approx14\%$ in XML, the rest is written in other programming languages such as Python, Pascal and Ruby. Some important things to note is the Development Effort Estimate which is $\approx 280$ Person-Years, (i.e. it requires almost 200 years to an average working person to develop this project on his own), and also the Total Estimated Cost to Develop this software which is $\approx \$38.1$M, so it is trivial to understand that Glassfish is very big piece of software and is worth spending time and effort focusing in code inspection in order to improve the quality and the reliability of this software. 
+The entire code base consist of $\sim 1,000,000$ (Physical) SLoC\footnote{Code statistics generated using David A. Wheeler's ``SLOCCount''.}, which $\approx 84\%$ is written in Java and $\approx14\%$ in XML, the rest is written in other programming languages such as Python, Pascal and Ruby. Some important things to note is the Development Effort Estimate which is $\approx 280$ Person-Years, (i.e. it requires almost 200 years to an average working person to develop this project on his own), and also the Total Estimated Cost to Develop this software which is $\approx \$38.1$M, so it is trivial to understand that Glassfish is very big piece of software and is worth spending time and effort focusing in code inspection in order to improve the quality and the reliability of this software. 
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Acronyms}
 \begin{itemize}
@@ -18,7 +18,7 @@ The entire code base consist of $\sim 1,000,000$ SLoC\footnote{Code statistics g
 	\item SVN: Apache \textbf{S}ub\textbf{V}ersio\textbf{N}
 	\item XML: e\textbf{X}tensible \textbf{M}arkup \textbf{L}anguage
 	\item DOL: \textbf{D}eployment \textbf{O}bject \textbf{L}ibrary
-	\item SLoC: \textbf{S}ingle \textbf{L}ines of \textbf{C}ode
+	\item SLoC: \textbf{S}ources \textbf{L}ines of \textbf{C}ode
 \end{itemize}
 \subsubsection{Abbreviations}
 \subsection{Reference Documents}
