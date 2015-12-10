@@ -1,9 +1,37 @@
 \break
 \section{Introduction}
 \subsection{Purpose}
+The Code Inspection document is the result of the of process of Code Inspection. The overall goal of the process is to assess the quality of a software by means of formal methods called Code Inspection techniques and more informal procedures. \newline
+Probably the most important technique is to apply a set of rules, which can be seen as a sort of checklist to the code and find whether it follows or not such rules, this will be described more deeply in the next sections and it is the key concept that it will be used throughout the all document. \newline
+Doing Code Inspection has several benefits, the most important is to find coding mistakes or overlooks that might been arisen during the initial development phase in a systematic way. By reporting this issues in a document like this, the developers can acknowledge such problems and the fix them. This will result in a more robust code and also, it can potentially increase the skills of the developers themselves, so they hopefully will not repeating the errors during the next development phases in the same project or even in another ones, eventually this will reduce the costs and the time for making a project and thus optimizing the overall process.
 \subsection{Scope}
+As said before the Code Inspection is applied to an existing software project which is being developed, in this case the software is called Glassfish which is an open source implementation of a JEE server.
+The project itself is written mainly in Java using Maven as a build tool, thus the structure of the software is highly modularized. \newline
+Since there are a lot of contributors to the project, the entire code base itself is managed using a VCS, specifically SVN. A VCS is a centralized service that keeps track and provide control of all the modification made by the contributors. Every time the source code of the software is modified, a new revision is published to the server so that every other contributor can view the changes and (possibly) discuss them and eventually improve them, as long as the server is reliable this eliminate the need of doing local backups by the developers.\newline
+This document focuses on a particular version and revision of such software which is Glasshfish v4.1.1 at revision 64219.
+The entire code base consist of $\sim 700,000$ SLoC\footnote{Code statistics generated using David A. Wheeler's ``SLOCCount''.}, which $\approx 80\%$ ($\sim 600,000$) is written in Java and $\approx15\%$ in XML, the rest is written in other programming languages such as Python, Pascal and Ruby. Some important things to note is the Development Effort Estimate which is $\approx 200$ Person-Years, (i.e. it requires almost 200 years to an average working person to develop this project on his own), and also the Total Estimated Cost to Develop this software which is $\approx \$27.2$M, so it is trivial to understand that Glassfish is very big piece of software and is worth spending time and effort focusing in code inspection in order to improve the quality and the reliability of this software. 
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Acronyms}
+\begin{itemize}
+	\item JEE: \textbf{J}ava \textbf{E}nterprise \textbf{E}dition
+	\item VCS: \textbf{V}ersion \textbf{C}ontrol \textbf{S}ystem
+	\item SVN: Apache \textbf{S}ub\textbf{V}ersio\textbf{N}
+	\item XML: e\textbf{X}tensible \textbf{M}arkup \textbf{L}anguage
+	\item DOL: \textbf{D}eployment \textbf{O}bject \textbf{L}ibrary
+	\item SLoC: \textbf{S}ingle \textbf{L}ines of \textbf{C}ode
+\end{itemize}
 \subsubsection{Abbreviations}
 \subsection{Reference Documents}
+\begin{itemize}
+	\item Code Inspection assignment document
+	\item Glassfish Documentation
+\end{itemize}
 \subsection{Document Structure}
+\begin{itemize}
+	\item Section 1: Introduction, it gives a description of this document, some basic information in order to clearly understand the subsequent sections.
+	\item Section 2: Classes assigned, it briefly lists the set of classes that will be inspected throughout the next sections.
+	\item Section 3: Functional role, it describes what the assigned classes do and how we determined this with the respect to some evidences such as Javadoc, diagrams and so on.
+	\item Section 4: Issues found, it lists all the problems found in the code analyzed. For each item it is clearly stated what rules defined in the checklist mentioned before are violated and why. The snippet of the code violating such rules is also provided.
+	\item Section 5: Other problems, includes additional issues found during the inspection that are not covered in the checklist but we believe that are worth mentioning so that potential software defects can be corrected.
+	\item Section 6: Appendices, other extra information regarding this document. 
+\end{itemize}
