@@ -1,3 +1,20 @@
 \break
 \section{Classes assigned}
-The following list includes a set of classes of the software's source code assigned to us and the packages in which they reside in:
+The following list includes a set of classes of the software's source code assigned to us and the packages in which they reside in.
+Actually in our assignment, there's only one class to inspect and it is declared as follows:
+\begin{lstlisting}
+public abstract class DeploymentDescriptorNode<T> 
+									implements XMLNode<T>
+\end{lstlisting}
+This class resides in the package declared at the beginning of the source Java file:
+\begin{lstlisting}
+package com.sun.enterprise.deployment.node
+\end{lstlisting}
+The package itself is inside the a module called Deployment Object Library.
+Below there's the diagram which describes the classes hierarchy for this class:
+\begin{figure}[H]
+	\centering
+	\resizebox{2.5in}
+	{!}{\input{ClassHierarchy.pdf_tex}}
+	\caption{UML Class Diagram for the assigned class}
+\end{figure}
