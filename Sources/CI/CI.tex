@@ -24,9 +24,29 @@
 \definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
 \definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
 
+\makeatletter
+\lst@Key{matchrangestart}{f}{\lstKV@SetIf{#1}\lst@ifmatchrangestart}
+\def\lst@SkipToFirst{%
+	\lst@ifmatchrangestart\c@lstnumber=\numexpr-1+\lst@firstline\fi
+	\ifnum \lst@lineno<\lst@firstline
+	\def\lst@next{\lst@BeginDropInput\lst@Pmode
+		\lst@Let{13}\lst@MSkipToFirst
+		\lst@Let{10}\lst@MSkipToFirst}%
+	\expandafter\lst@next
+	\else
+	\expandafter\lst@BOLGobble
+	\fi}
+\makeatother
+
+\newcommand{\sourcesnippet}[2]{
+\lstinputlisting[linerange=#1,caption=#2,captionpos=b]{Code/DeploymentDescriptorNode.java}
+}
+
 \begin{document}
 % Nice Eclipse-style syntax highlight
-\lstset{language=Java,
+\lstset{
+	matchrangestart=t,
+	language=Java,
 	basicstyle=\ttfamily,
 	keywordstyle=\color{javapurple}\bfseries,
 	stringstyle=\color{javared},
@@ -34,11 +54,14 @@
 	morecomment=[s][\color{javadocblue}]{/**}{*/},
 	numbers=left,
 	numberstyle=\tiny\color{black},
-	stepnumber=2,
 	numbersep=10pt,
 	tabsize=4,
 	showspaces=false,
-	showstringspaces=false} 
+	showstringspaces=false.
+	frame=single,
+	breakindent=2ex,
+	breaklines=true,
+	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{javared}\hookrightarrow\space}}} 
 % \begin{lstlisting}[language=lang] if you want to override this
 % example of how to use listing package (just write the code as you do in a normal text editor)
 % \begin{lstlisting}

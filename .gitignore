@@ -9,6 +9,8 @@ Sources/*/*.synctex.gz
 Sources/*/*.tcp
 Sources/*/*.toc
 Sources/*/*.tps
+Sources/*/*.lof
+Sources/*/*.lol
 Sources/*/CI.pdf
 */*.db
 

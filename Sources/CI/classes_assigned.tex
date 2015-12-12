@@ -2,19 +2,15 @@
 \section{Classes assigned}
 The following list includes a set of classes of the software's source code assigned to us and the packages in which they reside in.
 Actually in our assignment, there's only one class to inspect and it is declared as follows:
-\begin{lstlisting}
-public abstract class DeploymentDescriptorNode<T> 
-									implements XMLNode<T>
-\end{lstlisting}
+\sourcesnippet{85-85}{\texttt{DeploymentDescriptorNode} declaration.}
 This class resides in the package declared at the beginning of the source Java file:
-\begin{lstlisting}
-package com.sun.enterprise.deployment.node
-\end{lstlisting}
-The package itself is inside the a module called Deployment Object Library.
+\sourcesnippet{41-41}{\texttt{DeploymentDescriptorNode} package membership declaration.}
+The package itself is inside the module called \texttt{Deployment Object Library}. \newline
+The pathname of the file which this class resides in is\newline \texttt{appserver/deployment/dol/src/main/java/com/sun/enterprise/deployment/node}, and the filename for the source code is \texttt{DeploymentDescriptorNode.java}.
 Below there's the diagram which describes the classes hierarchy for this class:
 \begin{figure}[H]
 	\centering
 	\resizebox{2.5in}
 	{!}{\input{ClassHierarchy.pdf_tex}}
-	\caption{UML Class Diagram for the assigned class}
+	\caption{Class hierarchy for \texttt{DeploymentDescriptorNode}.}
 \end{figure}
