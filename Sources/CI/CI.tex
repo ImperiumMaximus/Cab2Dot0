@@ -44,6 +44,16 @@
 \lstinputlisting[linerange=#1,caption=#2,captionpos=b]{#3}
 }
 
+\newcounter{ChecklistCounter}
+%\setcounter{ChecklistCounter}{0}
+
+\newcommand{\checklistref}
+{
+	\stepcounter{ChecklistCounter}\label{C\arabic{ChecklistCounter}}
+}
+
+\newcommand{\codelines}[2]{L#1-#2}
+
 \begin{document}
 % Nice Eclipse-style syntax highlight
 \lstset{

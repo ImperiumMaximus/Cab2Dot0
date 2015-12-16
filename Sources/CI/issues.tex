@@ -2,3 +2,14 @@
 \section{Issues found}
 \label{sec:issues}
 This section collects all the problems found by applying the checklist provided in the Code Inspection assignment document, only the rules violated are reported here: we are assuming that if all the code inspected is consistent with the respect to a particular rule, it will be not listed here.
+The issues are grouped by method.
+\subsection{Issues related to \texttt{DeploymentDescriptorNode} class}
+\begin{enumerate}
+	\item \ref{C7} The following class attribute is declared as \texttt{static final} and therefore its name should be in uppercase. \sourcesnippet{120-121}{\ref{C7} Violation at \codelines{120}{121}}{Code/DeploymentDescriptorNode.java}
+\end{enumerate}
+
+\subsection{Issues related to method \texttt{handlesElement()}}
+
+\subsection{Issues related to method \texttt{setElementValue()}}
+
+\subsection{Issues related to method \texttt{setDescriptorInfo()}}
