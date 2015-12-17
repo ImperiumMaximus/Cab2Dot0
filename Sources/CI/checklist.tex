@@ -66,26 +66,26 @@ instead do this:
 
 \subsection*{Class and Interface Declarations}\begin{enumerate}[resume, label=C\arabic*., ref=C\arabic*]
 \item \checklistref The class or interface declarations shall be in the following order:
-	\begin{enumerate}
-		\item class/interface documentation comment;
-		\item class or interface statement;
-		\item class/interface implementation comment, if necessary;
-		\item class (static) variables;
-		\begin{enumerate}
+	\begin{enumerate}[label=\Alph*., ref=C25\Alph*]
+		\item \label{C25A} class/interface documentation comment;
+		\item \label{C25B} class or interface statement;
+		\item \label{C25C} class/interface implementation comment, if necessary;
+		\item \label{C25D}class (static) variables;
+		\begin{enumerate}[label=\alph*.]
 			\item first public class variables;
 			\item next protected class variables;
 			\item next package level (no access modifier);
 			\item last private class variables.
 		\end{enumerate}
-		\item instance variables;
-		\begin{enumerate}
+		\item \label{C25E} instance variables;
+		\begin{enumerate}[label=\alph*.]
 			\item first public instance variables;
 			\item next protected instance variables;
 			\item next package level (no access modifier);
 			\item last private instance variables.
 		\end{enumerate}
-		\item constructors;
-		\item methods.
+		\item \label{C25F} constructors;
+		\item \label{C25G} methods.
 	\end{enumerate}
 \item \checklistref Methods are grouped by functionality rather than by scope or accessibility.
 \item \checklistref Check that the code is free of duplicates, long methods, big classes, breaking encapsulation, as well as if coupling and cohesion are adequate.

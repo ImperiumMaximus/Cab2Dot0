@@ -5,10 +5,25 @@ This section collects all the problems found by applying the checklist provided 
 The issues are grouped by method.
 \subsection{Issues related to \texttt{DeploymentDescriptorNode} class}
 \begin{enumerate}
-	\item \ref{C7} The following class attribute is declared as \texttt{static final} and therefore its name should be in uppercase. \sourcesnippet{120-121}{\ref{C7} Violation at \codelines{120}{121}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C7} The following class attribute is declared as \texttt{static final} and therefore its name should be in uppercase. \sourcesnippet{120-121}{\ref{C7} violation at \codelines{120}{121}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C25D} and \ref {C25E} Instance and class variables are mixed together and also they are not grouped by scope visibility. \sourcesnippet{88-121}{\ref{C25D} and \ref{C25E} violations at \codelines{88}{121}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C27} The overall class is 585 lines long and contains many methods, so it is better to split it in order to improve maintainability, and to increase the cohesion.
 \end{enumerate}
 
 \subsection{Issues related to method \texttt{handlesElement()}}
+\begin{enumerate}
+	\item \ref{C13} The line length exceeds 80 characters and can be broken at ``\texttt{;}'' just before the condition statement. \sourcesnippet{399-399}{\ref{C13} violation at \codeline{399}}{Code/DeploymentDescriptorNode.java}	
+	\item \ref{C31} The following statements doens't properly check if either \texttt{element} or \texttt{element.getQName()} is not \texttt{null} before use either one of them or both.
+	\sourcesnippet{401-401}{\ref{C31} violation at \codeline{401}}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{403-403}{\ref{C31} violation at \codeline{403}}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{411-411}{\ref{C31} violation at \codeline{411}}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{416-416}{\ref{C31} violation at \codeline{416}}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{419-419}{\ref{C31} violation at \codeline{419}}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{423-423}{\ref{C31} violation at \codeline{423}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C33} Move the statement at the beginning of the block.
+	 \sourcesnippet{411-411}{\ref{C33} violation at \codeline{411}}{Code/DeploymentDescriptorNode.java}	
+	\item \ref{C56} The loop isn't well formed since the increment statement is inside its block of code rather than in the initialization. \sourcesnippet{399-400}{\ref{C56} violation at \codelines{399}{400}}{Code/DeploymentDescriptorNode.java}
+\end{enumerate}
 
 \subsection{Issues related to method \texttt{setElementValue()}}
 
