@@ -18,6 +18,7 @@
 \usepackage[toc,page]{appendix}
 \usepackage{url}
 \usepackage{enumitem}
+\usepackage{lstautodedent}
 \geometry{margin=1in}
 \makeatletter\let\MPtrue\@minipagetrue\makeatother
 
@@ -41,7 +42,7 @@
 \makeatother
 
 \newcommand{\sourcesnippet}[3]{
-\lstinputlisting[linerange=#1,caption=#2,captionpos=b]{#3}
+\lstinputlisting[linerange=#1,caption=#2,captionpos=b,autodedent]{#3}
 }
 
 \newcounter{ChecklistCounter}

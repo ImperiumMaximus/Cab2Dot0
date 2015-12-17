@@ -5,26 +5,40 @@ This section collects all the problems found by applying the checklist provided 
 The issues are grouped by method.
 \subsection{Issues related to \texttt{DeploymentDescriptorNode} class}
 \begin{enumerate}
-	\item \ref{C7} The following class attribute is declared as \texttt{static final} and therefore its name should be in uppercase. \sourcesnippet{120-121}{\ref{C7} violation at \codelines{120}{121}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C25D} and \ref {C25E} Instance and class variables are mixed together and also they are not grouped by scope visibility. \sourcesnippet{88-121}{\ref{C25D} and \ref{C25E} violations at \codelines{88}{121}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C7} \codelines{120}{121}. The following class attribute is declared as \texttt{static final} and therefore its name should be in uppercase. \sourcesnippet{120-121}{\ref{C7} violation at \codelines{120}{121}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C25D}  and \ref {C25E} \codelines{88}{121}. Instance and class variables are mixed together and also they are not grouped by scope visibility. \sourcesnippet{88-121}{\ref{C25D} and \ref{C25E} violations at \codelines{88}{121}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C27} The overall class is 585 lines long and contains many methods, so it is better to split it in order to improve maintainability, and to increase the cohesion.
 \end{enumerate}
 
 \subsection{Issues related to method \texttt{handlesElement()}}
 \begin{enumerate}
-	\item \ref{C13} The line length exceeds 80 characters and can be broken at ``\texttt{;}'' just before the condition statement. \sourcesnippet{399-399}{\ref{C13} violation at \codeline{399}}{Code/DeploymentDescriptorNode.java}	
-	\item \ref{C31} The following statements doens't properly check if either \texttt{element} or \texttt{element.getQName()} is not \texttt{null} before use either one of them or both.
+	\item \ref{C13} \codeline{399}. The line length exceeds 80 characters and can be broken at ``\texttt{;}'' just before the condition statement. \sourcesnippet{399-399}{\ref{C13} violation at \codeline{399}}{Code/DeploymentDescriptorNode.java}	
+	\item \ref{C31} \codeline{401}, \codeline{403}, \codeline{411}, \codeline{416}, \codeline{419} and \codeline{423}. The following statements doens't properly check if either \texttt{element} or \texttt{element.getQName()} is not \texttt{null} before use either one of them or both.
 	\sourcesnippet{401-401}{\ref{C31} violation at \codeline{401}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{403-403}{\ref{C31} violation at \codeline{403}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{411-411}{\ref{C31} violation at \codeline{411}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{416-416}{\ref{C31} violation at \codeline{416}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{419-419}{\ref{C31} violation at \codeline{419}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{423-423}{\ref{C31} violation at \codeline{423}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C33} Move the statement at the beginning of the block.
-	 \sourcesnippet{411-411}{\ref{C33} violation at \codeline{411}}{Code/DeploymentDescriptorNode.java}	
-	\item \ref{C56} The loop isn't well formed since the increment statement is inside its block of code rather than in the initialization. \sourcesnippet{399-400}{\ref{C56} violation at \codelines{399}{400}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C33} \codeline{411}. Move the statement at the beginning of the block.
+	\sourcesnippet{411-411}{\ref{C33} violation at \codeline{411}}{Code/DeploymentDescriptorNode.java}	
+	\item \ref{C56} \codelines{399}{400}. The loop isn't well formed since the increment statement is inside its block of code rather than in the initialization. \sourcesnippet{399-400}{\ref{C56} violation at \codelines{399}{400}}{Code/DeploymentDescriptorNode.java}
 \end{enumerate}
 
 \subsection{Issues related to method \texttt{setElementValue()}}
+\begin{enumerate}
+	\item \ref{C2} \codeline{468}. Avoid using variables with short names.
+	\sourcesnippet{468-468}{\ref{C2} violation at \codeline{468}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C13} \codelines{470}{471}. Consider wrapping this comment in order to not exceed 80 characters on a single line.
+	\sourcesnippet{470-471}{\ref{C13} violation at \codelines{470}{471}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C13} \codeline{458}. Consider splitting this function call at ``\texttt{,}''.
+	\sourcesnippet{458-458}{\ref{C13} violation at \codeline{458}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C14} \codeline{443}. Commented statement length exceeds 120 characters, it is advisable to split it before the 3\textsuperscript{rd} ``\texttt{+}''.
+	\sourcesnippet{443-443}{\ref{C14} violation at \codeline{443}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C14} \codeline{451}. The string concatenation statement length inside the function call exceeds 120 characters, consider wrapping it at 1\textsuperscript{st} ``\texttt{+}''.
+	\sourcesnippet{451-451}{\ref{C14} violation at \codeline{451}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C19} \codeline{443}. Either remove this commented out statement or add a reason why it is commented and optionally a date when it can be removed.
+	\sourcesnippet{443-443}{\ref{C19} violation at \codeline{443}}{Code/DeploymentDescriptorNode.java}
+\end{enumerate}
 
 \subsection{Issues related to method \texttt{setDescriptorInfo()}}
