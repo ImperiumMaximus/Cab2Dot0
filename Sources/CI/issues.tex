@@ -69,6 +69,7 @@ This method begins at \codeline{442} and ends at \codeline{491}. Here's the list
 	\sourcesnippet{486-486}{\ref{C44} violation at \codeline{486}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C50} \codeline{479}. Catching a \texttt{Throwable} can lead to errors, consider use at least \texttt{Exception} or more specific subclasses, this can also improve code readability.  
 	\sourcesnippet{479-479}{\ref{C50} violation at \codeline{479}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C52} \codeline{447}, \codeline{448}, \codeline{458} and \codeline{467}. These statements should be surrounded with a proper \texttt{try-catch} block for the runtime exception \texttt{NullPointerException}. This exception is raised if the parameter of either the function \texttt{Map.containsKey()} or \texttt{Map.get()} is equal to \texttt{null}. Note that if this problem is fixed also the issues described at point 8 are automatically corrected. One can either check manually if the preconditions of these methods are met as described in point 8 or catching the relevant exception as pointed out in this issue.
 \end{enumerate}
 
 \subsection{Issues related to method \texttt{setDescriptorInfo()}}
