@@ -1,7 +1,7 @@
 \newpage
 \section{Issues found}
 \label{sec:issues}
-This section collects all the problems found by applying the checklist provided in the Code Inspection assignment document, only the rules violated are reported here: we are assuming that if all the code inspected is consistent with the respect to a particular rule, it will be not listed here.
+This section comprises all the problems found by applying the checklist provided in the Code Inspection assignment document, only the rules violated are reported here: we are assuming that if all the code inspected is consistent with the respect to a particular rule, it will be not listed here.
 The issues are grouped by method.
 \subsection{Issues related to \texttt{DeploymentDescriptorNode} class}
 \begin{enumerate}
@@ -10,7 +10,7 @@ The issues are grouped by method.
 	\item \ref{C27} The overall class is 585 lines long and contains many methods, so it is better to split it in order to improve maintainability, and to increase the cohesion.
 \end{enumerate}
 
-\subsection{Issues related to method \texttt{handlesElement()}}
+\subsection{Issues affecting method \texttt{handlesElement()}}
 This method begins at \codeline{394} and ends at \codeline{426}, below there's the list of violations found between this line range.
 \begin{enumerate}
 	\item \ref{C13} \codeline{399}. The line length exceeds 80 characters and can be broken at ``\texttt{;}'' just before the condition statement. \sourcesnippet{399-399}{\ref{C13} violation at \codeline{399}}{Code/DeploymentDescriptorNode.java}	

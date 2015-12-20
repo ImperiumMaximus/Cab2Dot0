@@ -1,3 +1,61 @@
 \newpage
 \section{Other problems}
-Although the checklist is composed by many rules, we believed that there are some checks that can be made in the code, in order to prevent software defects or misbehaviour. This section contains additional issues that we think that are important to highlight so that when corrected, the overall code will be more robust and readable.
+Although the checklist is composed by many rules, we believed that there are some checks that can be made in the code, in order to prevent software defects or misbehaviour. This section encloses additional issues that we think that are important to highlight so that when corrected, the overall code will be more robust and readable.
+\subsection{Other problems related to \texttt{DeploymentDescriptorNode} class}
+\begin{enumerate}
+	\item \codeline{85}. Abstract classes should be named \texttt{AbstractXXX}.
+	\sourcesnippet{85-85}{Class' name not starting with \texttt{Abstract}}{Code/DeploymentDescriptorNode.java}
+	\item This class has to many methods, consider refactoring it.
+	\item \codeline{94} and \codeline{100}. Avoid using implementation types like \texttt{``Hashtable''}; use the interface instead.
+	\sourcesnippet{94-94}{Use of \texttt{``Hashtable''} instead of its base interface (1/2)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{100-100}{Use of \texttt{``Hashtable''} instead of its base interface (2/2)}{Code/DeploymentDescriptorNode.java}
+	\item The String literal \texttt{``enterprise.deployment.backend.addDescriptorFailure''} appears 5 times in this file (\codeline{152}, \codeline{194}, \codeline{198}, \codeline{202} and \codeline{204}); consider declaring it as a constant.
+	\sourcesnippet{152-152}{Multiple usage of {\scriptsize\texttt{``enterprise.deployment.backend.addDescriptorFailure''}} (1/5)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{194-194}{Multiple usage of {\scriptsize\texttt{``enterprise.deployment.backend.addDescriptorFailure''}} (2/5)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{198-198}{Multiple usage of {\scriptsize\texttt{``enterprise.deployment.backend.addDescriptorFailure''}} (3/5)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{202-202}{Multiple usage of {\scriptsize\texttt{``enterprise.deployment.backend.addDescriptorFailure''}} (4/5)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{204-204}{Multiple usage of {\scriptsize\texttt{``enterprise.deployment.backend.addDescriptorFailure''}} (5/5)}{Code/DeploymentDescriptorNode.java}
+	\item The String literal \texttt{``Error occurred''} appears 5 times in this file (\codeline{197}, \codeline{206}, \codeline{309}, \codeline{477} and \codeline{482}); consider declaring it as a constant.
+	\sourcesnippet{197-197}{Multiple usage of \texttt{``Error occurred''} (1/5)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{206-206}{Multiple usage of \texttt{``Error occurred''} (2/5)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{309-309}{Multiple usage of \texttt{``Error occurred''} (3/5)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{477-477}{Multiple usage of \texttt{``Error occurred''} (4/5)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{482-482}{Multiple usage of \texttt{``Error occurred''} (5/5)}{Code/DeploymentDescriptorNode.java}
+\end{enumerate}
+
+\subsection{Other problems affecting method \texttt{handlesElement()}}
+\begin{enumerate}
+	\item \codeline{394} Add the \texttt{``@Override''} annotation above this method signature.
+	\sourcesnippet{394-394}{Missing \texttt{``@Override''} annotation in \texttt{handlesElement()}}{Code/DeploymentDescriptorNode.java}
+	\item \codeline{401} Consider using a local variable with the value returned by the method \break\texttt{element.getQName()} instead of chaining function calls.
+	\sourcesnippet{401-401}{\texttt{element.getQName().equals(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java}
+\end{enumerate}
+
+\subsection{Other problems related to method \texttt{setElementValue()}}
+\begin{enumerate}
+	\item \codeline{442} Add the \texttt{``@Override''} annotation above this method signature.
+	\sourcesnippet{442-442}{Missing \texttt{``@Override''} annotation in \texttt{setElementValue()}}{Code/DeploymentDescriptorNode.java}
+	\item \codeline{447} Merge this \texttt{if} statement with the enclosing one.
+	\sourcesnippet{446-447}{Nested \texttt{if}s}{Code/DeploymentDescriptorNode.java}
+	\item \codeline{450} and \codeline{457} Refactor this code to not nest more than 3 \texttt{if}/\texttt{for}/\texttt{while}/\texttt{switch}/\texttt{try} statements.
+	\item \codeline{450}, \codeline{451}, \codeline{460}, \codeline{466}, \codeline{472}, \codeline{475}, \codeline{477}, \codeline{480}, \codeline{482} and \codeline{487}. Consider using a local variable with the value returned by the method \texttt{DOLUtils.getDefaultLogger()} instead of chaining function calls.
+	\sourcesnippet{450-450}{\texttt{DOLUtils.getDefaultLogger().isLoggable(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java} 
+	\sourcesnippet{451-451}{\texttt{DOLUtils.getDefaultLogger().finer(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java} 
+	\sourcesnippet{460-460}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining (1/8)}{Code/DeploymentDescriptorNode.java} 
+	\sourcesnippet{466-466}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining (2/8)}{Code/DeploymentDescriptorNode.java} 
+	\sourcesnippet{472-472}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining (3/8)}{Code/DeploymentDescriptorNode.java}
+	\sourcesnippet{475-475}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining (4/8)}{Code/DeploymentDescriptorNode.java} 
+	\sourcesnippet{477-477}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining (5/8)}{Code/DeploymentDescriptorNode.java} 
+	\sourcesnippet{480-480}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining (6/8)}{Code/DeploymentDescriptorNode.java} 
+	\sourcesnippet{482-482}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining (7/8)}{Code/DeploymentDescriptorNode.java} 
+	\sourcesnippet{487-487}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining (8/8)}{Code/DeploymentDescriptorNode.java} 
+	\item \codeline{490}. Avoid unnecessary return statements.
+	\sourcesnippet{490-490}{Unnecessary \texttt{return} statement at end of method}{Code/DeploymentDescriptorNode.java}
+\end{enumerate}
+
+\subsection{Other problems related to method \texttt{setDescriptorInfo()}}
+\begin{enumerate}
+	\item \codeline{516} and \codeline{517}. Consider using a local variable with the value returned by the method \texttt{DOLUtils.getDefaultLogger()} instead of chaining function calls.
+	\sourcesnippet{516-516}{\texttt{DOLUtils.getDefaultLogger().isLoggable(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java} 
+	\sourcesnippet{517-517}{\texttt{DOLUtils.getDefaultLogger().finer(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java} 
+\end{enumerate}
