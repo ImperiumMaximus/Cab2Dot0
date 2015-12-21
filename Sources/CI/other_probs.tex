@@ -29,6 +29,8 @@ Although the checklist is composed by many rules, we believed that there are som
 	\sourcesnippet{394-394}{Missing \texttt{``@Override''} annotation in \texttt{handlesElement()}}{Code/DeploymentDescriptorNode.java}
 	\item \codeline{401} Consider using a local variable with the value returned by the method \break\texttt{element.getQName()} instead of chaining function calls.
 	\sourcesnippet{401-401}{\texttt{element.getQName().equals(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java}
+	\item \codeline{399}. Consider declaring the variable using type \texttt{Enumeration<String>} in order to avoid casts in \codeline{400} and thus to improve readability.
+	\sourcesnippet{399-400}{Add diamond operators to \texttt{``Enumeration''} with enclosing type \texttt{``String''} in variable declaration}{Code/DeploymentDescriptorNode.java}
 \end{enumerate}
 
 \subsection{Other problems related to method \texttt{setElementValue()}}
@@ -51,6 +53,8 @@ Although the checklist is composed by many rules, we believed that there are som
 	\sourcesnippet{487-487}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining (8/8)}{Code/DeploymentDescriptorNode.java} 
 	\item \codeline{490}. Avoid unnecessary return statements.
 	\sourcesnippet{490-490}{Unnecessary \texttt{return} statement at end of method}{Code/DeploymentDescriptorNode.java}
+	\item \codeline{444}. Consider declaring the variable using type \texttt{Map<String, String>} in order to avoid casts in \codeline{458} and thus to improve readability.
+	\sourcesnippet{444-444}{Add diamond operators to \texttt{``Map''} with enclosing type \texttt{``String, String''} in variable declaration}{Code/DeploymentDescriptorNode.java}
 \end{enumerate}
 
 \subsection{Other problems related to method \texttt{setDescriptorInfo()}}
@@ -59,3 +63,7 @@ Although the checklist is composed by many rules, we believed that there are som
 	\sourcesnippet{516-516}{\texttt{DOLUtils.getDefaultLogger().isLoggable(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java} 
 	\sourcesnippet{517-517}{\texttt{DOLUtils.getDefaultLogger().finer(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java} 
 \end{enumerate}
+
+\subsection{Other problems related to method \texttt{writeSubDescriptors()}}
+
+\subsection{Other problems related to method \texttt{writeEjbReferenceDescriptors()}}
