@@ -55,6 +55,8 @@ Although the checklist is composed by many rules, we believed that there are som
 	\sourcesnippet{490-490}{Unnecessary \texttt{return} statement at end of method}{Code/DeploymentDescriptorNode.java}
 	\item \codeline{444}. Consider declaring the variable using type \texttt{Map<String, String>} in order to avoid casts in \codeline{458} and thus to improve readability.
 	\sourcesnippet{444-444}{Add diamond operators to \texttt{``Map''} with enclosing type \texttt{``String, String''} in variable declaration}{Code/DeploymentDescriptorNode.java}
+	\item \codeline{458}. Useless cast to \texttt{String} of parameter \texttt{value} which is already declared with type \texttt{String}.
+	\sourcesnippet{458-458}{Useless cast to \texttt{String} in variable declaration}{Code/DeploymentDescriptorNode.java}
 \end{enumerate}
 
 \subsection{Other problems related to method \texttt{setDescriptorInfo()}}
