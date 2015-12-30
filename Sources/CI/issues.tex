@@ -113,7 +113,7 @@ This method begins at line \codeline{626} and ends at line \codeline{664}. This 
 \item \ref{C1} \codeline{626}. Parameters passed \texttt{name}, \texttt{nodeName} and \texttt{descriptor} don't describe precisely their function in this method.
 \sourcesnippet{626-626}{\ref{C1} violation at \codeline{626}}{Code/DeploymentDescriptorNode.java}
 \item \ref{C13} \codeline{626}, \codeline{630} and \codeline{653}. These lines exceeded 80 characters, it can be inserted a break after \texttt{=} in last two cases. In first case it's suggested to begin a new line after a comma.
-\sourcesnippet{626-626}{\ref{C13} violation at \codeline{626}}{Code/DeploymentDescriptorNode.java
+\sourcesnippet{626-626}{\ref{C13} violation at \codeline{626}}{Code/DeploymentDescriptorNode.java}
 \sourcesnippet{630-630}{\ref{C13} violation at \codeline{630}}{Code/DeploymentDescriptorNode.java}\sourcesnippet{653-653}{\ref{C13} violation at \codeline{653}}{Code/DeploymentDescriptorNode.java}
 \item \ref{C17} \codeline{639}. Wrong identation in respect with \codeline{637}. 
 \sourcesnippet{637-639}{\ref{C17} violation at \codeline{639}}{Code/DeploymentDescriptorNode.java} 
@@ -130,6 +130,6 @@ This method begins at line \codeline{799} and ends at line \codeline{}. Issues i
 \sourcesnippet{804-804}{\ref{C29} violation at \codeline{804}}{Code/DeploymentDescriptorNode.java}
 \item \ref{C40} \codeline{801}. Comparison has to be done with \texttt{equals()} method.
 \sourcesnippet{801-801}{\ref{C40} violation at \codeline{801}}{Code/DeploymentDescriptorNode.java}
-\item \ref{C56} \codelines{816}{829}. Looking this \texttt{for} cycle, it is better to iterate \texttt{localRefDescs} with a variable which will use directly as parameter in \texttt{writeDescriptor} method.   
+\item \ref{C56} \codelines{816}{829}. Looking this \texttt{for} cycle, it is better to iterate \texttt{localRefDescs} with a variable which will use directly as parameter in \texttt{writeDescriptor()} method.   
 	\sourcesnippet{816-819}{\ref{C56} violation at \codelines{816}{819}}{Code/DeploymentDescriptorNode.java}
 \end{enumerate}
