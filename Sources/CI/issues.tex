@@ -115,7 +115,7 @@ This method begins at line \codeline{626} and ends at line \codeline{664}. This 
 \item \ref{C13} \codeline{626}, \codeline{630} and \codeline{653}. These lines exceeded 80 characters, it can be inserted a break after \texttt{=} in last two cases. In first case it's suggested to begin a new line after a comma.
 \sourcesnippet{626-626}{\ref{C13} violation at \codeline{626}}{Code/DeploymentDescriptorNode.java}
 \sourcesnippet{630-630}{\ref{C13} violation at \codeline{630}}{Code/DeploymentDescriptorNode.java}\sourcesnippet{653-653}{\ref{C13} violation at \codeline{653}}{Code/DeploymentDescriptorNode.java}
-\item \ref{C17} \codeline{639}. Wrong identation in respect with \codeline{637}. 
+\item \ref{C17} \codeline{639}. Wrong identation with respect to \codeline{637}. 
 \sourcesnippet{637-639}{\ref{C17} violation at \codeline{639}}{Code/DeploymentDescriptorNode.java} 
 \end{enumerate}
 \subsection{Issues related to method \texttt{writeEjbReferenceDescriptors()}}
@@ -123,7 +123,7 @@ This method begins at line \codeline{799} and ends at line \codeline{}. Issues i
 \begin{enumerate}
 \item \ref{C11} \codelines{801}{802}. \texttt{If} followed by only one statement has to stay between curly brackets.
 \sourcesnippet{801-802}{\ref{C11} violation at \codelines{801}{802}}{Code/DeploymentDescriptorNode.java}
-\item \ref{C18} \codeline{805} and \codeline{815}. These comments don't explain anything about their code blocks.
+\item \ref{C18} \codeline{805} and \codeline{815}. These comments aren't useful to explain their code's block.
 \sourcesnippet{805-814}{\ref{C18} violation at \codelines{805}{814}}{Code/DeploymentDescriptorNode.java}
 \sourcesnippet{815-819}{\ref{C18} violation at \codelines{815}{819}}{Code/DeploymentDescriptorNode.java}
 \item \ref{C29} \codeline{804}. This attribute is used only to invoke \texttt{writeDescriptor} method, it is better if \texttt{subNode} is created when that method has to be invoked.
