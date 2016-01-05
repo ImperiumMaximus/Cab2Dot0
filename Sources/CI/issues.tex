@@ -1,50 +1,50 @@
 \newpage
 \section{Issues found}
 \label{sec:issues}
-This section comprises all the problems found by applying the checklist provided in the Code Inspection assignment document, only the rules violated are reported here: we are assuming that if all the code inspected is consistent with the respect to a particular rule, it will be not listed here.
-The issues are grouped by method.
+This section comprises all problems found by applying the checklist provided in the Code Inspection assignment document, only violated rules are reported here: we are assuming that if inspected code is consistent with respect to a particular rule, it will be not listed here.
+Issues are grouped by method.
 \subsection{Issues related to \texttt{DeploymentDescriptorNode} class}
 \begin{enumerate}
 	\item \ref{C7} \codelines{120}{121}. The following class attribute is declared as \texttt{static final} and therefore its name should be in uppercase. \sourcesnippet{120-121}{\ref{C7} violation at \codelines{120}{121}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C25D}  and \ref {C25E} \codelines{88}{121}. Instance and class variables are mixed together and also they are not grouped by scope visibility. \sourcesnippet{88-121}{\ref{C25D} and \ref{C25E} violations at \codelines{88}{121}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C27} The overall class is 585 lines long and contains many methods, so it is better to split it in order to improve maintainability, and to increase the cohesion.
+	\item \ref{C27} The overall class is 585 lines long and contains many methods, so it is better to split it in order to improve maintainability and to increase cohesion.
 \end{enumerate}
 
 \subsection{Issues affecting method \texttt{handlesElement()}}
-This method begins at \codeline{394} and ends at \codeline{426}, below there's the list of violations found between this line range.
+This method begins at \codeline{394} and ends at \codeline{426}, below there is a list of violations found between this line range.
 \begin{enumerate}
-	\item \ref{C13} \codeline{399}. The line length exceeds 80 characters and can be broken at ``\texttt{;}'' just before the condition statement. \sourcesnippet{399-399}{\ref{C13} violation at \codeline{399}}{Code/DeploymentDescriptorNode.java}	
-	\item \ref{C31} \codeline{401}, \codeline{403}, \codeline{411}, \codeline{416}, \codeline{419} and \codeline{423}. These statements doesn't properly check if either \texttt{element} or \texttt{element.getQName()} is not \texttt{null} before use either one of them or both.
+	\item \ref{C13} \codeline{399}. Line length exceeds 80 characters and can be broken at ``\texttt{;}'' just before the condition statement. \sourcesnippet{399-399}{\ref{C13} violation at \codeline{399}}{Code/DeploymentDescriptorNode.java}	
+	\item \ref{C31} \codeline{401}, \codeline{403}, \codeline{411}, \codeline{416}, \codeline{419} and \codeline{423}. These statements don't check properly if either \texttt{element} or \texttt{element.getQName()} is not \texttt{null} before using only one of them or both.
 	\sourcesnippet{401-401}{\ref{C31} violation at \codeline{401}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{403-403}{\ref{C31} violation at \codeline{403}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{411-411}{\ref{C31} violation at \codeline{411}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{416-416}{\ref{C31} violation at \codeline{416}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{419-419}{\ref{C31} violation at \codeline{419}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{423-423}{\ref{C31} violation at \codeline{423}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C33} \codeline{411}. Move the statement at the beginning of the block.
+	\item \ref{C33} \codeline{411}. Move this statement to the beginning of the block.
 	\sourcesnippet{411-411}{\ref{C33} violation at \codeline{411}}{Code/DeploymentDescriptorNode.java}	
-	\item \ref{C56} \codelines{399}{400}. The loop isn't well formed since the increment statement is inside its block of code rather than in the initialization. \sourcesnippet{399-400}{\ref{C56} violation at \codelines{399}{400}}{Code/DeploymentDescriptorNode.java}
+	\item \ref{C56} \codelines{399}{400}. Loop isn't well formed since increment statement is inside its block of code rather than in initialization. \sourcesnippet{399-400}{\ref{C56} violation at \codelines{399}{400}}{Code/DeploymentDescriptorNode.java}
 \end{enumerate}
 
 \subsection{Issues related to method \texttt{setElementValue()}}
-This method begins at \codeline{442} and ends at \codeline{491}. Here's the list of violations found within this method:
+This method begins at \codeline{442} and ends at \codeline{491}. Here it's a list of violations found within this method:
 \begin{enumerate}
 	\item \ref{C2} \codeline{468}. Avoid using variables with short names.
 	\sourcesnippet{468-468}{\ref{C2} violation at \codeline{468}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C9} \codeline{443} and \codeline{468}. These line are indented using tabs, consider replacing them with spaces.
+	\item \ref{C9} \codeline{443} and \codeline{468}. These lines are indented using tabs, consider replacing them with spaces.
 	\sourcesnippet{443-443}{\ref{C9} violation at \codeline{443}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{468-468}{\ref{C9} violation at \codeline{468}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C13} \codelines{470}{471}. Consider wrapping this comment in order to not exceed 80 characters on a single line.
+	\item \ref{C13} \codelines{470}{471}. Consider wrapping this comment in order not to exceed 80 characters in a single line.
 	\sourcesnippet{470-471}{\ref{C13} violation at \codelines{470}{471}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C13} \codeline{458}. Consider splitting this function call at ``\texttt{,}''.
 	\sourcesnippet{458-458}{\ref{C13} violation at \codeline{458}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C14} \codeline{443}. Commented statement length exceeds 120 characters, it is advisable to split it before the 3\textsuperscript{rd} ``\texttt{+}''.
+	\item \ref{C14} \codeline{443}. Commented statement length exceeds 120 characters, it is advisable to split it before 3\textsuperscript{rd} ``\texttt{+}''.
 	\sourcesnippet{443-443}{\ref{C14} violation at \codeline{443}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C14} \codeline{451}. The string concatenation statement length inside the function call exceeds 120 characters, consider wrapping it at 1\textsuperscript{st} ``\texttt{+}''.
+	\item \ref{C14} \codeline{451}. String concatenation statement length inside this function call exceeds 120 characters, consider wrapping it at 1\textsuperscript{st} ``\texttt{+}''.
 	\sourcesnippet{451-451}{\ref{C14} violation at \codeline{451}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C19} \codeline{443}. Either remove this commented out statement or add a reason why it is commented and optionally a date when it can be removed.
+	\item \ref{C19} \codeline{443}. Either to remove this comment from statement or to add a reason why there is a comment and optionally a date when it can be removed.
 	\sourcesnippet{443-443}{\ref{C19} violation at \codeline{443}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C31} \codeline{447}, \codeline{448}, \codeline{458}, \codelines{460}{461}, \codelines{466}{467}, \codelines{472}{473} and \codelines{487}{488}. These statements doesn't properly check if either \texttt{element} or \texttt{element.getQName()} is not \texttt{null} before use either one of them or both.
+	\item \ref{C31} \codeline{447}, \codeline{448}, \codeline{458}, \codelines{460}{461}, \codelines{466}{467}, \codelines{472}{473} and \codelines{487}{488}. These statements don't check properly if either \texttt{element} or \texttt{element.getQName()} is not \texttt{null} before using only one of them or both.
 	\sourcesnippet{447-447}{\ref{C31} violation at \codeline{447}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{448-448}{\ref{C31} violation at \codeline{448}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{458-458}{\ref{C31} violation at \codeline{458}}{Code/DeploymentDescriptorNode.java}
@@ -52,24 +52,24 @@ This method begins at \codeline{442} and ends at \codeline{491}. Here's the list
 	\sourcesnippet{466-467}{\ref{C31} violation at \codelines{466}{467}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{472-473}{\ref{C31} violation at \codelines{472}{473}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{487-488}{\ref{C31} violation at \codelines{487}{488}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C31} \codeline{458}, \codelines{460}{461}, \codelines{472}{473}, \codeline{486} and \codelines{487}{488}. These statements doesn't properly check if \texttt{value} is not \texttt{null} before use it.
+	\item \ref{C31} \codeline{458}, \codelines{460}{461}, \codelines{472}{473}, \codeline{486} and \codelines{487}{488}. These statements don't check properly if \texttt{value} is not \texttt{null} before using it.
 	\sourcesnippet{458-458}{\ref{C31} violation at \codeline{458}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{460-461}{\ref{C31} violation at \codelines{460}{461}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{472-473}{\ref{C31} violation at \codelines{472}{473}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{486-486}{\ref{C31} violation at \codeline{486}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{487-488}{\ref{C31} violation at \codelines{487}{488}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C31} \codeline{458}, \codelines{460}{461}, \codelines{472}{473}, \codeline{486} and \codelines{487}{488}. The following statements doesn't properly check if the value returned by the function \texttt{getDescriptor()} is not \texttt{null} before use it.
+	\item \ref{C31} \codeline{458}, \codelines{460}{461}, \codelines{472}{473}, \codeline{486} and \codelines{487}{488}. Following statements don't properly check if returned value by\texttt{getDescriptor()} function is not \texttt{null} before using it.
 	\sourcesnippet{467-468}{\ref{C31} violation at \codelines{467}{468}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C33} \codeline{468}. Move the statement at the beginning of the \texttt{catch} block.
+	\item \ref{C33} \codeline{468}. Move this statement to the beginning of \texttt{catch} block.
 	\sourcesnippet{465-468}{\ref{C33} violation at \codeline{468}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C42} \codeline{477} and \codeline{482}. Generic \texttt{``Error occurred''} message, consider change it with a more explicative one.
+	\item \ref{C42} \codeline{477} and \codeline{482}. Generic \texttt{``Error occurred''} message, consider to change it with a more explicative one.
 	\sourcesnippet{477-477}{\ref{C42} violation at \codeline{477}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{482-482}{\ref{C42} violation at \codeline{482}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C44} \codeline{486}. Consider using the method \texttt{String.isEmpty()} which is already provided by the Java standard library.
+	\item \ref{C44} \codeline{486}. Consider to use \texttt{String.isEmpty()} method which is already provided by Java standard library.
 	\sourcesnippet{486-486}{\ref{C44} violation at \codeline{486}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C50} \codeline{479}. Catching a \texttt{Throwable} can lead to errors, consider use at least \texttt{Exception} or more specific subclasses, this can also improve code readability.  
+	\item \ref{C50} \codeline{479}. Catching a \texttt{Throwable} can lead to errors, consider to use at least \texttt{Exception} or more specific subclasses, this can also improve code readability.  
 	\sourcesnippet{479-479}{\ref{C50} violation at \codeline{479}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C52} \codeline{447}, \codeline{448}, \codeline{458} and \codeline{467}. These statements should be surrounded with a proper \texttt{try-catch} block for the runtime exception \texttt{NullPointerException}. This exception is raised if the parameter of either the function \texttt{Map.containsKey()} or \texttt{Map.get()} is equal to \texttt{null}. Note that if this problem is fixed also the issues described at point 8 are automatically corrected. One can either check manually if the preconditions of these methods are met as described in point 8 or catching the relevant exception as pointed out in this issue.
+	\item \ref{C52} \codeline{447}, \codeline{448}, \codeline{458} and \codeline{467}. These statements should be surrounded with a proper \texttt{try-catch} block for\texttt{NullPointerException} runtime exception. This exception is raised if either \texttt{Map.containsKey()} or \texttt{Map.get()} is equal to \texttt{null}. Note that if this problem is fixed also issues described at point 8 are automatically corrected. It is possible either to check manually if preconditions of these methods are met as described in point 8 or to catch the relevant exception as pointed out in this issue.
 	\sourcesnippet{447-447}{\ref{C52} violation at \codeline{447}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{448-448}{\ref{C52} violation at \codeline{448}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{458-458}{\ref{C52} violation at \codeline{458}}{Code/DeploymentDescriptorNode.java}
@@ -77,33 +77,33 @@ This method begins at \codeline{442} and ends at \codeline{491}. Here's the list
 \end{enumerate}
 
 \subsection{Issues related to method \texttt{setDescriptorInfo()}}
-This method begins at \codeline{512} and ends at \codeline{537} and the list of violations regarding this method is the following:
+This method begins at \codeline{512} and ends at \codeline{537} and a list of violations regarding this method is the following:
 \begin{enumerate}
 	\item \ref{C9} \codelines{519}{523}, \codelines{530}{531} and \codeline{536}. These lines are indented totally or partially using tabs.
 	\sourcesnippet{519-523}{\ref{C9} violation at \codelines{519}{523}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{530-531}{\ref{C9} violation at \codelines{530}{531}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{536-536}{\ref{C9} violation at \codeline{536}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C13} \codeline{521}, \codeline{526} and \codeline{533}. Consider splitting this function calls at ``\texttt{,}''. 
+	\item \ref{C13} \codeline{521}, \codeline{526} and \codeline{533}. Consider to split this function calls at ``\texttt{,}''. 
 	\sourcesnippet{521-521}{\ref{C13} violation at \codeline{521}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{526-526}{\ref{C13} violation at \codeline{526}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{533-533}{\ref{C13} violation at \codeline{533}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C14} \codeline{517}. The string concatenation statement length inside the function call exceeds 120 characters, consider wrapping it at 2\textsuperscript{nd} ``\texttt{+}''.
+	\item \ref{C14} \codeline{517}. String concatenation statement length inside function call exceeds 120 characters, consider to wrap it at 2\textsuperscript{nd} ``\texttt{+}''.
 	\sourcesnippet{517-517}{\ref{C14} violation at \codeline{517}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C31} \codeline{522}, \codeline{527} and \codeline{534}. These statements doesn't properly check if \texttt{value} is not \texttt{null} before use it.
+	\item \ref{C31} \codeline{522}, \codeline{527} and \codeline{534}. These statements don't check properly if \texttt{value} is not \texttt{null} before using it.
 	\sourcesnippet{522-522}{\ref{C31} violation at \codeline{522}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{527-527}{\ref{C31} violation at \codeline{527}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{534-534}{\ref{C31} violation at \codeline{534}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C31} \codelines{521}{522}, \codelines{526}{527} and \codelines{533}{534}. These statements doesn't properly check if \texttt{target} is not \texttt{null} before use it.
+	\item \ref{C31} \codelines{521}{522}, \codelines{526}{527} and \codelines{533}{534}. These statements don't check properly if \texttt{target} is not \texttt{null} before using it.
 	\sourcesnippet{521-522}{\ref{C31} violation at \codelines{521}{522}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{526-527}{\ref{C31} violation at \codelines{526}{527}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{533-534}{\ref{C31} violation at \codelines{533}{534}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C31} \codeline{521}, \codeline{526} and \codeline{533}. These statements doesn't properly check if \texttt{methodName} is not \texttt{null} before use it.
+	\item \ref{C31} \codeline{521}, \codeline{526} and \codeline{533}. These statements don't check properly if \texttt{methodName} is not \texttt{null} before using it.
 	\sourcesnippet{521-521}{\ref{C31} violation at \codeline{521}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{526-526}{\ref{C31} violation at \codeline{526}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{533-533}{\ref{C31} violation at \codeline{533}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C42} \codeline{517}. The message is misleading. It says that it's already in the target class' method but the invocation hasn't yet occurred. This could potentially lead to confusion if there are problems invoking the method at runtime using reflection, i.e. if one of the exceptions are caught.
+	\item \ref{C42} \codeline{517}. This message is misleading. It says that it's already in its target method of class but its invocation hasn't occurred yet. This could potentially lead to confusion if there are problems invoking this method at runtime using reflection, i.e. if at least one of exceptions is caught.
 	\sourcesnippet{517-517}{\ref{C42} violation at \codeline{517}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C53} \codelines{524}{535}. Consider catching all the checked exceptions within the method rather than propagating the last one to the caller in case all the tries fail. If the error is unrecoverable a good solution is to throw a dedicated exception with a meaningful message containing the reason that raised the exceptional event. 
+	\item \ref{C53} \codelines{524}{535}. Consider to catch all checked exceptions within the method rather than propagating the last one to caller in case all tries fail. If an error is unrecoverable, a good solution is to throw a dedicated exception with a meaningful message containing an explanation about the exceptional event. 
 	\sourcesnippet{524-535}{\ref{C53} violation at \codelines{524}{535}}{Code/DeploymentDescriptorNode.java}
 \end{enumerate}
 
