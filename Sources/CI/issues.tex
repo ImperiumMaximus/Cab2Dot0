@@ -58,14 +58,14 @@ This method begins at \codeline{442} and ends at \codeline{491}. Here it's a lis
 	\sourcesnippet{472-473}{\ref{C31} violation at \codelines{472}{473}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{486-486}{\ref{C31} violation at \codeline{486}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{487-488}{\ref{C31} violation at \codelines{487}{488}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C31} \codeline{458}, \codelines{460}{461}, \codelines{472}{473}, \codeline{486} and \codelines{487}{488}. Following statements don't properly check if returned value by \texttt{getDescriptor()} function is not \texttt{null} before using it.
+	\item \ref{C31} \codeline{458}, \codelines{460}{461}, \codelines{472}{473}, \codeline{486} and \codelines{487}{488}. The following statements don't properly check if the returned value by \texttt{getDescriptor()} is not \texttt{null} before using it.
 	\sourcesnippet{467-468}{\ref{C31} violation at \codelines{467}{468}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C33} \codeline{468}. Move this statement to the beginning of \texttt{catch} block.
 	\sourcesnippet{465-468}{\ref{C33} violation at \codeline{468}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C42} \codeline{477} and \codeline{482}. Generic \texttt{``Error occurred''} message, consider to change it with a more explicative one.
 	\sourcesnippet{477-477}{\ref{C42} violation at \codeline{477}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{482-482}{\ref{C42} violation at \codeline{482}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C44} \codeline{486}. Consider to use \texttt{String.isEmpty()} method which is already provided by Java standard library.
+	\item \ref{C44} \codeline{486}. Consider using \texttt{String.isEmpty()} which is already provided by Java standard library.
 	\sourcesnippet{486-486}{\ref{C44} violation at \codeline{486}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C50} \codeline{479}. Catching a \texttt{Throwable} can lead to errors, consider to use at least \texttt{Exception} or more specific subclasses, this can also improve code readability.  
 	\sourcesnippet{479-479}{\ref{C50} violation at \codeline{479}}{Code/DeploymentDescriptorNode.java}
@@ -83,7 +83,7 @@ This method begins at \codeline{512} and ends at \codeline{537} and a list of vi
 	\sourcesnippet{519-523}{\ref{C9} violation at \codelines{519}{523}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{530-531}{\ref{C9} violation at \codelines{530}{531}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{536-536}{\ref{C9} violation at \codeline{536}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C13} \codeline{521}, \codeline{526} and \codeline{533}. Consider to split this function calls at ``\texttt{,}''. 
+	\item \ref{C13} \codeline{521}, \codeline{526} and \codeline{533}. Consider splitting this function calls at ``\texttt{,}''. 
 	\sourcesnippet{521-521}{\ref{C13} violation at \codeline{521}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{526-526}{\ref{C13} violation at \codeline{526}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{533-533}{\ref{C13} violation at \codeline{533}}{Code/DeploymentDescriptorNode.java}
@@ -101,9 +101,9 @@ This method begins at \codeline{512} and ends at \codeline{537} and a list of vi
 	\sourcesnippet{521-521}{\ref{C31} violation at \codeline{521}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{526-526}{\ref{C31} violation at \codeline{526}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{533-533}{\ref{C31} violation at \codeline{533}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C42} \codeline{517}. This message is misleading. It says that it's already in its target method of class but its invocation hasn't occurred yet. This could potentially lead to confusion if there are problems invoking this method at runtime using reflection, i.e. if at least one of exceptions is caught.
+	\item \ref{C42} \codeline{517}. This message is misleading. It says that it's already in its target method of class but its invocation hasn't occurred yet. This could potentially lead to confusion if there are problems invoking this method at runtime using reflection, i.e. if at least one of the exceptions is caught.
 	\sourcesnippet{517-517}{\ref{C42} violation at \codeline{517}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C53} \codelines{524}{535}. Consider to catch all checked exceptions within the method rather than propagating the last one to caller in case all tries fail. If an error is unrecoverable, a good solution is to throw a dedicated exception with a meaningful message containing an explanation about the exceptional event. 
+	\item \ref{C53} \codelines{524}{535}. Consider catching all checked exceptions within the method rather than propagating the last one to caller in case all tries fail. If an error is unrecoverable, a good solution is to throw a dedicated exception with a meaningful message containing an explanation about the exceptional event. 
 	\sourcesnippet{524-535}{\ref{C53} violation at \codelines{524}{535}}{Code/DeploymentDescriptorNode.java}
 \end{enumerate}
 
