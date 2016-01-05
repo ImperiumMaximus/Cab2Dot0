@@ -42,7 +42,7 @@ This method begins at \codeline{442} and ends at \codeline{491}. Here it's a lis
 	\sourcesnippet{443-443}{\ref{C14} violation at \codeline{443}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C14} \codeline{451}. String concatenation statement length inside this function call exceeds 120 characters, consider wrapping it at 1\textsuperscript{st} ``\texttt{+}''.
 	\sourcesnippet{451-451}{\ref{C14} violation at \codeline{451}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C19} \codeline{443}. Either to remove this comment from statement or to add a reason why there is a comment and optionally a date when it can be removed.
+	\item \ref{C19} \codeline{443}. Consider either to remove this comment from statement or add a reason why it is there and optionally add a date when it can be removed.
 	\sourcesnippet{443-443}{\ref{C19} violation at \codeline{443}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C31} \codeline{447}, \codeline{448}, \codeline{458}, \codelines{460}{461}, \codelines{466}{467}, \codelines{472}{473} and \codelines{487}{488}. These statements don't check properly if either \texttt{element} or \texttt{element.getQName()} is not \texttt{null} before using only one of them or both.
 	\sourcesnippet{447-447}{\ref{C31} violation at \codeline{447}}{Code/DeploymentDescriptorNode.java}
@@ -58,7 +58,7 @@ This method begins at \codeline{442} and ends at \codeline{491}. Here it's a lis
 	\sourcesnippet{472-473}{\ref{C31} violation at \codelines{472}{473}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{486-486}{\ref{C31} violation at \codeline{486}}{Code/DeploymentDescriptorNode.java}
 	\sourcesnippet{487-488}{\ref{C31} violation at \codelines{487}{488}}{Code/DeploymentDescriptorNode.java}
-	\item \ref{C31} \codeline{458}, \codelines{460}{461}, \codelines{472}{473}, \codeline{486} and \codelines{487}{488}. Following statements don't properly check if returned value by\texttt{getDescriptor()} function is not \texttt{null} before using it.
+	\item \ref{C31} \codeline{458}, \codelines{460}{461}, \codelines{472}{473}, \codeline{486} and \codelines{487}{488}. Following statements don't properly check if returned value by \texttt{getDescriptor()} function is not \texttt{null} before using it.
 	\sourcesnippet{467-468}{\ref{C31} violation at \codelines{467}{468}}{Code/DeploymentDescriptorNode.java}
 	\item \ref{C33} \codeline{468}. Move this statement to the beginning of \texttt{catch} block.
 	\sourcesnippet{465-468}{\ref{C33} violation at \codeline{468}}{Code/DeploymentDescriptorNode.java}
