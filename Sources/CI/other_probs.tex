@@ -27,7 +27,7 @@ Although the checklist is composed by many rules, we believed that there are som
 \begin{enumerate}
 	\item \codeline{394}. Add \texttt{``@Override''} annotation above this method signature.
 	\sourcesnippet{394-394}{Missing \texttt{``@Override''} annotation in \texttt{handlesElement()}}{Code/DeploymentDescriptorNode.java}
-	\item \codeline{401}. Consider using a local variable with returned value by \break\texttt{element.getQName()}, instead of chaining function calls.
+	\item \codeline{401}. Consider using a local variable with value returned by \break\texttt{element.getQName()}, instead of chaining function calls.
 	\sourcesnippet{401-401}{\texttt{element.getQName().equals(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java}
 	\item \codeline{399}. Consider declaring a variable using type \texttt{Enumeration<String>} in order to avoid casts in \codeline{400}. This improves readability.
 	\sourcesnippet{399-400}{Add diamond operators to \texttt{``Enumeration''} with enclosing type \texttt{``String''} in variable declaration}{Code/DeploymentDescriptorNode.java}
@@ -70,7 +70,7 @@ Although the checklist is composed by many rules, we believed that there are som
 \begin{enumerate}
 \item \codeline{643}. Avoid to use a chain of methods
 \sourcesnippet{643-643}{Concatenation of methods}{Code/DeploymentDescriptorNode.java}
-\item \codeline{657}. Consider using a local variable as returned value by \texttt{DOLUtils.getDefaultLogger()} method, instead of chaining function calls.
+\item \codeline{657}. Consider using a local variable with value returned by \texttt{DOLUtils.getDefaultLogger()} method, instead of chaining function calls.
 \sourcesnippet{657-657}{\texttt{DOLUtils.getDefaultLogger().log(\dots)} methods chaining}{Code/DeploymentDescriptorNode.java} 
 \end{enumerate}
 \subsection{Other problems related to method \texttt{writeEjbReferenceDescriptors()}}
