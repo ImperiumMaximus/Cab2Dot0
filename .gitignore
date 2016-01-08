@@ -12,5 +12,6 @@ Sources/*/*.tps
 Sources/*/*.lof
 Sources/*/*.lol
 Sources/*/CI.pdf
+Sources/*/ITP.pdf
 */*.db
 

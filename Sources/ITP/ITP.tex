@@ -1,0 +1,33 @@
+\documentclass[a4paper,12pt,dvipsnames]{article}%
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{svg}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage[linesnumbered]{algorithm2e}
+\usepackage[parfill]{parskip}
+% \usepackage{listings}
+\usepackage[toc,page]{appendix}
+\usepackage{url}
+\usepackage{enumitem}
+%\usepackage{lstautodedent}
+\geometry{margin=1in}
+\makeatletter\let\MPtrue\@minipagetrue\makeatother
+
+\begin{document}
+	\input{frontpage.tex}
+	\input{introduction.tex}
+	\input{strategy.tex}
+	\input{plan.tex}
+	\input{tools_and_equipment.tex}
+	\input{stubs_and_data.tex}
+	\input{appendices.tex}
+\end{document}
