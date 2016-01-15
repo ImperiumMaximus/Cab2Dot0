@@ -1,6 +1,6 @@
 \newpage
 \section{Tools and Test Equipment Required}
-This section describes tools and techniques required in order to do all tests described in the previous sections. Moreover all tests require additional testing equipment, thus this sections list them and motivates each choice.
+This section describes tools and techniques required in order to do all tests described in the previous sections. Moreover all tests require additional testing equipment, thus this sections list them and motivates each choice. \\
 Here are the tools needed in order to actually perform the integration testing.
 
 \subsection{Tools}
@@ -9,20 +9,21 @@ Here are the tools needed in order to actually perform the integration testing.
 Arquillian is an integration testing tools that facilitates the writing on tests which target a JEE server. It basically instantiates a EJB container and injects the necessary beans in order to perform a requested test, moreover it has the ability to deploy tests directly to a JEE server. Since the back-end our application is implemented using JEE, this tool is extremely useful and moreover all tests can be run directly from the IDE, so this enables all the benefits of testing from an IDE and also debugging is easier.
 
 \subsubsection{JUnit}
-The majority of the tests described here can be automatized using JUnit (this is true also for unit testing), so this is another important tool that can dramatically speed up the overall testing process. As for Arquillian, JUnit integrates perfectly in a Java IDE and furthermore, the former tool is actually designed to be tightly coupled with the latter, so eventually the people who are in charge of testing have a very comfortable and powerful environment to work with, and they can only concentrate in testing instead of worrying about anything else. 
+The majority of the tests described here can be automatized using JUnit (this is true also for unit testing), so this is another important tool that can dramatically speed up the overall testing process. \\ As for Arquillian, JUnit integrates perfectly in a Java IDE and furthermore, the former tool is actually designed to be tightly coupled with the latter, so eventually the people who are in charge of testing have a very comfortable and powerful environment to work with, and they can only concentrate in testing instead of worrying about anything else. 
 
 \subsubsection{Mockito}
 Mockito is a tool that simplifies the creation of mock classes during tests. They are useful when you want to test some code that you have just written but it depends on some other code that it is missing because it isn't already implemented. This tool is more useful during unit testing rather than in integration one but still, you can reuse the mocks created in the unit testing phase as stubs for this phase.
 
 \subsubsection{Manual Testing}
-Some components of the system are difficult to test using an automated approach so there are a few cases in which manual testing comes into place. One of the possible examples is GUI testing, which is very complex to test automatically and indeed more easy to do using direct interaction of humans, furthermore they can provide additional feedbacks and possible ideas of improvement of the interface in order to enhance the overall end-user experience. 
+Some components of the system are difficult to test using an automated approach so there are a few cases in which manual testing comes into place. \\ One of the possible examples is GUI testing, which is very complex to test automatically and indeed more easy to do using direct interaction of humans, furthermore they can provide additional feedbacks and possible ideas of improvement of the interface in order to enhance the overall end-user experience. 
 
 \subsection{Testing Equipment}
 
 \subsubsection{Testing Environment}
+During the Integration Test phase, actual testing will be performed in a specific environment called Testing Environment that is different than Production one. One of the main reasons is to have a simpler and controlled facilities in order neglect some possible issues that can arise during the initials stages of Integration Testing. \\ Of course we should also consider testing in the final environment but this will be done later on in more advanced phases, so overall we have a more step-by-step approach. Another benefit with this approach is, in general, to speed up the overall process. \\ Conversely there are of course possible drawbacks with this method, and one of the most important to consider is that Testing Environment is by construction less powerful than Production one and might not highlight some issues that eventually will be unnoticed during this phase and hopefully can be discovered during final testing or worse after the actual final deployment of the software ready to be used in Production.  
 
 \subsubsection{Back-end}
 
 \subsubsection{Front-end}
 
-equip: explain need of a testing environment (less powerful than production environment but more easy to operate with), PCs (cite Operating Systems, they are defined in the DD) to actual deploy code, Android/iOS/Windows Phone smart-phones to test clients (explain usage of three different models: one with last updated version of each mobile OS, one with minimum required version, and one with a random version between the minimum and the more recent version)
+equip: PCs (cite Operating Systems, they are defined in the DD) to actual deploy code, Android/iOS/Windows Phone smart-phones to test clients (explain usage of three different models: one with last updated version of each mobile OS, one with minimum required version, and one with a random version between the minimum and the more recent version)

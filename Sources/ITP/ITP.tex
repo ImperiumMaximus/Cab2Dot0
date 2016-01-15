@@ -24,6 +24,19 @@
 \usepackage{lmodern}
 \usepackage{microtype}
 
+\def\arraystretch{1.05}
+\newcommand{\tctable}[6] {
+	\begin{tabular*}{\linewidth}{p{0.3\linewidth}p{0.7\linewidth}}
+		\hline
+		\textbf{Test Case Identifier} & #1 \\ \hline	
+		\textbf{Test Item(s)} & #2 \\ \hline
+		\textbf{Purpose} & \begin{minipage}[t]{0.7\linewidth} #3 \end{minipage} \vspace{1ex} \\ \hline
+		\textbf{Input specification} & #4 \\ \hline
+		\textbf{Output specification} & #5 \\ \hline
+		\textbf{Environmental needs} & #6 \\ \hline
+	\end{tabular*}
+}
+
 \begin{document}
 	\input{frontpage.tex}
 	\input{introduction.tex}
