@@ -1,10 +1,137 @@
 \newpage
 \section{Individual Steps and Test Description}
 
-\tctable{a}{b}{
-	abcde
-	\begin{itemize}
-		\item 1
-		\item 2
-		\item 3
-	\end{itemize}}{d}{e}{f}
+\subsection{Integration test case I\arabic{tcasecounter}}
+
+\tctable
+{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Passenger\textrightarrow Passenger UI Logic}
+{
+}
+{Sequence of actions performed manually to trigger all features of Passenger's GUI Application}
+{Check if correct methods are called in Passenger UI Logic and if they are invoked in the appropriate order}
+{Passenger UI Logic's Stub created}
+
+\stepcounter{testcounter}
+\vspace{2ex}
+\tctable
+{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Taxi Driver\textrightarrow Taxi Driver UI Logic}
+{
+}
+{Sequence of actions performed manually to trigger all features of Taxi Driver's GUI Application}
+{Check if correct methods are called in Taxi Driver UI Logic and if they are invoked in the appropriate order}
+{Taxi Driver UI Logic's Stub created}
+
+\stepcounter{testcounter}
+\vspace{2ex}
+\tctable
+{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Sys Admin\textrightarrow Sys Admin UI Logic}
+{
+}
+{Sequence of actions performed manually to trigger all features of Sys Admin's GUI Application}
+{Check if correct methods are called in Sys Admin UI Logic and if they are invoked in the appropriate order}
+{Sys Admin UI Logic's Stub created}
+
+\stepcounter{tcasecounter}
+
+\subsection{Integration test case I\arabic{tcasecounter}}
+\setcounter{testcounter}{1}
+\tctable{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Passenger UI Logic\textrightarrow Access Control}
+{
+}
+{}
+{Check if correct methods are called in Access Control and if they are invoked in the appropriate order}
+{I1T1 passed, Access Control's Stub created}
+
+\stepcounter{testcounter}
+\vspace{2ex}
+\tctable
+{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Passenger UI Logic\textrightarrow Ride Manager}
+{
+}
+{}
+{Check if correct methods are called in Ride Manager and if they are invoked in the appropriate order}
+{I1T1 passed, Ride Manager's Stub created}
+
+\stepcounter{tcasecounter}
+
+\subsection{Integration test case I\arabic{tcasecounter}}
+\setcounter{testcounter}{1}
+\tctable{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Taxi Driver UI Logic\textrightarrow Access Control}
+{
+}
+{}
+{Check if correct methods are called in Access Control and if they are invoked in the appropriate order}
+{I1T2 passed, Access Control's Stub created}
+
+\stepcounter{testcounter}
+\vspace{2ex}
+\tctable
+{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Taxi Driver UI Logic\textrightarrow Queue Manager}
+{
+}
+{}
+{Check if correct methods are called in Queue Manager and if they are invoked in the appropriate order}
+{I1T2 passed, Queue Manager's Stub created}
+
+\stepcounter{tcasecounter}
+
+\subsection{Integration test case I\arabic{tcasecounter}}
+\setcounter{testcounter}{1}
+\tctable{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Sys Admin UI Logic\textrightarrow Access Control}
+{
+}
+{}
+{Check if correct methods are called in Access Control and if they are invoked in the appropriate order}
+{I1T3 passed, Access Control's Stub created}
+
+\stepcounter{tcasecounter}
+
+\subsection{Integration test case I\arabic{tcasecounter}}
+\setcounter{testcounter}{1}
+\tctable{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Access Control\textrightarrow myTaxiService Database}
+{
+}
+{}
+{Check if correct queries are submitted to myTaxiService Database and if they are tied with the correct data}
+{I2T1, I3T1 and I4T1 passed, myTaxiService Database's Stub created}
+\stepcounter{testcounter}
+
+\vspace{2ex}
+\tctable{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Access Control\textrightarrow Cars and Drivers Database}
+{
+}
+{}
+{Check if correct queries are submitted to Cars and Drivers Database and if they are tied with the correct data}
+{I2T1, I3T1 and I4T1 passed, Cars and Drivers Database's Stub created}
+
+\stepcounter{tcasecounter}
+
+\subsection{Integration test case I\arabic{tcasecounter}}
+\setcounter{testcounter}{1}
+\tctable{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Ride Manager\textrightarrow Queue Manager}
+{
+}
+{}
+{Check if correct methods are called in Queue Manager and if they are invoked in the appropriate order}
+{I2T2 passed, Queue Manager's Stub created}
+\stepcounter{testcounter}
+
+\vspace{2ex}
+\tctable{I\arabic{tcasecounter}T\arabic{testcounter}}
+{Ride Manager\textrightarrow Maps Service}
+{
+}
+{}
+{Check if correct methods are called in Maps Service and if they are invoked in the appropriate order}
+{I2T2 passed, Maps Service's Stub created}

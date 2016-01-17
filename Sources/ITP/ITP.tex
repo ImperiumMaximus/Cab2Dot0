@@ -12,9 +12,8 @@
 \usepackage{pdflscape}
 \usepackage{listings}
 \usepackage[T1]{fontenc}
-%\usepackage[linesnumbered]{algorithm2e}
+\usepackage{textcomp}
 \usepackage[parfill]{parskip}
-% \usepackage{listings}
 \usepackage[toc,page]{appendix}
 \usepackage{url}
 \usepackage{enumitem}
@@ -24,9 +23,14 @@
 \usepackage{lmodern}
 \usepackage{microtype}
 
+\newcounter{tcasecounter}
+\newcounter{testcounter}
+\setcounter{tcasecounter}{1}
+\setcounter{testcounter}{1}
+
 \def\arraystretch{1.05}
 \newcommand{\tctable}[6] {
-	\begin{tabular*}{\linewidth}{p{0.3\linewidth}p{0.7\linewidth}}
+	\begin{tabular*}{\linewidth}{p{0.3\linewidth}p{0.65\linewidth}}
 		\hline
 		\textbf{Test Case Identifier} & #1 \\ \hline	
 		\textbf{Test Item(s)} & #2 \\ \hline
