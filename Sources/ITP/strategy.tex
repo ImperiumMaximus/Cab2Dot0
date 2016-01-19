@@ -1,47 +1,55 @@
 \break
 \section{Integration Strategy}
-This section describes decisions and criteria selected for our ITP regarding the ``myTaxiService'' application. These ideas are fundamentals since they will be used extensively throughout the ITP document and they play a central role in the construction of it.
+This section describes decisions and criteria selected for our ITP regarding the ``myTaxiService'' application. These ideas are fundamentals since they will be used extensively throughout the ITP document and they play a central role in its construction.
 \subsection{Entry Criteria}
-Before actually performing an Integration Testing there are some prerequisites we think that should be met. \\ Some items depends on the strategy selected that is used for the design of tests and it will be described in more detail later on. \\
+Before actually performing an Integration Testing there are some prerequisites we think that should be met. \\ Some items depend on a selected strategy that is used for the design of tests and will be described in detail later on. \\
 The list is composed as follows:
 \begin{itemize}
 	\item Definition of dependencies between components.
-	\item Proper unit testing of internal methods of each component and also helper methods (white-box testing).
-	\item Implementation of stubs for internal and external components that are not yet implemented.
+	\item Proper internal method unit tests of each component and also support methods (white-box testing).
+	\item Implementation of stubs for internal and external components that have not implemented yet.
 	\item Definition of input and expected output for each test.
 	\item Definition of I/O functions, i.e. external interface methods, for each component (already described in the DD).
 \end{itemize} 
+\break
 \subsection{Elements to be Integrated}
 The following image illustrates all the components defined in the DD that are going to be tested for integration.
 \begin{figure}[H]
 	\centering
 	\resizebox{6in}
 	{!}{\input{ComponentDiagramStripped.pdf_tex}}
+	\label{Figure 1:}\caption{ Component View}
 \end{figure}
-You can see from the picture that there are dependencies between components, i.e. which component uses methods from another one's external interface. This is a key concept that will guide the entire design and implementation of our ITP and it is described in later sections.
+You can see from this picture that there are dependencies between components, i.e. which component uses methods from another external interface. This is a key concept that will guide the entire design and implementation of our ITP and it is described in later sections.
 \subsection{Integration Testing Strategy}
 The strategy chosen that will drive definition and design of Integration Tests is the top-down approach. \\
-With this method a hierarchy it is defined such as the least dependent components (which, by chance, they cannot have dependencies) are tested first, whereas the ones that are expected to interact the most are the last being tested. The rest of components fall in between of these two extreme categories and they are tested properly as soon as all modules that they depend on are carefully examined and tested. \\
-If other modules are not yet developed, or to break possible dependency cycles, stubs are defined and created accordingly, these stubs implement the same interfaces implemented by the classes that will be used in production and return canned values upon method invocations. Using this principle, we can fake the behavior of a component and focusing only on actual module being tested ensuring the correct interaction with its dependent components.
+With this method a hierarchy is defined such as the last components with no dependences are tested first, whereas the ones that are expected to interact the most are the last to be tested. The rest of components falls in between of these two extreme categories and they are tested properly as soon as all modules that they depend on are carefully examined and tested. \\
+If other modules have not developed yet, or to break possible dependency cycles, stubs are defined and created accordingly to implement the same interfaces by the classes that will be used in production and return canned values upon method invocations. Using this principle, we can fake the behavior of a component and focusing only on actual module to be tested, ensuring the correct interaction with its dependent components.
 Other benefits from using the top-down approach are:
 \begin{itemize}
 	\item Advantageous if major flaws occur toward the top of the program.
-	\item Once the external interface methods are defined, representation of test cases is easier.
+	\item Once external interface methods are defined, representation of test cases is easier.
 	\item Early skeletal Program allows demonstrations and boosts morale.
 \end{itemize}
 Of course there are also possible disadvantages in using such approach. Typically they are:
 \begin{itemize}
 	\item Stub modules must be produced
 	\item Stub modules are often more complicated than they first appear to be.
-	\item Before the external interface methods are defined, representation of test cases in stubs can be difficult.
-	\item Test conditions maybe impossible, or very difficult, to create.
+	\item Before external interface methods are defined, representation of test cases in stubs can be difficult.
+	\item Test conditions may be impossible, or very difficult, to create.
 	\item Observation of test output is more difficult.
 	\item Allows one to think that design and testing can be overlapped.
 	\item Induces one to defer completion of the testing of certain modules.
 \end{itemize}
+\break
 \subsection{Sequence of Component/Function Integration}
-With the strategy chosen, in this section we define the actual sequence of components, based on their dependencies, that implies the order of integration test that should be followed and that will guide implementation of the actual testing plan. 
+With the chosen strategy, in this section we define the actual sequence of components, based on their dependencies.\\ 
+That implies the order of integration tests that should be followed and also it will guide implementation of the actual testing plan. 
 \subsubsection{Software Integration Sequence}
-Since our system is not so complex we can consider a single subsystem comprising all the components so we focus only on design a sequence for integrating modules.
-
-TODO: decidere ordine
+Since our system is not so complex we can consider a single subsystem comprising all the components so we focus only on designing a sequence for integrating modules.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{DiagramSources/integration_test.png}
+\label{Figure 2:}\caption{ Integration Test Order}
+\end{figure}
+Starting from GUI parts because they don't interface themselves with other components. The criteria we used to choose test order is the number of components that use an interface: a part used by a certain amount of components is tested before than another that is used by less elements. 
