@@ -8,7 +8,7 @@
 {Passenger\textrightarrow Passenger UI Logic}
 {To control if all commands coming from an user are correctly processed and all inputs send a correct request to the logic part corresponding to the one designed for}
 {Sequence of actions performed manually to trigger all features of Passenger's GUI Application}
-{Check if correct methods are called in Passenger UI Logic and if they are invoked in the appropriate order}
+{Functionalities coming from the UI component consistent with requests made by passengers or an error messange in case of error}
 {Stub of Passenger UI Logic created}
 
 \stepcounter{testcounter}
@@ -18,7 +18,7 @@
 {Taxi Driver\textrightarrow Taxi Driver UI Logic}
 {To control if all commands coming from an user are correctly processed and all inputs send a correct request to the logic part corresponding to the one designed for}
 {Sequence of actions performed manually to trigger all features of Taxi Driver's GUI Application}
-{Check if correct methods are called in Taxi Driver UI Logic and if they are invoked in the appropriate order}
+{Functionalities coming from the UI component consistent with requests made by taxi drivers or an error messange in case of error}
 {Stub of Taxi Driver UI Logic created}
 
 \stepcounter{testcounter}
@@ -28,7 +28,7 @@
 {Sys Admin\textrightarrow Sys Admin UI Logic}
 {To test if all commands coming from an user are correctly processed and all inputs send a correct request to the logic part corresponding to the one designed for}
 {Sequence of actions performed manually to trigger all features of Sys Admin's GUI Application}
-{Check if correct methods are called in Sys Admin UI Logic and if they are invoked in the appropriate order}
+{Functionalities coming from the UI component consistent with requests made by administrator or an error messange in case of error}
 {Stub of Sys Admin UI Logic created}
 
 \stepcounter{tcasecounter}
@@ -39,7 +39,7 @@
 {Passenger UI Logic\textrightarrow Access Control}
 {To test if all elaborated inputs coming from the GUI part are correct managed, sent in the right order and all responses coming from Access Control component are consistent with their requests}
 {Requests coming from GUI methods}
-{Check if correct methods are called in Access Control and if they are invoked in the appropriate order}
+{Information requested to Access Manager or a series of operations to do in case of error}
 {I1T1 passed, Stub of Access Control created}
 
 \stepcounter{testcounter}
@@ -49,7 +49,7 @@
 {Passenger UI Logic\textrightarrow Ride Manager}
 {To test if methods of this component make a correct request of ride modifications and the answers coming from Ride Manager are in the right order and consistent}
 {All requests elaborated by the Passenger UI Logic part that imply a modification of rides}
-{Check if correct methods are called in Ride Manager and if they are invoked in the appropriate order}
+{A positive validation of modifications happend in Ride Manager to requests coming from Passenger UI Logic or a negative one if an error occurs}
 {I1T1 passed, Stub of Ride Manager created}
 
 \stepcounter{tcasecounter}
@@ -60,7 +60,7 @@
 {Taxi Driver UI Logic\textrightarrow Access Control}
 {To test if all elaborated inputs coming from the GUI part are correct managed, sent in the right order and all responses coming from Access Control component are consistent with their requests}
 {Requests coming from GUI methods}
-{Check if correct methods are called in Access Control and if they are invoked in the appropriate order}
+{Information requested to Access Manager or a series of operations to do in case of error}
 {I1T2 passed, Stub of Access Control created}
 
 \stepcounter{testcounter}
@@ -70,7 +70,7 @@
 {Taxi Driver UI Logic\textrightarrow Queue Manager}
 {To test if Taxi Driver UI Logic inputs that modify queues, i.e. elimination from a queue, insertion in another one and so on, use methods correctly written and answers arriving from Queue Manager are consistent with requests}
 {All requests elaborated by the Taxi Driver UI Logic part that imply a modification of queues}
-{Check if correct methods are called in Queue Manager and if they are invoked in the appropriate order}
+{A positive response about changings happened in Queue Manager or the launch of an error recovery procedure}
 {I1T2 passed, Stub of Queue Manager created}
 
 \stepcounter{tcasecounter}
@@ -81,7 +81,7 @@
 {Sys Admin UI Logic\textrightarrow Access Control}
 {To test if all elaborated inputs coming from the GUI part are correct managed, sent in the right order and all responses coming from Access Control component are consistent with their requests}
 {Requests coming from GUI methods}
-{Check if correct methods are called in Access Control and if they are invoked in the appropriate order}
+{Information requested to Access Manager or a series of operations to do in case of error}
 {I1T3 passed, Stub of Access Control created}
 
 \stepcounter{tcasecounter}
@@ -92,7 +92,7 @@
 {Access Control\textrightarrow myTaxiService Database}
 {To test if Access Control component makes correct requests that are able to modify users' profile and data obtained from myTaxiService Database are consistent}
 {Request coming from various users, for example registration or login}
-{Check if correct queries are submitted to myTaxiService Database and if they are tied with the correct data}
+{A modification in myTaxiService Database, a set of data returned to Access Control or the activation of a procedure after an error}
 {I2T1, I3T1 and I4T1 passed, Stub of myTaxiService Database created}
 \stepcounter{testcounter}
 
@@ -101,7 +101,7 @@
 {Access Control\textrightarrow Cars and Drivers Database}
 {To test if Access Control component is able to verify correspondence between data in myTaxiService Database and Cars and Drivers Database}
 {Requests about cab and driver profiles}
-{Check if correct queries are submitted to Cars and Drivers Database and if they are tied with the correct data}
+{A validation about matchings or a signal of inconsistency of data in these two component. In case of error, a specific procedure that can manage it}
 {I2T1, I3T1 and I4T1 passed, Stub of Cars and Drivers Database created}
 
 \stepcounter{tcasecounter}
@@ -112,7 +112,7 @@
 {Ride Manager\textrightarrow Queue Manager}
 {To test if Ride Manager methods are able to ask correctly to the Queue Manager a creation, modification or removal of a taxi driver from a queue}
 {Ride modifications that imply a changing of taxi driver status in a queue}
-{Check if correct methods are called in Queue Manager and if they are invoked in the appropriate order}
+{A positive acknoledgment about correct modifications occurred in Queue Manager after they have been requested by Ride Manager or an error message}
 {I2T2 passed, Stub of Queue Manager created}
 \stepcounter{testcounter}
 
@@ -121,5 +121,5 @@
 {Ride Manager\textrightarrow Maps Service}
 {To test if Ride Manager can send a correct request to Map Service asking positions of rides and answers are consistent}
 {Requests coming from Ride Manager about departures and arrivals of taxi rides}
-{Check if correct methods are called in Maps Service and if they are invoked in the appropriate order}
+{Map positions requested by Ride Manager or an error massage}
 {I2T2 passed, Stub of Maps Service created}
