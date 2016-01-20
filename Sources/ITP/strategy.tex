@@ -2,12 +2,12 @@
 \section{Integration Strategy}
 This section describes decisions and criteria selected for our ITP regarding the ``myTaxiService'' application. These ideas are fundamentals since they will be used extensively throughout the ITP document and they play a central role in its construction.
 \subsection{Entry Criteria}
-Before actually performing an Integration Testing there are some prerequisites we think that should be met. \\ Some items depend on a selected strategy that is used for the design of tests and will be described in detail later on. \\
+Before actually performing an Integration Testing there are some prerequisites we think that should be met. \\ Some items depend on a selected strategy that is used for the design of tests and they will be described in detail later on. \\
 The list is composed as follows:
 \begin{itemize}
 	\item Definition of dependencies between components.
 	\item Proper internal method unit tests of each component and also support methods (white-box testing).
-	\item Implementation of stubs for internal and external components that have not implemented yet.
+	\item Implementation of stubs for internal and external components that have not been implemented yet.
 	\item Definition of input and expected output for each test.
 	\item Definition of I/O functions, i.e. external interface methods, for each component (already described in the DD).
 \end{itemize} 
@@ -23,7 +23,7 @@ The following image illustrates all the components defined in the DD that are go
 You can see from this picture that there are dependencies between components, i.e. which component uses methods from another external interface. This is a key concept that will guide the entire design and implementation of our ITP and it is described in later sections.
 \subsection{Integration Testing Strategy}
 The strategy chosen that will drive definition and design of Integration Tests is the top-down approach. \\
-With this method a hierarchy is defined such as the last components with no dependences are tested first, whereas the ones that are expected to interact the most are the last to be tested. The rest of components falls in between of these two extreme categories and they are tested properly as soon as all modules that they depend on are carefully examined and tested. \\
+With this method a hierarchy is defined such as the components with no dependences are tested first, whereas the ones that are expected to interact the most are the last to be tested. The rest of components falls in between of these two extreme categories and they are tested properly as soon as all modules that they depend on are carefully examined and tested. \\
 If other modules have not developed yet, or to break possible dependency cycles, stubs are defined and created accordingly to implement the same interfaces by the classes that will be used in production and return canned values upon method invocations. Using this principle, we can fake the behavior of a component and focusing only on actual module to be tested, ensuring the correct interaction with its dependent components.
 Other benefits from using the top-down approach are:
 \begin{itemize}
@@ -52,4 +52,5 @@ Since our system is not so complex we can consider a single subsystem comprising
 \includegraphics[scale=0.6]{DiagramSources/integration_test.png}
 \label{Figure 2:}\caption{ Integration Test Order}
 \end{figure}
-Starting from GUI parts because they don't interface themselves with other components. The criteria we used to choose test order is the number of components that use an interface: a part used by a certain amount of components is tested before than another that is used by less elements. 
+Starting from GUI parts because they don't interface themselves with other components. The criteria we used to choose test order is the number of components that use an interface: a part used by a certain amount of components is tested before than another that is used by less elements. \\
+It is important to notice that as soon as a component is implemented, it will be tested for integration regardless of the implementation state of the components that it depends on, if necessary proper stubs will be created.
