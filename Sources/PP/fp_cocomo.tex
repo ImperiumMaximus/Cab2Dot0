@@ -1,2 +1,306 @@
-\break
-\section{Function points \& COCOMO}
+\newpage
+\def\arraystretch{1.5}
+\section{Function Points \& COCOMO}
+\subsection{Function Points}
+\subsubsection{Brief introduction}
+The Function Point estimation approach, is based on the principle of extracting functions from a software, classify them using a well defined set classes and estimate their complexity. \\ This kind of estimation is extremely useful since it can be done at a very early stage of a project life-cycle, ideally after the implementation of the RASD, moreover, it can be used as a basis for performing a cost estimation using well-known models such as COCOMO (explained later on). \\
+This estimation is a single number called UFP that can be computed using simple arithmetic. \\
+An high-level procedure of how to calculate this number is the following:
+\begin{enumerate}
+	\item Classify each function of the software to one of this possible five classes called Function Types (explained in detail later):
+	\begin{itemize}
+		\item Internal Logic Files
+		\item External Interfaces Files
+		\item External Inputs
+		\item External Outputs
+		\item External Inquiries
+	\end{itemize}
+	\item For each function define its complexity which can be:
+	\begin{itemize}
+		\item Low
+		\item Average
+		\item High
+	\end{itemize}
+	\item Calculate the UFC by using this formula:
+	$$ \sum_{f \in F,\ c \in C} \left((\textrm{\# of functions of type } f \textrm{ and complexity } c) \cdot (\textrm{weight for type } f \textrm{ and complexity } c ) \right) $$
+	where $F = $ \{ILF, ELF, EI, EO, EIQ\} and $C = $ \{Low, Average, High\}. \\
+	Refer to this table for determine the proper weight for each type and complexity:
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{x{0.3\linewidth}x{0.15\linewidth}x{0.15\linewidth}x{0.15\linewidth}}
+		\hline 
+		& \multicolumn{3}{c}{\textbf{Complexity-Weight}} \\
+		\textbf{Function Type} & \textbf{Low} &\textbf{Average} & \textbf{High} \\
+		\hline
+		Internal Logical Files & 7 & 10 & 15 \\
+		External Interfaces Files & 5 & 7 & 10 \\
+		External Inputs & 3 & 4 & 6 \\
+		External Outputs & 4 & 5 & 7 \\
+		External Inquiries & 3 & 4 & 6 \\
+		\hline
+	\end{tabular}
+	\caption{UFP Complexity Weights}
+\end{table}
+\end{enumerate}
+Further manipulation of the UFC can be done in order to use it in Cost Estimation Models such as COCOMO, but this will be explained later.
+\subsubsection{Internal Logic Files}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+		\hline
+		\textbf{ILF} & \textbf{Complexity} & \textbf{FP} \\ \hline
+		 & & \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total}} & \\
+		\hline
+	\end{tabular}
+\end{table}
+\subsubsection{External Logic Files}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+		\hline
+		\textbf{ELF} & \textbf{Complexity} & \textbf{FP} \\ \hline
+		& & \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total}} & \\
+		\hline
+	\end{tabular}
+\end{table}
+\subsubsection{External Inputs}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+		\hline
+		\textbf{EI} & \textbf{Complexity} & \textbf{FP} \\ \hline
+		& & \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total}:} & \\
+		\hline
+	\end{tabular}
+\end{table}
+\subsubsection{External Outputs}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+		\hline
+		\textbf{EO} & \textbf{Complexity} & \textbf{FP} \\ \hline
+		& & \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total}} & \\
+		\hline
+	\end{tabular}
+\end{table}
+\subsubsection{External Inquiries}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+		\hline
+		\textbf{EIQ} & \textbf{Complexity} & \textbf{FP} \\ \hline
+		& & \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total}} & \\
+		\hline
+	\end{tabular}
+\end{table}
+\subsubsection{Recap}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{0.7\linewidth}|R{0.3\linewidth}|}
+		\hline
+		\textbf{Function Type} & \textbf{Value} \\ \hline
+		Internal Logic Files & \\ \hline
+		External Logic Files & \\ \hline
+		External Inputs & \\ \hline
+		External Outputs & \\ \hline
+		External Inquiries & \\ \hline
+		\textbf{Total} & \\
+		\hline
+	\end{tabular}
+\end{table}
+\subsection{COCOMO}
+\subsubsection{Brief introduction}
+This estimation is achieved using a complex, non linear model that takes into account the characteristic of the product but also of people and process. \\
+Basically, this model estimates the effort needed to implement the project being analyzed. To compute this number we need to define some concept which will be used later in the actual calculation. \\
+The equation to compute the effort is the following:
+$$\textrm{Effort} = A \cdot \textrm{SLOC}^E \cdot \prod_{i=1}^{n} EM_i$$
+Where $A = 2.94$ for COCOMO II.2000, SLOC is the amount of lines of codes estimated to be written for implementing the software, $E$ is explained in detail in Section \ref{sec:sd} and $EM$ is called effort multiplier which is defined for each Cost Driver (explained in Section \ref{sec:cd}), in COCOMO II.2000 the number of Cost Driver are 17 thus $n = 17$.
+\subsubsection{Lines of Codes}
+This datum can be determined using a simple conversion equation of this kind
+$$ \textrm{SLOC} = k \cdot \textrm{UFP} $$
+Where $k$ is a coefficient which is assigned given the programming language chosen for implementing the software, in our case the language is Java thus the coefficient is $k = 53\ \nicefrac{\textrm{SLOC}}{\textrm{UFP}}$. \\
+Given this information, we can estimate our SLOC for the sotware which is:
+$$SLOC = 53 \cdot number = big number$$
+This value will be used later for computing the effort.
+\subsubsection{Scale Drivers}
+The exponent $E$ in the equation of the Effort is an aggregation of five \textit{scale factors} (SF) that account
+for the relative economies or diseconomies of scale encountered for software projects of different
+sizes. \\
+If $E < 1.0$, the project exhibits economies of scale. If the product's
+size is doubled, the project effort is less than doubled. The project's productivity increases as the
+product size is increased. \\
+If $E = 1.0$, the economies and diseconomies of scale are in balance. This linear model is
+often used for cost estimation of small projects. \\
+If $E > 1.0$, the project exhibits diseconomies of scale. This is generally because of two
+main factors: growth of interpersonal communications overhead and growth of large-system
+integration overhead. \\
+$E$ can be computed using this equation:
+$$ E = B + 0.01 \cdot \sum_{j=1}^{5} \textrm{SF}_j $$
+where $B = 0.91$ (for COCOMO II.2000). \\
+Scale Factors are defined in the following table:
+\label{sec:sd}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|x{0.11\linewidth}|x{0.135\linewidth}|x{0.125\linewidth}|x{0.13\linewidth}|x{0.13\linewidth}|x{0.13\linewidth}|x{0.135\linewidth}|}
+		\hline
+		\textbf{Scale Factors} & \textbf{Very Low} & \textbf{Low} & \textbf{Nominal} & \textbf{High} & \textbf{Very High} & \textbf{Extra High} \\ \hline
+		\textbf{\uppercase{Prec}:} & Thoroughly unprecedented & Largely unprecedented & Somewhat unprecedented & Generally familiar & Largely familiar & Thoroughly familiar \\
+		\textbf{SF\textsubscript{i}:} & 6.20 & 4.96 & 3.72 & 2.48 & 1.24 & 0.00 \\
+		\hline
+		\textbf{FLEX:} & Rigorous & Occasional relaxation & Some relaxation & General conformity & Some conformity & General goals \\
+		\textbf{SF\textsubscript{i}:} & 5.07 & 4.05 & 3.04 & 2.03 & 1.01 & 0.00 \\
+		\hline
+		\textbf{RESL:} & Little (20\%) & Some (40\%) & Often (60\%) & Generally (75\%) & Mostly (90\%) & Full (100\%) \\
+		\textbf{\textbf{SF\textsubscript{i}:}} & 7.07 & 5.65 & 4.24 & 2.83 & 1.41 & 0.00 \\
+		\hline 
+		\textbf{TEAM:} & Very difficult interactions & Some difficult interactions & Basically cooperative interactions & Largely cooperative & Highly cooperative & Seamless interactions \\
+		\textbf{\textbf{SF\textsubscript{i}:}} & 5.48 & 4.38 & 3.29 & 2.19 & 1.10 & 0.00 \\
+		\hline
+		& \multicolumn{6}{c|}{The estimated Equivalent Process Maturity Level (EPML) or} \\
+		\cline{2-7}
+		\textbf{PMAT:} & SW-CMM Level 1 Lower & SW-CMM Level 1 Upper & SW-CMM Level 2 & SW-CMM Level 3 & SW-CMM Level 4 & SW-CMM Level 5 \\
+		\textbf{\textbf{SF\textsubscript{i}:}} & 7.80 & 6.24 & 4.68 & 3.12 & 1.56 & 0.00 \\
+		\hline
+	\end{tabular}
+	\caption{Scale Factor Values, SF\textsubscript{i}, for COCOMO II Models}
+\end{table}
+According from the table we can evaluate the scale factors for our project:
+\begin{itemize}
+	\item \textbf{Precedentedness}, 
+	\item \textbf{Development flexibility},
+	\item \textbf{Risk resolution},
+	\item \textbf{Team cohesion},
+	\item \textbf{Process maturity},
+\end{itemize}
+
+The results are recapped in the following table:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+		\hline
+		\textbf{Scale Driver} & \textbf{Selected Factor} & \textbf{Value} \\
+		\hline
+		Precedentness & & \\
+		\hline
+		Development Flexibility & & \\
+		\hline
+		Risk Resolution & & \\
+		\hline
+		Team Cohesion & & \\
+		\hline
+		Process Maturity & & \\
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Total}} & \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsubsection{Cost Drivers}
+\label{sec:cd}
+\cdtable{name=RELY, vldesc=Slight incovenience, ldesc={Low, easily recoverable losses}, ndesc={Moderate, easily recoverable losses}, hdesc=High financial loss, vhdesc=Risk to human life, ehdesc={}, vlmult=0.82, lmult=0.92, nmult=1.00, hmult=1.10, vhmult=1.26, ehmult=n/a}
+
+\cdtable{name=DATA, vldesc={}, ldesc={Testing DB bytes/Pgm SLOC \textless\ 10}, ndesc=$10 \le \textrm{D/P} \le 100$, hdesc=$100 \le \textrm{D/P} \le 1000$, vhdesc=D/P $\ge 100$, ehdesc={}, vlmult=n/a, lmult=0.90, nmult=1.00, hmult=1.14, vhmult=1.28, ehmult=n/a}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|M{0.165\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|}
+		\hline
+		\textbf{Rating Level} & Very Low & Low & Nominal & High & Very High & Extra High \\
+		\hline
+		\textbf{Effort Multipliers} & 0.73 & 0.87 & 1.00 & 1.17 & 1.34 & 1.74 \\
+		\hline
+	\end{tabular}
+	\caption{CPLX Cost Driver}
+\end{table}
+
+\cdtable{name=RUSE, vldesc={}, ldesc=None, ndesc=Across project, hdesc=Across program, vhdesc=Across product line, ehdesc=Across multiple product lines, vlmult=n/a, lmult=0.95, nmult=1.00, hmult=1.07, vhmult=1.15, ehmult=1.24}
+
+\cdtable{name=DOCU, vldesc=Many life-cycle needs unconvered, ldesc=Some life-cycle needs uncovered, ndesc=Right-sized to life-cycle needs, hdesc=Excessive for life-cycle needs, vhdesc=Very excessive for life-cycle needs, ehdesc={}, vlmult=0.81, lmult=0.91, nmult=1.00, hmult=1.11, vhmult=1.23, ehmult=n/a}
+
+\cdtable{name=DOCU, vldesc={}, ldesc={}, ndesc=$\le 50\%$ use of available execution time, hdesc=70\% use of available execution time, vhdesc=85\% use of available execution time, ehdesc=95\% use of available execution time, vlmult=n/a, lmult=n/a, nmult=1.00, hmult=1.11, vhmult=1.29, ehmult=1.63}
+
+\cdtable{name=STOR, vldesc={}, ldesc={}, ndesc=$\le 50\%$ use of available storage, hdesc=70\% use of available storage, vhdesc=85\% use of available storage, ehdesc=95\% use of available storage, vlmult=n/a, lmult=n/a, nmult=1.00, hmult=1.05, vhmult=1.17, ehmult=1.46}
+
+\cdtable{name=PVOL, vldesc={}, ldesc=Major change every 12 mo.; Minor change every 1 mo., ndesc=Major: 6 mo.; Minor: 2 wk., hdesc=Major: 2 mo.; Minor: 1 wk., vhdesc=Major: 2 wk.; Minor: 2 days, ehdesc={}, vlmult=n/a, lmult=0.87, nmult=1.00, hmult=1.15, vhmult=1.30, ehmult=n/a}
+
+\cdtable{name=ACAP, vldesc=15\textsuperscript{th} percentile, ldesc=35\textsuperscript{th} percentile, ndesc=55\textsuperscript{th} percentile, hdesc=75\textsuperscript{th} percentile, vhdesc=90\textsuperscript{th} percentile, ehdesc={}, vlmult=1.42, lmult=1.19, nmult=1.00, hmult=0.85, vhmult=0.71, ehmult=n/a}
+
+\cdtable{name=PCAP, vldesc=15\textsuperscript{th} percentile, ldesc=35\textsuperscript{th} percentile, ndesc=55\textsuperscript{th} percentile, hdesc=75\textsuperscript{th} percentile, vhdesc=90\textsuperscript{th} percentile, ehdesc={}, vlmult=1.34, lmult=1.15, nmult=1.00, hmult=0.88, vhmult=0.76, ehmult=n/a}
+
+\cdtable{name=APEX, vldesc=$\le 2$ months, ldesc=6 months, ndesc=1 year, hdesc=3 year, vhdesc=6 years, ehdesc={}, vlmult=1.22, lmult=1.10, nmult=1.00, hmult=0.88, vhmult=0.81, ehmult=n/a}
+
+\cdtable{name=PLEX, vldesc=$\le 2$ months, ldesc=6 months, ndesc=1 year, hdesc=3 year, vhdesc=6 years, ehdesc={}, vlmult=1.19, lmult=1.09, nmult=1.00, hmult=0.91, vhmult=0.85, ehmult=n/a}
+
+\cdtable{name=LTEX, vldesc=$\le 2$ months, ldesc=6 months, ndesc=1 year, hdesc=3 year, vhdesc=6 years, ehdesc={}, vlmult=1.20, lmult=1.09, nmult=1.00, hmult=0.91, vhmult=0.84, ehmult=n/a}
+
+\cdtable{name=LTEX, vldesc=48\% / year, ldesc=24\% / year, ndesc=12\% / year, hdesc=6\% / year, vhdesc=3\% / year, ehdesc={}, vlmult=1.29, lmult=1.12, nmult=1.00, hmult=0.90, vhmult=0.81, ehmult=n/a}
+
+\cdtable{name=TOOL, vldesc={Edit, code, debug}, ldesc={Simple, frontend, backend CASE, little integration}, ndesc={Basic life-cycle tools, moderately integrated}, hdesc={Strong, mature life-cycle tools, moderately integrated}, vhdesc={Strong, mature, proactive life-cycle tools, well integrated with processes, methods, reuse}, ehdesc={}, vlmult=1.17, lmult=1.09, nmult=1.00, hmult=0.90, vhmult=0.78, ehmult=n/a}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|M{0.165\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|}
+		\hline
+		\textbf{SITE: Collocation \break Descriptors:} & {\small International} & {\small Multi-city and Multi-company} & {\small Multi-city or Multi-company} & {\small Same city or metro. area} & {\small Same building or complex} & {\small Fully collocated} \\
+		\textbf{SITE: Communications \break Descriptors:} & {\small Some phone, mail} & {\small Individual phone, FAX} & {\small Narrow band email} & {\small Wideband electronic communication} & {\small Wideband elect. comm. occasional video conf.} & {\small Interactive multimedia} \\
+		\hline
+		\textbf{Rating Level} & Very Low & Low & Nominal & High & Very High & Extra High \\
+		\hline
+		\textbf{Effort Multipliers} & 1.22 & 1.09 & 1.00 & 0.93 & 0.86 & 0.80 \\
+		\hline
+	\end{tabular}
+	\caption{\cmdCDK@ccd@name \ Cost Driver}
+\end{table}
+
+\cdtable{name=SCED, vldesc=75\% of nominal, ldesc=85\% of nominal, ndesc=100\% of nominal, hdesc=130\% of nominal, vhdesc=160\% of nominal, ehdesc={}, vlmult=1.43, lmult=1.14, nmult=1.00, hmult=1.00, vhmult=1.00, ehmult=n/a}
+\subsubsection{Cost Driver Recap}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+		\hline
+		\textbf{Cost Driver} & \textbf{Selected Factor} & \textbf{Value} \\
+		\hline
+		Required Software Reliability & & \\
+		\hline
+		Database Size & & \\
+		\hline
+		Product Complexity & & \\
+		\hline
+		Required Reusability & & \\
+		\hline
+		Documentation match to life-cycle needs & & \\
+		\hline
+		Execution Time Constraint & & \\
+		\hline
+		Main Storage Constraint & & \\
+		\hline
+		Platform Volatility & & \\
+		\hline
+		Analyst Capability & & \\
+		\hline
+		Programmer Capability & & \\
+		\hline
+		Application Experience & & \\
+		\hline
+		Platform Experience & & \\
+		\hline
+		Language and Tool Experience & & \\
+		\hline
+		Personnel Continuity & & \\
+		\hline
+		Usage of Software Tools & & \\
+		\hline
+	    Multi-site Development & & \\
+		\hline
+		Required Development Schedule & & \\
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Product}} & \\
+		\hline
+	\end{tabular}
+\end{table}
+\subsubsection{Effort computation}

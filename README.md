@@ -26,9 +26,8 @@ A driver can also reply very quickly after the client's request and thus grantin
 * ~~Presentation of inspection documents and peer review 07/01/2016~~
 * ~~Testing assignment 07/01/2016~~
 * ~~Open discussion on testing assignment 13/01/2016~~
-* Testing document submission deadline 21/01/2016
-* Presentation of testing document and peer review 22/01/2016
-* Function points assignment 22/01/2016
-* Open discussion on function points 28/01/2016
-* Function points document submission deadline 30/01/2016
+* ~~Function points assignment 20/01/2016~~
+* ~~Testing document submission deadline 21/01/2016~~
+* ~~Open discussion on function points 21/01/2016~~
+* Function points document submission deadline 02/02/2016
 * Final presentation (to be scheduled)

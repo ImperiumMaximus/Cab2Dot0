@@ -20,9 +20,53 @@
 %\usepackage{lstautodedent}
 \geometry{margin=1in}
 \makeatletter\let\MPtrue\@minipagetrue\makeatother
+\usepackage{ragged2e}
+\usepackage{xkeyval}
+\usepackage{nicefrac}
 \usepackage{lmodern}
 \usepackage{microtype}
 
+\newcolumntype{x}[1]{>{\raggedright\centering\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{M}[1]{>{\raggedright\centering\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
+
+\makeatletter
+
+\define@cmdkey      [CDK] {ccd}     {name}      {}
+\define@cmdkey      [CDK] {ccd}     {vldesc}    {}
+\define@cmdkey      [CDK] {ccd}     {ldesc}     {}
+\define@cmdkey      [CDK] {ccd}     {ndesc}     {}
+\define@cmdkey      [CDK] {ccd}     {hdesc}     {}
+\define@cmdkey      [CDK] {ccd}     {vhdesc}    {}
+\define@cmdkey      [CDK] {ccd}     {ehdesc}    {}
+
+\define@cmdkey      [CDK] {ccd}     {vlmult}    {}
+\define@cmdkey      [CDK] {ccd}     {lmult}     {}
+\define@cmdkey      [CDK] {ccd}     {nmult}     {}
+\define@cmdkey      [CDK] {ccd}     {hmult}     {}
+\define@cmdkey      [CDK] {ccd}     {vhmult}    {}
+\define@cmdkey      [CDK] {ccd}     {ehmult}    {}
+
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\newcommand{\cdtable}[1]{%
+	\setkeys[CDK]{ccd}{#1}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|M{0.165\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|M{0.125\linewidth}|}
+		\hline
+		\textbf{\cmdCDK@ccd@name \break Descriptors:} & {\small \cmdCDK@ccd@vldesc} & {\small \cmdCDK@ccd@ldesc} & {\small \cmdCDK@ccd@ndesc} & {\small \cmdCDK@ccd@hdesc} & {\small \cmdCDK@ccd@vhdesc} & {\small \cmdCDK@ccd@ehdesc} \\
+		\hline
+		\textbf{Rating Level} & Very Low & Low & Nominal & High & Very High & Extra High \\
+		\hline
+		\textbf{Effort Multipliers} & \cmdCDK@ccd@vlmult & \cmdCDK@ccd@lmult & \cmdCDK@ccd@nmult & \cmdCDK@ccd@hmult & \cmdCDK@ccd@vhmult & \cmdCDK@ccd@ehmult \\
+		\hline
+	\end{tabular}
+	\caption{\cmdCDK@ccd@name \ Cost Driver}
+\end{table}
+}
+
+\sloppy
 \begin{document}
 	\input{frontpage.tex}
 	\input{introduction.tex}
