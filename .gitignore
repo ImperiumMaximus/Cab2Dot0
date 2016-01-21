@@ -13,5 +13,6 @@ Sources/*/*.lof
 Sources/*/*.lol
 Sources/*/CI.pdf
 Sources/*/ITP.pdf
+Sources/*/PP.pdf
 */*.db
 

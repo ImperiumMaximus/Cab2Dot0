@@ -1,0 +1,34 @@
+\documentclass[a4paper,12pt,dvipsnames]{article}%
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{svg}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[parfill]{parskip}
+\usepackage[toc,page]{appendix}
+\usepackage{url}
+\usepackage{enumitem}
+%\usepackage{lstautodedent}
+\geometry{margin=1in}
+\makeatletter\let\MPtrue\@minipagetrue\makeatother
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\begin{document}
+	\input{frontpage.tex}
+	\input{introduction.tex}
+	\input{fp_cocomo.tex}
+	\input{gantt.tex}
+	\input{res_tasks_alloc.tex}
+	\input{risks.tex}
+	\input{appendices.tex}
+\end{document}
