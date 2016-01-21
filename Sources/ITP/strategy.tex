@@ -23,7 +23,7 @@ The following image illustrates all the components defined in the DD that are go
 You can see from this picture that there are dependencies between components, i.e. which component uses methods from another external interface. This is a key concept that will guide the entire design and implementation of our ITP and it is described in later sections.
 \subsection{Integration Testing Strategy}
 The strategy chosen that will drive definition and design of Integration Tests is the top-down approach. \\
-With this method a hierarchy is defined such as the components with no dependences are tested first, whereas the ones that are expected to interact the most are the last to be tested. The rest of components falls in between of these two extreme categories and they are tested properly as soon as all modules that they depend on are carefully examined and tested. \\
+With this method, a hierarchy is defined such as the components with no dependences are tested first, whereas the ones that are expected to interact the most are the last to be tested. The rest of components falls in between of these two extreme categories and they are tested properly as soon as all modules that they depend on are carefully examined and tested. \\
 If other modules have not developed yet, or to break possible dependency cycles, stubs are defined and created accordingly to implement the same interfaces by the classes that will be used in production and return canned values upon method invocations. Using this principle, we can fake the behavior of a component and focusing only on actual module to be tested, ensuring the correct interaction with its dependent components.
 Other benefits from using the top-down approach are:
 \begin{itemize}

@@ -1,12 +1,12 @@
 \newpage
 \section{Tools and Test Equipment Required}
-This section describes tools and techniques required in order to do all tests described in the previous sections. Moreover all tests require additional testing equipment, thus these sections list them and motivate why they have been done. \\
+This section describes tools and techniques required in order to do all tests described in the previous sections. Moreover, all tests require additional testing equipment, thus these sections list them and motivate why they have been done. \\
 Here there are the tools needed in order to actually perform the integration testing.
 
 \subsection{Tools}
 
 \subsubsection{Arquillian}
-Arquillian is an integration testing tool that facilitates test writing which targets a JEE server. It basically instantiates a EJB container and injects necessary beans in order to perform a requested test, moreover it has the ability to deploy tests directly to a JEE server. Since the back-end of our application is implemented using JEE, this tool is extremely useful and moreover all tests can be run directly from IDE, so this enables all the benefits of testing from an IDE simplifying also debugging.
+Arquillian is an integration testing tool that facilitates test writing which targets a JEE server. It basically instantiates a EJB container and injects necessary beans in order to perform a requested test, moreover, it has the ability to deploy tests directly to a JEE server. Since the back-end of our application is implemented using JEE, this tool is extremely useful and moreover, all tests can be run directly from IDE, so this enables all the benefits of testing from an IDE simplifying also debugging.
 
 \subsubsection{JUnit}
 The majority of tests described here can be automatized using JUnit (this is true also for unit testing), so this is another important tool that can dramatically speed up the overall testing process. \\ Like Arquillian, JUnit is perfectly integrated in a Java IDE and furthermore the former tool is actually designed to be tightly coupled with the latter. Eventually people who are in charge of testing have a very comfortable and powerful environment to work with, and they can only concentrate on testing instead of being worried about something else. 
