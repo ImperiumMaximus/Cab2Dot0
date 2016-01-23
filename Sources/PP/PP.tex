@@ -2,6 +2,7 @@
 \usepackage{amsmath}%
 \usepackage{amsfonts}%
 \usepackage{amssymb}%
+\usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage[hidelinks]{hyperref}
@@ -26,6 +27,8 @@
 \usepackage{lmodern}
 \usepackage{microtype}
 
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
 \newcolumntype{x}[1]{>{\raggedright\centering\arraybackslash\hspace{0pt}}p{#1}}
 \newcolumntype{M}[1]{>{\raggedright\centering\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
@@ -47,8 +50,6 @@
 \define@cmdkey      [CDK] {ccd}     {vhmult}    {}
 \define@cmdkey      [CDK] {ccd}     {ehmult}    {}
 
-\newcommand{\specialcell}[2][c]{%
-	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 \newcommand{\cdtable}[1]{%
 	\setkeys[CDK]{ccd}{#1}
 \begin{table}[H]
