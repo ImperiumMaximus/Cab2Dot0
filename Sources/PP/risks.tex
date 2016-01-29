@@ -1,13 +1,45 @@
 \newpage
-\section{Project risks}
+\section{Risks}
 In this section the risk for the project are defined, their relevance in terms of reliability and availability of the system and the associated recovery actions.
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.3\linewidth}|x{0.15\linewidth}|p{0.55\linewidth}|}
+	\begin{tabular}{p{0.6\linewidth}x{0.15\linewidth}x{0.15\linewidth}}
 	\hline
-	\textbf{Risk} & \textbf{Relevance} & \textbf{Recovery Actions} \\
+	\textbf{Risk} & \textbf{Probability} & \textbf{Relevance} \\
 	\hline
-	& & \\
+	Requirements volatility over time & Low & Serious \\
+	Problem with team communication or subversive team members & Low & Serious \\
+	Lack of performance of external components (Databases, etc.) & Low & Marginal \\
+	Delays over expected deadline & High & Critical \\ 
+	Change of Regulations (e.g. Taxi policy, Cars and Drivers licenses, etc.) & Low & Serious \\
+	Competitors & Moderate & Serious \\
+	User acceptance (e.g. cumbersome and difficult to use UX, lack of responsiveness, etc.) & Moderate & Catastrophic \\
+	Bankruptcy & Moderate & Catastrophic \\
+	Integration Testing Failure & Low & Critical \\
+	Downtime & Moderate & Critical \\
+	Scalability issues & Moderate & Serious \\
+	Security issues (e.g. loss of data caused to system hacking) & Moderate & Critical \\
 	\hline
 	\end{tabular}
+	\caption{Summary of Project's risks}
 \end{table} 
+The next table illustrates the possible actions in order to avoid or recover risks defined in the previous table, whenever possible, actions are designed so to proactively avoid risks rather than reactive when they happen.
+	\begin{longtable}{p{0.5\linewidth}x{0.5\linewidth}}
+		\hline
+		\textbf{Risk} & \textbf{Strategy} \\
+		\hline
+		Requirements volatility & This can't be proactively avoided in a definitive and fixed way, but can be mitigated designing reusable and extensible software. \\
+		Team issues & Assign clearly tasks and responsibilities to each project member. Try to maintain a fair and relaxed environment among members, in order to keep them highly motivated.\\
+		Lack of performance of external components & Consider either investigate the reasons for poor performance or buying another software component. \\
+		Delays over expected deadline & Release a version of the software with missing features and then release an updated version with (hopefully) all the functionalities implemented. \\
+		Change of Regulations & Perform a thoroughly study on current regulations in order to take them into account accordingly, however this may not be sufficient to completely avoid this risk.\\
+		Competitors & Develop marketing plans (electronic advertising such as banners, publicity campaigns, etc.) in order to increase attractiveness of our product w.r.t. the others. \\
+		User acceptance & Design carefully graphic interface so to have a cutting-edge user experience, which encourages the acceptance.\\
+		Bankruptcy & Carefully analyze costs and avoid delays, as well design a reliable system, so to reduce as much as possible the needs to maintain the software (bug fixing, testing, patches development, etc.). \\
+		Integration Testing Failure & Write carefully the DD and implement the component accordingly trying to follow as closely as possible the specification. Perform the tests as early as possible. \\
+		Downtime & This risk can be avoided by using some sort of redundancy at hardware level or software level\\
+		Scalability issues & Carefully design and implement the software so to avoid this risk, test accordingly under heavy load conditions. \\
+		Security issues & Use defensive programming as much as possible, never ``trust'' the users, plan proper penetration tests so to put under pressure the system, analyze the results and if necessary, make changes.\\
+		\hline
+		\caption{Risks avoidance strategies}
+	\end{longtable}

@@ -47,14 +47,14 @@ Further manipulation of the UFP can be done in order to use it in Cost Estimatio
 The application should manage an internal database which it is used to store information about the three categories of registered users: Passengers, Taxi Drivers, Sys Admins. For each of them basic data it is collected: name, surname, password, e-mail and so on. Thus we think that the complexity for this entities should be set to \textbf{Low}. On the other hand the system also maintain a history of Rides carried out throughout its life-cycle, since this entity is a bit complex than the previous ones we set its complexity to \textbf{Average}.
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
 		\hline
 		\textbf{ILF} & \textbf{Complexity} & \textbf{FP} \\ \hline
-		Passengers & Low & 7 \\ \hline
-		Taxi Drivers & Low & 7 \\ \hline
-		Sys Admins & Low & 7 \\ \hline
-		Rides & Average & 10 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Total}} & 31 \\
+		Passengers & Low & 7 \\
+		Taxi Drivers & Low & 7 \\
+		Sys Admins & Low & 7 \\
+		Rides & Average & 10 \\
+		\multicolumn{2}{l}{\textbf{Total}} & 31 \\
 		\hline
 	\end{tabular}
 	\caption{ILFs Table Recap}
@@ -63,12 +63,12 @@ The application should manage an internal database which it is used to store inf
 The application should interact with a Maps service which provides information regarding city map and ETAs of Rides. This interaction requires the understanding of some API(s) and the need of parsing data coming from the Internet so we set this function complexity to \textbf{Average}. \\ Another interaction is with an external Database containing various information about Cars and Drivers, this interaction is simpler than the previous one and, by the way, Java has already well-defined interfaces to dialog with a Database so we set the complexity to \textbf{Low}.  
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
 		\hline
 		\textbf{ELF} & \textbf{Complexity} & \textbf{FP} \\ \hline
-		Maps Service & Average & 7 \\ \hline
-		Cars and Drivers Database & Low  & 5 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Total}} & 12 \\
+		Maps Service & Average & 7 \\
+		Cars and Drivers Database & Low  & 5 \\
+		\multicolumn{2}{l}{\textbf{Total}} & 12 \\
 		\hline
 	\end{tabular}
 	\caption{ELFs Table Recap}
@@ -85,20 +85,20 @@ The application has to deal with this external interactions from the users:
 \end{itemize} 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
 		\hline
 		\textbf{EI} & \textbf{Complexity} & \textbf{FP} \\ \hline
-		Login & Low & 3 \\ \hline
-		Logout & Low & 3 \\ \hline
-		Passenger Registration & Low & 3 \\ \hline
-		Taxi Driver Registration & Low & 3 \\ \hline
-		Perform Request & High & 6 \\ \hline
-		Perform Reservation & High & 6 \\ \hline
-		Accept Request from Taxi Driver & Average & 4 \\ \hline
-		Accept Request from Passenger & Average & 4 \\ \hline
-		Modify Passenger's Profile & Low & 3 \\ \hline
-		Change Taxi Driver's status & Low & 3 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Total}:} & 38 \\
+		Login & Low & 3 \\
+		Logout & Low & 3 \\
+		Passenger Registration & Low & 3 \\
+		Taxi Driver Registration & Low & 3 \\
+		Perform Request & High & 6 \\
+		Perform Reservation & High & 6 \\ 
+		Accept Request from Taxi Driver & Average & 4 \\ 
+		Accept Request from Passenger & Average & 4 \\
+		Modify Passenger's Profile & Low & 3 \\ 
+		Change Taxi Driver's status & Low & 3 \\
+		\multicolumn{2}{l}{\textbf{Total}:} & 38 \\
 		\hline
 	\end{tabular}
 	\caption{EIs Table Recap}
@@ -112,14 +112,14 @@ The applications generates the following complex outputs to the users:
 \end{itemize}
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
 		\hline
 		\textbf{EO} & \textbf{Complexity} & \textbf{FP} \\ \hline
-		Propose Ride to Taxi Driver & Low & 4 \\ \hline
-		Propose Ride to Passenger & Low & 4 \\ \hline
-		Calculate ETA & Average & 5 \\ \hline
-		Select Best Taxi for Incoming Ride & Average & 5 \\ \hline		
-		\multicolumn{2}{|l|}{\textbf{Total}} & 18 \\
+		Propose Ride to Taxi Driver & Low & 4 \\
+		Propose Ride to Passenger & Low & 4 \\
+		Calculate ETA & Average & 5 \\
+		Select Best Taxi for Incoming Ride & Average & 5 \\		
+		\multicolumn{2}{l}{\textbf{Total}} & 18 \\
 		\hline
 	\end{tabular}
 	\caption{EOs Table Recap}
@@ -128,14 +128,14 @@ The applications generates the following complex outputs to the users:
 The application allows users to requests informations about themselves and other things but all of them are simple to implement, so their complexity is set to \textbf{Low}. 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
 		\hline
 		\textbf{EIQ} & \textbf{Complexity} & \textbf{FP} \\ \hline
-		Show Passenger's Profile & Low & 3 \\ \hline
-		Show Taxi Driver's Profile & Low & 3 \\ \hline
-		Show Sys Admin's Profile & Low & 3 \\ \hline
-		Show ETA & Low & 3 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Total}} & 12 \\
+		Show Passenger's Profile & Low & 3 \\
+		Show Taxi Driver's Profile & Low & 3 \\
+		Show Sys Admin's Profile & Low & 3 \\
+		Show ETA & Low & 3 \\
+		\multicolumn{2}{l}{\textbf{Total}} & 12 \\
 		\hline
 	\end{tabular}
 	\caption{EIQs Table Recap}
@@ -144,14 +144,14 @@ The application allows users to requests informations about themselves and other
 The following table summarize the amount of FP for each type and the overall sum that corresponds to the final UFP value.
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.7\linewidth}|R{0.3\linewidth}|}
+	\begin{tabular}{p{0.7\linewidth}R{0.3\linewidth}}
 		\hline
 		\textbf{Function Type} & \textbf{Value} \\ \hline
-		Internal Logic Files & 31 \\ \hline
-		External Logic Files & 12 \\ \hline
-		External Inputs & 38 \\ \hline
-		External Outputs & 18 \\ \hline
-		External Inquiries & 12 \\ \hline
+		Internal Logic Files & 31 \\
+		External Logic Files & 12 \\
+		External Inputs & 38 \\
+		External Outputs & 18 \\
+		External Inquiries & 12 \\
 		\textbf{Total (UFP)} & 111 \\
 		\hline
 	\end{tabular}
@@ -226,21 +226,16 @@ According to the table we can evaluate the scale factors for our project:
 The results are recapped in the following table:
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
 		\hline
 		\textbf{Scale Driver} & \textbf{Selected Factor} & \textbf{Value} \\
 		\hline
 		Precedentness & Low & 4.96 \\
-		\hline
 		Development Flexibility & High & 2.03 \\
-		\hline
 		Risk Resolution & Nominal & 4.24 \\
-		\hline
 		Team Cohesion & Very High & 2.19 \\
-		\hline
 		Process Maturity & High & 3.12 \\
-		\hline
-		\multicolumn{2}{|l|}{\textbf{Total}} & 16.60 \\
+		\multicolumn{2}{l}{\textbf{Total}} & 16.60 \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -350,45 +345,28 @@ This rating measures the schedule constraint impose on the project team developi
 Our chosen values are recapped in the following table:
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.5\linewidth}|x{0.2\linewidth}|R{0.3\linewidth}|}
+	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
 		\hline
 		\textbf{Cost Driver} & \textbf{Selected Factor} & \textbf{Value} \\
 		\hline
 		Required Software Reliability & Nominal & 1.00 \\
-		\hline
 		Database Size & Nominal & 1.00 \\
-		\hline
 		Product Complexity & Nominal & 1.00 \\
-		\hline
 		Required Reusability & Very High & 1.15 \\
-		\hline
 		Documentation match to life-cycle needs & Nominal & 1.00 \\
-		\hline
 		Execution Time Constraint & Very Low & n/a \\
-		\hline
 		Main Storage Constraint & Very Low & n/a \\
-		\hline
 		Platform Volatility & Low & 0.87 \\
-		\hline
 		Analyst Capability & High & 0.85 \\
-		\hline
 		Programmer Capability & High & 0.88 \\
-		\hline
 		Application Experience & Low & 1.10 \\
-		\hline
 		Platform Experience & Nominal & 1.00 \\
-		\hline
 		Language and Tool Experience & Nominal & 1.00 \\
-		\hline
 		Personnel Continuity & Very Low & 1.29 \\
-		\hline
 		Usage of Software Tools & Nominal & 1.00 \\
-		\hline
 	    Multi-site Development & High & 0.93 \\
-		\hline
 		Required Development Schedule & Nominal & 1.00 \\
-		\hline
-		\multicolumn{2}{|l|}{\textbf{Product}} & 0.99 \\
+		\multicolumn{2}{l}{\textbf{Product}} & 0.99 \\
 		\hline
 	\end{tabular}
 \end{table}
