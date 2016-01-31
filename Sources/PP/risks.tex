@@ -1,6 +1,21 @@
 \newpage
 \section{Project Risks}
 In this section risks for the project, their relevance in terms of reliability, availability of the system and associated recovery actions are defined.
+For each risk, a probability of occurrence and relevance are given.
+Concerning probability possible values are:
+\begin{itemize}
+	\item Low
+	\item Moderate
+	\item High
+\end{itemize}
+Whereas for relevance, it can be one of the following possible values in order:
+\begin{itemize}
+	\item Negligible
+	\item Marginal
+	\item Serious
+	\item Critical
+	\item Catastrophic
+\end{itemize}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{p{0.6\linewidth}x{0.15\linewidth}x{0.15\linewidth}}
@@ -28,6 +43,7 @@ Next table illustrates possible actions in order to avoid or recover risks defin
 		\hline
 		\textbf{Risk} & \textbf{Strategy} \\
 		\hline
+		\endhead
 		Requirement volatility & This can't be proactively avoided in a definitive and fixed way, but can be mitigated designing reusable and extensible software. \\
 		Team issues & Assigning tasks and responsibilities clearly to each project member. Try to maintain a fair and relaxed environment among members, in order to keep them highly motivated.\\
 		Performance lack of external components & Consider either to investigate the reasons for poor performance or to buy another software component. \\
