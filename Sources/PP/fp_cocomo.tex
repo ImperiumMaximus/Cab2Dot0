@@ -3,11 +3,11 @@
 \section{Cost Estimation}
 \subsection{Function Points}
 \subsubsection{Brief introduction}
-The Function Point estimation approach, is based on the principle of extracting functions from a software, classify them using a well defined set classes and estimate their complexity. \\ This kind of estimation is extremely useful since it can be done at a very early stage of a project life-cycle, ideally after the implementation of the RASD, moreover, it can be used as a basis for performing a cost estimation using well-known models such as COCOMO (explained later on). \\
-This estimation is a single number called UFP that can be computed using simple arithmetic. \\
-An high-level procedure of how to calculate this number is the following:
+The Function Point estimation approach is based on the principle of extracting functions from a software, to classify them using a well defined set of classes and estimating their complexity. \\ This kind of estimation is extremely useful since it can be done at a very early stage of a project life-cycle, ideally after the implementation of the RASD. Moreover it can be used like a basis for performing a cost estimation using well-known models such as COCOMO (explained later). \\
+This estimation is a single number called UFP that can be computed using a simple formula. \\
+A high-level procedure that explains how to calculate this number is the following:
 \begin{enumerate}
-	\item Classify each function of the software to one of this possible five classes called Function Types (explained in detail later):
+	\item Classify each function of the software to one of these five possible classes called Function Types (explained in detail later):
 	\begin{itemize}
 		\item Internal Logic Files
 		\item External Interfaces Files
@@ -15,7 +15,7 @@ An high-level procedure of how to calculate this number is the following:
 		\item External Outputs
 		\item External Inquiries
 	\end{itemize}
-	\item For each function define its complexity which can be:
+	\item For each function a complexity is defined, it can be:
 	\begin{itemize}
 		\item Low
 		\item Average
@@ -24,7 +24,7 @@ An high-level procedure of how to calculate this number is the following:
 	\item Calculate the UFP by using this formula:
 	$$ \sum_{f \in F,\ c \in C} \left((\textrm{\# of functions of type } f \textrm{ and complexity } c) \cdot (\textrm{weight for type } f \textrm{ and complexity } c ) \right) $$
 	where $F = $ \{ILF, ELF, EI, EO, EIQ\} and $C = $ \{Low, Average, High\}. \\
-	Refer to this table for determine the proper weight for each type and complexity:
+	Refer to this table to determine the proper weight for each type and complexity:
 	\begin{table}[H]
 	\centering
 	\begin{tabular}{x{0.3\linewidth}x{0.15\linewidth}x{0.15\linewidth}x{0.15\linewidth}}
@@ -44,7 +44,7 @@ An high-level procedure of how to calculate this number is the following:
 \end{enumerate}
 Further manipulation of the UFP can be done in order to use it in Cost Estimation Models such as COCOMO, but this will be explained later.
 \subsubsection{Internal Logic Files}
-The application should manage an internal database which it is used to store information about the three categories of registered users: Passengers, Taxi Drivers, Sys Admins. For each of them basic data it is collected: name, surname, password, e-mail and so on. Thus we think that the complexity for this entities should be set to \textbf{Low}. On the other hand the system also maintain a history of Rides carried out throughout its life-cycle, since this entity is a bit complex than the previous ones we set its complexity to \textbf{Average}.
+The application should manage an internal database which is used to store information about the three categories of registered users: Passengers, Taxi Drivers, Sys Admins. For each of them, basic data is collected: name, surname, password, e-mail and so on. Thus we think that the complexity for this entities should be set to \textbf{Low}. On the other hand the system also maintains a history of Rides carried out throughout its life-cycle, since this entity is a bit complex than the previous ones, we set its complexity to \textbf{Average}.
 \begin{table}[H]
 	\centering
 	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
@@ -60,7 +60,7 @@ The application should manage an internal database which it is used to store inf
 	\caption{ILFs Table Recap}
 \end{table}
 \subsubsection{External Logic Files}
-The application should interact with a Maps service which provides information regarding city map and ETAs of Rides. This interaction requires the understanding of some API(s) and the need of parsing data coming from the Internet so we set this function complexity to \textbf{Average}. \\ Another interaction is with an external Database containing various information about Cars and Drivers, this interaction is simpler than the previous one and, by the way, Java has already well-defined interfaces to dialog with a Database so we set the complexity to \textbf{Low}.  
+The application should interact with a Maps service which provides information regarding city map and ETA of Rides. This interaction requires to understand some APIs and the need of parsing data coming from the Internet, so we set this function complexity to \textbf{Average}. \\ Another interaction is with an external Database containing various information about Cars and Drivers. This interaction is simpler than the previous one because Java has already well-defined interfaces to dialog with a Database, so we set the complexity to \textbf{Low}.  
 \begin{table}[H]
 	\centering
 	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
@@ -74,14 +74,14 @@ The application should interact with a Maps service which provides information r
 	\caption{ELFs Table Recap}
 \end{table}
 \subsubsection{External Inputs}
-The application has to deal with this external interactions from the users:
+The application has to deal with these external interactions coming from the users:
 \begin{itemize}
-	\item \textit{Login/logout}, these are a simple operations (they are two distinct functions) so we can set their complexity to \textbf{Low}.
+	\item \textit{Login/logout}, these are simple operations (they are two distinct functions) so we can set their complexity to \textbf{Low}.
 	\item \textit{Passenger/Taxi Driver registration}, as for the previous functions, these are simple too, so their complexity is again \textbf{Low}.
 	\item \textit{Perform Request/Reservation}, these are the most complex operations since several components are involved and some of them are also external, so we set their complexity to \textbf{High}.
-	\item \textit{Accept Request from Taxi Driver/Passenger}, these operations involve a medium number of components, also interacts with the internal database in order to add relevant information to Rides history, thus the complexity is set to \textbf{Average}.
-	\item \textit{Modify Passenger's profile}, this is a simple operation, complexity is \textbf{Low}.
-	\item \textit{Change Taxi Driver's status}, this requires to remove/add the Taxi to the proper queue, but nevertheless this is a fairly simple operations, so the complexity is \textbf{Low}.
+	\item \textit{Accept Request from Taxi Driver/Passenger}, these operations involve a medium number of components, also they interact with the internal database in order to add relevant information to Ride history, thus the complexity is set to \textbf{Average}.
+	\item \textit{Modify Passenger's profile}, this is a simple operation, its complexity is \textbf{Low}.
+	\item \textit{Change Taxi Driver's status}, this operation requires to remove/add the Taxi to the proper queue, but nevertheless this is a fairly simple operation, so the complexity is \textbf{Low}.
 \end{itemize} 
 \begin{table}[H]
 	\centering
@@ -104,11 +104,11 @@ The application has to deal with this external interactions from the users:
 	\caption{EIs Table Recap}
 \end{table}
 \subsubsection{External Outputs}
-The applications generates the following complex outputs to the users:
+The applications generate the following complex outputs to the users:
 \begin{itemize}
 	\item \textit{Propose Ride to Taxi Driver/Passenger}, this is a fairly simple operation once the overall elaboration and computation has been done on the back-end, so we set the complexity to \textbf{Low}.
-	\item \textit{Calculate ETA}, for this function a bunch of input data has to be collected from the environment (GPS positions), and an external service must be contacted, which computes the actual result, so we set the complexity of this to \textbf{Average}.
-	\item \textit{Select Best Taxi for Incoming Ride}, this depends to the policies chosen for managing queues in terms of assignment to city map and algorithm for taxi selection from a specific queue. We set the complexity of this function to \textbf{Average}. 
+	\item \textit{Calculate ETA}, for this function a bunch of input data has to be collected from the environment (e.g. GPS positions), and an external service, which computes the actual result, must be contacted, so we set the complexity of this to \textbf{Average}.
+	\item \textit{Select Best Taxi for Incoming Ride}, this depends on chosen policies to manage queues in terms of assignment to city map and algorithm for taxi selection from a specific queue. We set the complexity of this function to \textbf{Average}. 
 \end{itemize}
 \begin{table}[H]
 	\centering
@@ -125,7 +125,7 @@ The applications generates the following complex outputs to the users:
 	\caption{EOs Table Recap}
 \end{table}
 \subsubsection{External Inquiries}
-The application allows users to requests informations about themselves and other things but all of them are simple to implement, so their complexity is set to \textbf{Low}. 
+The application allows users to request information about themselves and other similar things, but all of them are simple to implement, so their complexity is set to \textbf{Low}. 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{p{0.5\linewidth}x{0.2\linewidth}R{0.3\linewidth}}
@@ -141,7 +141,7 @@ The application allows users to requests informations about themselves and other
 	\caption{EIQs Table Recap}
 \end{table}
 \subsubsection{Recap}
-The following table summarize the amount of FP for each type and the overall sum that corresponds to the final UFP value.
+The following table summarizes the amount of FP for each type and the overall sum that corresponds to the final UFP value.
 \begin{table}[H]
 	\centering
 	\begin{tabular}{p{0.7\linewidth}R{0.3\linewidth}}
@@ -160,11 +160,11 @@ The following table summarize the amount of FP for each type and the overall sum
 \subsection{COCOMO}
 \subsubsection{Brief introduction}
 \label{sec:cocomo-int}
-This estimation is achieved using a complex, non linear model that takes into account the characteristic of the product but also of people and process. \\
-Basically, this model estimates the effort needed to implement the project being analyzed. To compute this number we need to define some concept which will be used later in the actual calculation. \\
+This estimation is achieved using a complex, non linear model that takes into account not only characteristics of a product, but also of people and processes. \\
+Basically, this model estimates the effort needed to complete a project. To compute this number we need to define some concepts which will be used later in the actual calculation. \\
 The equation to compute the effort is the following:
 $$\textrm{Effort} = A \cdot \textrm{SLOC}^E \cdot \prod_{i=1}^{n} EM_i$$
-Where $A = 2.94$ for COCOMO II.2000, SLOC is the amount of lines of codes estimated to be written for implementing the software, $E$ is explained in detail in Section \ref{sec:sd} and $EM$ is called effort multiplier which is defined for each Cost Driver (explained in Section \ref{sec:cd}), in COCOMO II.2000 the number of Cost Driver are 17 thus $n = 17$.
+Where $A = 2.94$ for COCOMO II.2000, SLOC is the amount of lines of code estimated to be written for implementing the software, $E$ is explained in detail in Section \ref{sec:sd} and $EM$ is called effort multiplier which is defined for each Cost Driver (explained in Section \ref{sec:cd}), in COCOMO II.2000 the number of Cost Driver are 17 thus $n = 17$.
 \subsubsection{Lines of Codes}
 This datum can be determined using a simple conversion equation of this kind
 $$ \textrm{SLOC} = k \cdot \textrm{UFP} $$
@@ -173,16 +173,16 @@ Given this information, we can estimate our SLOC for the sotware which is:
 $$SLOC = 53 \cdot 111 = 5,883 = 5.88\ KSLOC$$
 This value will be used later for computing the effort.
 \subsubsection{Scale Drivers}
-The exponent $E$ in the equation of the Effort is an aggregation of five \textit{scale factors} (SF) that account
+The exponent $E$ in the Effort equation is an aggregation of five \textit{scale factors} (SF) that accounts
 for the relative economies or diseconomies of scale encountered for software projects of different
 sizes. \\
-If $E < 1.0$, the project exhibits economies of scale. If the product's
-size is doubled, the project effort is less than doubled. The project's productivity increases as the
+If $E < 1.0$, the project exhibits economies of scale. If the product
+size is doubled, the project effort is less than doubled. The project productivity increases as the
 product size is increased. \\
-If $E = 1.0$, the economies and diseconomies of scale are in balance. This linear model is
-often used for cost estimation of small projects. \\
+If $E = 1.0$, economies and diseconomies of scale are in balance. This linear model is
+often used for small project cost estimation. \\
 If $E > 1.0$, the project exhibits diseconomies of scale. This is generally because of two
-main factors: growth of interpersonal communications overhead and growth of large-system
+main factors: growth of interpersonal communication overhead and growth of large-system
 integration overhead. \\
 $E$ can be computed using this equation:
 $$ E = B + 0.01 \cdot \sum_{j=1}^{5} \textrm{SF}_j $$
@@ -214,13 +214,13 @@ Scale Factors are defined in the following table:
 	\end{tabular}
 	\caption{Scale Factor Values, SF\textsubscript{i}, for COCOMO II Models}
 \end{table}
-According to the table we can evaluate the scale factors for our project:
+According to the table we can evaluate scale factors for our project:
 \begin{itemize}
-	\item \textbf{Precedentedness}, it measures the previous experience that we had with this kind of technologies. Since this is our first project using JEE and these development methodologies, we set it to \textbf{Low}. 
-	\item \textbf{Development flexibility}, its value express the degree of elasticity that we have during the development of the project, in particular it depends on how the software needs to be conformant to pre-established requirements, with external interface specifications and so on. Since the original project specification explains the problems without going too much in detail, this induces us to set this value to Extra High, however during the implementation of the RASD, some requirements expressed the need to interact with some external component which have a fixed and already established interface. Thus, we decide to adjust this SF to a more fair value of \textbf{High}.
-	\item \textbf{Risk resolution}, it reflects the amount of effort and budget expected to be spent during the development to seek for possible risks and their resolution that can occur anytime during the life-cycle of a software. All the documents written till now don't carry out this type of problems, the PPD has a dedicated section explain to some extent this kind of issues, so we can set this SF to \textbf{Nominal}.
-	\item \textbf{Team cohesion}, it measures the overall capabilities of all actors (users, customers, developers, maintainers, etc.) of the development process to interact each other to carry out the main objectives. Since in our case, the team is composed of only two members, that already worked together to other projects in the past, we set this value to \textbf{Very High}.
-	\item \textbf{Process maturity}, it is an indicator of how the overall process of development is sophisticated and well-defined with the respect to some general criteria. Since precise instructions has been given for each phase of the project we set it to \textbf{High} (CMM Level 3). 
+	\item \textbf{Precedentedness}, it measures previous experiences we had with this kind of technologies. Since this is our first project using JEE and these development methodologies, we set it to \textbf{Low}.
+	\item \textbf{Development flexibility}, its value express the degree of elasticity that we have during the development of the project. In particular it depends on how the software needs to be accurate with respect to pre-established requirements, with external interface specifications and so on. Since the original project specification presents this problem without going too much in detail, this may induce us to set this value to Extra High, however during the writing of the RASD, some requirements expressed the need to interact with some external components which have a fixed and already established interface. Thus, we decided to adjust this SF to a more fair value of \textbf{High}.
+	\item \textbf{Risk resolution}, it reflects the amount of effort and budget expected to be spent during the development to seek for possible risks and their resolution that can occur anytime during the life-cycle of a software. These two problems have not been debated in any previous document until now. The PPD has a dedicated section that explains these kind of issues, so we can set this SF to \textbf{Nominal}.
+	\item \textbf{Team cohesion}, it measures the overall capabilities of all actors (users, customers, developers, maintainers, etc.) in the development process to interact each other to carry out main objectives. Since in our case, the team is composed only by two members, that already worked together to other projects in the past, we set this value to \textbf{Very High}.
+	\item \textbf{Process maturity}, it is an indicator that shows how the overall process of development is sophisticated and well-defined with the respect to some general criteria. Since precise instructions have been given to us before each phase of the project, we set it to \textbf{High} (CMM Level 3). 
 \end{itemize}
 
 The results are recapped in the following table:
@@ -242,12 +242,12 @@ The results are recapped in the following table:
 
 \subsubsection{Cost Drivers}
 \label{sec:cd}
-The Cost Drivers called also Effort Multipliers are multiplicative factor that estimate the effort to complete the whole project. As already explained in Section \ref{sec:cocomo-int}, the COCOMO II model has 17 Cost Drivers, this section briefly explains all of them and, for each Cost Driver the chosen value for our project. \\
+The Cost Drivers called also Effort Multipliers are multiplicative factors that estimate the effort to complete the whole project. As already explained in Section \ref{sec:cocomo-int}, the COCOMO II model has 17 Cost Drivers, this section briefly explains all of them and, for each Cost Driver, the corresponding value for our project. \\
 
-\paragraph{Required Software Reliability (RELY)} This is the measure of the extent to which the software must perform its intended function over a period of time. A failure of the system might result in some financial loss, however since its complexity is not exaggerated almost all losses can be recovered easily, so we set this value to \textbf{Nominal} 
+\paragraph{Required Software Reliability (RELY)} This is the measure of the extent to which the software must perform its intended function over a period of time. A failure of the system might result in some financial losses, however since its complexity is not exaggerated, almost all losses can be recovered easily, so we set this value to \textbf{Nominal} 
 \cdtable{name=RELY, vldesc=Slight incovenience, ldesc={Low, easily recoverable losses}, ndesc={Moderate, easily recoverable losses}, hdesc=High financial loss, vhdesc=Risk to human life, ehdesc={}, vlmult=0.82, lmult=0.92, nmult=1.00, hmult=1.10, vhmult=1.26, ehmult=n/a}
 
-\paragraph{Database Size (DATA)} This Cost Driver attempts to capture the effect large test data requirements have on product development. The rating is determined by calculating $\nicefrac{D}{P}$, the ratio of bytes in the testing database to SLOC program. Since we cannot determine precisely the size of our testing database we can only give an estimate based on what we have written in the ITPD so we set this value to \textbf{Nominal}
+\paragraph{Database Size (DATA)} This Cost Driver attempts to capture the effect of large test data requirements made on product in development. The rating is determined by calculating $\nicefrac{D}{P}$, the ratio of bytes in the testing database to SLOC program. Since we cannot determine precisely the size of our testing database we can only give an estimate based on what we have written in the ITPD, so we set this value to \textbf{Nominal}
 
 \cdtable{name=DATA, vldesc={}, ldesc={Testing DB bytes/Pgm SLOC \textless\ 10}, ndesc=$10 \le \textrm{D/P} \le 100$, hdesc=$100 \le \textrm{D/P} \le 1000$, vhdesc=D/P $\ge 100$, ehdesc={}, vlmult=n/a, lmult=0.90, nmult=1.00, hmult=1.14, vhmult=1.28, ehmult=n/a}
 
@@ -275,36 +275,36 @@ Using the COCOMO II CPLX rating scale this is set to \textbf{Nominal}.
 \paragraph{Developed for Reusability (RUSE)} This cost driver accounts for additional effort needed to construct components intended for reuse on current or future projects. This concept is used extensively especially in the DD so we set the value of this Cost Driver to \textbf{Very High}.
 \cdtable{name=RUSE, vldesc={}, ldesc=None, ndesc=Across project, hdesc=Across program, vhdesc=Across product line, ehdesc=Across multiple product lines, vlmult=n/a, lmult=0.95, nmult=1.00, hmult=1.07, vhmult=1.15, ehmult=1.24}
 
-\paragraph{Documentation Match to Life-Cycle Needs (DOCU)} The rating scale for this Cost Driver is evaluated in terms of the suitability of the project's documentation to its life-cycle needs. We can assume that the documents written till now are sufficient to clarify all the issues that might arise during the next development phases so we set this rating scale to \textbf{Nominal}.
+\paragraph{Documentation Match to Life-Cycle Needs (DOCU)} The rating scale for this Cost Driver is evaluated in terms of project document suitability to its life-cycle needs. We can assume that the documents written till now are sufficient to clarify all the issues that might arise during the next development phases, so we set this rating scale to \textbf{Nominal}.
 
 \cdtable{name=DOCU, vldesc=Many life-cycle needs unconvered, ldesc=Some life-cycle needs uncovered, ndesc=Right-sized to life-cycle needs, hdesc=Excessive for life-cycle needs, vhdesc=Very excessive for life-cycle needs, ehdesc={}, vlmult=0.81, lmult=0.91, nmult=1.00, hmult=1.11, vhmult=1.23, ehmult=n/a}
 
-\paragraph{Execution Time Constrains (TIME)} It values express the execution time constraint imposed upon a software system. The rating is expressed in terms of the percentage of available execution time expected to be used by the system or subsystem consuming the execution time resource. Since the systems will run in dedicated servers there are no particular constraints on the execution time thus we can set this Cost Driver to \textbf{Very Low}.
+\paragraph{Execution Time Constrains (TIME)} It values the execution time constraint imposed upon a software system. The rating is expressed in percentage of available execution time expected to be used by the system or subsystem consuming resources. Since the system will run on dedicated servers, there are no particular constraints on the execution time. Thus we can set this Cost Driver to \textbf{Very Low}.
 
 \cdtable{name=TIME, vldesc={}, ldesc={}, ndesc=$\le 50\%$ use of available execution time, hdesc=70\% use of available execution time, vhdesc=85\% use of available execution time, ehdesc=95\% use of available execution time, vlmult=n/a, lmult=n/a, nmult=1.00, hmult=1.11, vhmult=1.29, ehmult=1.63}
 
-\paragraph{Main Storage Constraint (STOR)} This rating represents the degree of main storage constraint imposed on a software or subsystem. As before, the usage of a dedicated system doesn't impose to us any particular constraint so we can also set this Effort Multiplier to \textbf{Very Low}.
+\paragraph{Main Storage Constraint (STOR)} This rating represents the degree of main storage constraint imposed on a software or subsystem. As before, the usage of a dedicated system doesn't impose to us any particular constraint, so we can also set this Effort Multiplier to \textbf{Very Low}.
 
 \cdtable{name=STOR, vldesc={}, ldesc={}, ndesc=$\le 50\%$ use of available storage, hdesc=70\% use of available storage, vhdesc=85\% use of available storage, ehdesc=95\% use of available storage, vlmult=n/a, lmult=n/a, nmult=1.00, hmult=1.05, vhmult=1.17, ehmult=1.46}
 
-\paragraph{Platform Volatility (PVOL)} ``Platform'' is used here to mean the complex of hardware and software (OS, DMBS, etc.) the software product calls on to perform its tasks. We think that the platform shouldn't change too much over time thus \textbf{Low} is the appropriate value for this Cost Driver. 
+\paragraph{Platform Volatility (PVOL)} ``Platform'' here means the complexity of hardware and software (OS, DMBS, etc.) called to perform their tasks. We think that the platform shouldn't change too much over time, thus \textbf{Low} is the appropriate value for this Cost Driver. 
 
 \cdtable{name=PVOL, vldesc={}, ldesc=Major change every 12 mo.; Minor change every 1 mo., ndesc=Major: 6 mo.; Minor: 2 wk., hdesc=Major: 2 mo.; Minor: 1 wk., vhdesc=Major: 2 wk.; Minor: 2 days, ehdesc={}, vlmult=n/a, lmult=0.87, nmult=1.00, hmult=1.15, vhmult=1.30, ehmult=n/a}
 
-\paragraph{Analyst Capability (ACAP)} Analysts are personnel who work on requirements, high-level design and detailed design. Since a lot of effort was spent in writing the RASD and the DD we believe that they capture all the needs and that they were correctly studied so we set this EM to \textbf{High}.
+\paragraph{Analyst Capability (ACAP)} Analysts are personnel who works on requirements, high-level design and detailed design. Since a lot of effort was spent in writing the RASD and the DD, we believe they capture all the needs and they were correctly studied, so we set this estimator to \textbf{High}.
 
 \cdtable{name=ACAP, vldesc=15\textsuperscript{th} percentile, ldesc=35\textsuperscript{th} percentile, ndesc=55\textsuperscript{th} percentile, hdesc=75\textsuperscript{th} percentile, vhdesc=90\textsuperscript{th} percentile, ehdesc={}, vlmult=1.42, lmult=1.19, nmult=1.00, hmult=0.85, vhmult=0.71, ehmult=n/a}
 
-\paragraph{Programmer Capability (PCAP)} Evaluation should be based on the capability of the programmers as a team rather than as individuals. Major factors which should be considered in the rating are ability, efficiency and thoroughness, and the ability to communicate and cooperate. In our situation we chose the value of \textbf{High}.
+\paragraph{Programmer Capability (PCAP)} Evaluation should be based on the capability of the programmers as a team rather than as individuals. Major factors, which should be considered in the rating, are efficiency, thoroughness, the ability to communicate and to cooperate. In our situation we chose the value of \textbf{High}.
 
 \cdtable{name=PCAP, vldesc=15\textsuperscript{th} percentile, ldesc=35\textsuperscript{th} percentile, ndesc=55\textsuperscript{th} percentile, hdesc=75\textsuperscript{th} percentile, vhdesc=90\textsuperscript{th} percentile, ehdesc={}, vlmult=1.34, lmult=1.15, nmult=1.00, hmult=0.88, vhmult=0.76, ehmult=n/a}
 
-\paragraph{Applications Experience (APEX)} The rating of this Cost Driver is dependent on the level of applications experience of the project team development the software system of subsystem. Since this is our first experience we set this to \textbf{Low}.
+\paragraph{Applications Experience (APEX)} This rating depends on previous experiences of team members with applications used to develop the software, e.g. JEE. Since this is our first experience we set this to \textbf{Low}.
 
 \cdtable{name=APEX, vldesc=$\le 2$ months, ldesc=6 months, ndesc=1 year, hdesc=3 year, vhdesc=6 years, ehdesc={}, vlmult=1.22, lmult=1.10, nmult=1.00, hmult=0.88, vhmult=0.81, ehmult=n/a}
 
-\paragraph{Platform Experience (PLEX)} The Post-Architecture model broadens the productivity influence of platform experience, by recognizing the importance of understanding the use of more powerful platforms, including more graphic user interface, database, networking, and distributed middleware capabilities.
-This is set to \textbf{Nominal} since our knowledge about the overall platform is about 1 year.
+\paragraph{Platform Experience (PLEX)} This index expresses the capacity of the team to work with the platform created (hardware and software) that allows the final product to operate accurately. 
+This is set to \textbf{Nominal} since our knowledge about the overall platform is about 1 year long.
    
 \cdtable{name=PLEX, vldesc=$\le 2$ months, ldesc=6 months, ndesc=1 year, hdesc=3 year, vhdesc=6 years, ehdesc={}, vlmult=1.19, lmult=1.09, nmult=1.00, hmult=0.91, vhmult=0.85, ehmult=n/a}
 
@@ -312,15 +312,15 @@ This is set to \textbf{Nominal} since our knowledge about the overall platform i
 
 \cdtable{name=LTEX, vldesc=$\le 2$ months, ldesc=6 months, ndesc=1 year, hdesc=3 year, vhdesc=6 years, ehdesc={}, vlmult=1.20, lmult=1.09, nmult=1.00, hmult=0.91, vhmult=0.84, ehmult=n/a}
 
-\paragraph{Personnel Continuity (PCON)} The rating scale is in terms of the project's annual personnel turnover. In our case it is set to \textbf{Very Low}.
+\paragraph{Personnel Continuity (PCON)} The rating scale is in terms of project annual personnel turnovers. In our case it is set to \textbf{Very Low}.
 
 \cdtable{name=PCON, vldesc=48\% / year, ldesc=24\% / year, ndesc=12\% / year, hdesc=6\% / year, vhdesc=3\% / year, ehdesc={}, vlmult=1.29, lmult=1.12, nmult=1.00, hmult=0.90, vhmult=0.81, ehmult=n/a}
 
-\paragraph{Use of Software Tools (TOOL)} Since no actual implementation is done we can assume the use of a Java IDE such as Eclipse, a VCS of choice such as Git which can be easily integrated so we set this value to \textbf{Nominal}.
+\paragraph{Use of Software Tools (TOOL)} Since no actual implementation is done, we can assume the use of a Java IDE such as Eclipse and a VCS of choice such as Git which can be easily integrated. So we set this value to \textbf{Nominal}.
 
 \cdtable{name=TOOL, vldesc={Edit, code, debug}, ldesc={Simple, frontend, backend CASE, little integration}, ndesc={Basic life-cycle tools, moderately integrated}, hdesc={Strong, mature life-cycle tools, moderately integrated}, vhdesc={Strong, mature, proactive life-cycle tools, well integrated with processes, methods, reuse}, ehdesc={}, vlmult=1.17, lmult=1.09, nmult=1.00, hmult=0.90, vhmult=0.78, ehmult=n/a}
 
-\paragraph{Multisite Development (SITE)} Since the service is established in a city and involves the use of some sort of wideband electronic communication by means of smart-phones we set this Cost Driver to \textbf{High}.
+\paragraph{Multisite Development (SITE)} Since the service is established in a city and involves the use of wideband electronic communications by means of smartphones, we set this Cost Driver to \textbf{High}.
 
 \begin{table}[H]
 	\centering
@@ -338,7 +338,7 @@ This is set to \textbf{Nominal} since our knowledge about the overall platform i
 \end{table}
 
 \paragraph{Required Development Schedule (SCED)}
-This rating measures the schedule constraint impose on the project team developing the software. The ratings are defined in terms of percentage of schedule stretch-out or acceleration with respect to a nominal schedule for a project requiring a given amount of effort. There are no particular reasons to set this value different than \textbf{Nominal}.
+This rating measures the schedule constraints imposed on the project team developing the software. The ratings are defined in percentage of schedule stretch-outs or accelerations with respect to a nominal schedule for a project requiring a given amount of effort. There are no particular reasons to set this value different from \textbf{Nominal}.
 
 \cdtable{name=SCED, vldesc=75\% of nominal, ldesc=85\% of nominal, ndesc=100\% of nominal, hdesc=130\% of nominal, vhdesc=160\% of nominal, ehdesc={}, vlmult=1.43, lmult=1.14, nmult=1.00, hmult=1.00, vhmult=1.00, ehmult=n/a}
 \subsubsection{Cost Driver Recap}
@@ -373,7 +373,7 @@ Our chosen values are recapped in the following table:
 \subsubsection{Effort computation}
 Using the values computed in the previous sections we can now calculate the effort. Given that $A = 2.94$, $EAF = 0.99$ and  $E = 0.91 + 0.01 \cdot 16.60 = 1.08$ the effort is 
 $$ \textrm{Effort} = 2.94 \cdot 0.85 \cdot 5.88^{1.08} = 16.93\ \textrm{PM} $$  
-We can also calculate the duration of a projects in terms of months required to complete it with this equation:
+We can also calculate the duration of a project in terms of months required to complete it with this equation:
 $$ \textrm{Duration} = 3.67 \cdot (\textrm{Effort})^{SE} = 3.67 \cdot 16.93^{0.31} = 8.82\ \textrm{Months} $$
 Where $SE = D + 0.2 \cdot (E - B)$ and $D = 0.28$.
 Given the values of Effort and Duration for the project we can compute the number of required people ``N'' is:
