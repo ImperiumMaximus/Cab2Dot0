@@ -11,6 +11,13 @@ Cab2.0 is a system that extends an existing taxi service by put into use such te
 With Cab2.0, a client can now use his/her smartphone or tablet to quickly find or reserve a taxi which is near his/her position.
 A driver can also reply very quickly after the client's request and thus granting a significant performance boost of the entire system.
 
+## Deliveries
+* [Requirements Analysis and Specification Document v1.0](https://github.com/ImperiumMaximus/Cab2dot0/raw/master/Deliveries/RASDv1.0.pdf)
+* [Design Document v1.0](https://github.com/ImperiumMaximus/Cab2dot0/raw/master/Deliveries/DDv1.0.pdf)
+* [Code Inspection Document v1.0](https://github.com/ImperiumMaximus/Cab2dot0/raw/master/Deliveries/CIv1.0.pdf)
+* [Integration Testing Plan Document v1.0](https://github.com/ImperiumMaximus/Cab2dot0/raw/master/Deliveries/ITPv1.0.pdf)
+* [Project Plan Document v1.0](https://github.com/ImperiumMaximus/Cab2dot0/raw/master/Deliveries/PPv1.0.pdf)
+
 ## Project schedule
 * ~~Group registration 14/10/2015~~
 * ~~RASD (Requirement Analysis Specification Document) and Design assignment 15/10/2015~~
@@ -29,5 +36,5 @@ A driver can also reply very quickly after the client's request and thus grantin
 * ~~Function points assignment 20/01/2016~~
 * ~~Testing document submission deadline 21/01/2016~~
 * ~~Open discussion on function points 21/01/2016~~
-* Function points document submission deadline 02/02/2016
-* Final presentation (to be scheduled)
+* ~~Function points document submission deadline 02/02/2016~~
+* Final presentation 12/02/2016
